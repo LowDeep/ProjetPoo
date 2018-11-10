@@ -1,14 +1,19 @@
 package codeJeu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Piece {
-    private boolean Nord;
-    private boolean Sud;
-    private boolean Est;
-    private boolean Ouest;
-    public Porte porte;
+    private boolean nord;
+    private boolean sud;
+    private boolean est;
+    private boolean ouest;
+    private Porte porte;
 
-    public PassageSecret passageSecret;
+    private PassageSecret passageSecret;
 
-    public List<Personnage>  = new ArrayList<Personnage> ();
+    private List<Personnage> personnage = new ArrayList<Personnage> ();
+    
+    
 
 }

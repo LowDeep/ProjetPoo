@@ -5,6 +5,6 @@ public abstract class Personnage {
     private double y;
 
 
-    public Piece ;
+    public Piece piece;
 
 }

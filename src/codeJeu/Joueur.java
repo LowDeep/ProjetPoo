@@ -1,8 +1,13 @@
 package codeJeu;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class Joueur{
+    
     private int Armure;
     public List<Objet> Avoir = new ArrayList<Objet> ();
-    public ConstantesDeJeu Caractéristiques;
+    private ConstantesDeJeu Caracteristiques;
     
     public void sortDoom() {
     }
