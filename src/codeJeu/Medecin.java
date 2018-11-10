@@ -1,7 +1,12 @@
 package codeJeu;
 
 public class Medecin extends Personnage {
-    public void soigner(Joueur Joueur) {
+	//constructeur medecin
+    public Medecin(double x, double y) {
+		super(x, y);
+	}
+
+	public void soigner(Joueur Joueur) {
     }
 
 }
