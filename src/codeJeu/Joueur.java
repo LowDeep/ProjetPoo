@@ -1,5 +1,6 @@
 package codeJeu;
 
+
 	public class Joueur extends JoueurActif{
 		
     private int armure;

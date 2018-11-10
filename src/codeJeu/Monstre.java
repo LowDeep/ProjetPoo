@@ -9,8 +9,7 @@ public class Monstre extends JoueurActif {
 
 	public void chercherJoueur() {
     }
-
-
+	
 	@Override
 	public void seDeplacer() {
 		// TODO Auto-generated method stub

@@ -21,6 +21,5 @@ public abstract class Personnage {
 	public void setY(double y) {
 		this.y = y;
 	}
-    
 
 }
