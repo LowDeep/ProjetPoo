@@ -8,7 +8,7 @@ public class Piece {
     private boolean sud;
     private boolean est;
     private boolean ouest;
-    private Porte porte;
+    private Porte[] porte;
 
     private PassageSecret passageSecret;
 

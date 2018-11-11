@@ -23,8 +23,10 @@ public abstract class JoueurActif extends Personnage {
 		force = force;
 	}
     //fonctions du joueur actif	
-    public abstract void seDeplacer();
-    public abstract void seBattre(JoueurActif attaquer);
+    public void seDeplacer()
+    {
+    	
+    }
     public void afterBattlePDV() {
     }
 
