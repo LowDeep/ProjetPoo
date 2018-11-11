@@ -6,7 +6,7 @@ public class Medecin extends Personnage {
 		super(x, y);
 	}
 
-	public void soigner(Joueur Joueur) {
+    public void soigner(Joueur Joueur) {
     }
 
 }

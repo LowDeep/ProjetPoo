@@ -1,7 +1,7 @@
 package codeJeu;
 
 
-	public class Joueur extends JoueurActif{
+    public class Joueur extends JoueurActif{
 		
     private int armure;
     private static final int QUANTITEOBJETS = 6;
@@ -37,7 +37,7 @@ package codeJeu;
 		this.caracPerso = caracPerso;
 	}
 
-	//methode sort Doom : tue tous les monstres de la pièce   
+	//methode sort Doom : tue tous les monstres de la piï¿½ce   
     public void sortDoom() {
     	
     }
@@ -45,6 +45,7 @@ package codeJeu;
 		
     }
     public void ouvrirPorte(Porte ouvrir) {
+        
     }
     public void passageSecret(PassageSecret DeplacementPassageSecret) {
     }
@@ -56,15 +57,15 @@ package codeJeu;
     }
     public void perdrePartie() {
     }
-	@Override
-	public void seDeplacer() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void seBattre(JoueurActif attaquer) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void seDeplacer() {
+            // TODO Auto-generated method stub
+
+    }
+    @Override
+    public void seBattre(JoueurActif attaquer) {
+            // TODO Auto-generated method stub
+
+    }
 	
 }

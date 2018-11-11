@@ -1,13 +1,22 @@
 package codeJeu;
 
 public abstract class Potion extends Objet {
-    private int gain;
+    
+    //Boolean True, Potion Grande;
+    //Boolean False, potion Petite;
+    private final boolean type;
 
-    public Potion(int gain, double x, double y) {
+    public Potion(boolean type, double x, double y) {
         super(x, y);
-        this.gain = gain;
+        this.type = type;
     }
 
+
+    public boolean isType() {
+        return type;
+    }
+    
+    
     
     
 

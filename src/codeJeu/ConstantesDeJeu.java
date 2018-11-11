@@ -2,15 +2,23 @@ package codeJeu;
 
 public class ConstantesDeJeu {
    
-    private int pdvMax = 10;
-    private int forceMax = 30;
-    private int armureMax = 5;
+    public static int pdvMax = 10;
+    public static int forceMax = 30;
+    public static int armureMax = 5;
     
-    public ConstantesDeJeu(int pdvMax,int forceMax,int armureMax){
-    	this.pdvMax=pdvMax;
-    	this.forceMax=forceMax;
-    	this.armureMax=armureMax;
-    }
     
- 
+    public static boolean TresorGagner = true;
+    public static boolean TresorObjet = false;
+    
+    public static int PotionViePetite = 2;
+    public static int PotionVieGrande = 5;
+    
+    public static int PotionForcePetite = 10;
+    public static int PotionForceGrande = 15;
+    
+    public static boolean Ouvert = true;
+    public static boolean ferme = false;
+    
+    
+    
 }

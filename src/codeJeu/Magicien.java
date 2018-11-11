@@ -6,8 +6,8 @@ public class Magicien extends Personnage {
 		super(x, y);
 	}
 
-	public void recuperationDoom(Joueur Joueur) {
-
+    public void recuperationDoom(Joueur Joueur) {
+        
     }
 
 }
