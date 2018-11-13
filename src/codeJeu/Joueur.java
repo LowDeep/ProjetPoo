@@ -81,7 +81,7 @@ public class Joueur extends JoueurActif{
     }
     //fin du jeu suite a gagner partie
     public void gagnerPartie() {
-    	System.out.println("Félicitations ! Vous venez de gagner la partie :)");
+    	System.out.println("Fï¿½licitations ! Vous venez de gagner la partie :)");
     	System.exit(0);
     }
     public void perdrePartie() {
