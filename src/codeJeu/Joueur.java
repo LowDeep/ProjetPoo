@@ -91,7 +91,7 @@ public class Joueur extends JoueurActif{
     {
     	for(int i=0;i<toutesLesPieces.length;i++)
     	{
-    		if(toutesLesPieces) {}
+    		//if(toutesLesPieces) {}
     	}
     }
     public void seBattre(Monstre monstre)
