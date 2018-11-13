@@ -3,7 +3,7 @@ package codeJeu;
 public class Tresor extends Objet{
     
     //Soit 
-    private final boolean type;
+    private final boolean type;//true grand / false petit
     private final Objet contient;
 
     public Tresor(boolean type, Objet contient) {

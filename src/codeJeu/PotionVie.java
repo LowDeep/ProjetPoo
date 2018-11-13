@@ -13,13 +13,13 @@ public class PotionVie extends Potion {
         
         //Potion Grande
         if(isType()) {
-            joueur.setPdv(joueur.getPdv()+ ConstantesDeJeu.PotionVieGrande);
+            joueur.setPdv(joueur.getPdv()+ ConstantesDeJeu.POTIONVIEGRANDE);
         }else{
-            joueur.setPdv(joueur.getPdv()+ ConstantesDeJeu.PotionViePetite);
+            joueur.setPdv(joueur.getPdv()+ ConstantesDeJeu.POTIONVIEPETITE);
         }
          
-        if(joueur.getPdv() > ConstantesDeJeu.pdvMax){
-            joueur.setPdv(ConstantesDeJeu.pdvMax);
+        if(joueur.getPdv() > ConstantesDeJeu.PDVMAX){
+            joueur.setPdv(ConstantesDeJeu.PDVMAX);
         }
     }
 

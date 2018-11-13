@@ -9,6 +9,9 @@ public class Monstre extends JoueurActif {
 
 	public void chercherJoueur() {
     }
+	public void seBattre(Joueur joueur) {
+		
+	}
 	
 
 	

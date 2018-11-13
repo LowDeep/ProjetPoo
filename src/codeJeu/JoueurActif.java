@@ -29,5 +29,5 @@ public abstract class JoueurActif extends Personnage {
     }
     public void afterBattlePDV() {
     }
-
+    
 }
