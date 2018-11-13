@@ -38,11 +38,11 @@ public abstract class Arme extends Objet implements ObjetEndomager {
     }
 
 
-	@Override
-	public void objetEndomage() {
+    @Override
+    public void objetEndomage() {
 
-		
-	}
+
+    }
 
     
 }

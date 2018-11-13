@@ -1,8 +1,11 @@
 package codeJeu;
 
-public class PassageSecret {
-    private double x;
-    private double y;
+public class PassageSecret extends Objet{
+
+    public PassageSecret(double x, double y) {
+        super(x, y);
+    }
+
 
     public void transporterPersonnage() {
     }

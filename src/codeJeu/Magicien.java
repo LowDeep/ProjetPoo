@@ -1,8 +1,9 @@
 package codeJeu;
 
 public class Magicien extends Personnage {
-	private boolean donnerDoom=true;
-	//constructeur magicien
+    private boolean donnerDoom=true;
+    
+    //constructeur magicien
     public Magicien(double x, double y) {
 		super(x, y);
 	}
