@@ -11,13 +11,13 @@ public class PotionForce extends Potion {
     public void gainForce(Joueur joueur) {
         //Potion Grande
         if(isType()) {
-            joueur.setForce(joueur.getForce() + ConstantesDeJeu.PotionForceGrande);
+            joueur.setForce(joueur.getForce() + ConstantesDeJeu.POTIONFORCEGRANDE);
         }else{
-            joueur.setForce(joueur.getForce() + ConstantesDeJeu.PotionForcePetite);
+            joueur.setForce(joueur.getForce() + ConstantesDeJeu.POTIONFORCEPETITE);
         }
          
-        if(joueur.getForce() > ConstantesDeJeu.forceMax){
-            joueur.setForce(ConstantesDeJeu.forceMax);
+        if(joueur.getForce() > ConstantesDeJeu.FORCEMAX){
+            joueur.setForce(ConstantesDeJeu.FORCEMAX);
         }
     }
 }

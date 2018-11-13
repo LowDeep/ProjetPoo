@@ -2,21 +2,21 @@ package codeJeu;
 
 public class ConstantesDeJeu {
    
-    public static int pdvMax = 10;
-    public static int forceMax = 30;
-    public static int armureMax = 5;    
+    public static int PDVMAX = 10;
+    public static int FORCEMAX = 30;
+    public static int ARMUREMAX = 5;    
     
-    public static boolean TresorGagner = true;
-    public static boolean TresorObjet = false;
+    public static boolean TRESORGAGNER = true;
+    public static boolean TRESOROBJET = false;
     
-    public static int PotionViePetite = 2;
-    public static int PotionVieGrande = 5;
+    public static int POTIONVIEPETITE = 2;
+    public static int POTIONVIEGRANDE = 5;
     
-    public static int PotionForcePetite = 10;
-    public static int PotionForceGrande = 15;
+    public static int POTIONFORCEPETITE = 10;
+    public static int POTIONFORCEGRANDE = 15;
     
-    public static boolean Ouvert = true;
-    public static boolean ferme = false;
+    public static boolean OUVERT = true;
+    public static boolean FERME = false;
     
     
     

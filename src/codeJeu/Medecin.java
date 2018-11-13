@@ -8,7 +8,7 @@ public class Medecin extends Personnage {
 
     //methode pour soigner tous les points de vie du joueur
 	public void soigner(Joueur Joueur) {
-		Joueur.setPdv(ConstantesDeJeu.pdvMax);
+		Joueur.setPdv(ConstantesDeJeu.PDVMAX);
     }
 
 }

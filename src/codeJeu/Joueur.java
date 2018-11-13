@@ -1,17 +1,18 @@
 package codeJeu;
 
+import java.util.ArrayList;
 
-    public class Joueur extends JoueurActif{
+public class Joueur extends JoueurActif{
 		
     private int armure;
     private static final int QUANTITEOBJETS = 6;
-    public Objet[] listeObjets = new Objet[QUANTITEOBJETS];
+    public ArrayList<Objet> listeObjets = new ArrayList<Objet>(QUANTITEOBJETS);
     private ConstantesDeJeu caracPerso;
     boolean doom;
     //constructeur Joueur
     public Joueur(double x, double y)
     {
-    	super(x,y,ConstantesDeJeu.pdvMax,ConstantesDeJeu.forceMax);
+    	super(x,y,ConstantesDeJeu.PDVMAX,ConstantesDeJeu.FORCEMAX);
     	this.armure=0;
     	doom=true;
     }
@@ -19,17 +20,14 @@ package codeJeu;
     public int getArmure() {
 		return armure;
 	}
-
 	public void setArmure(int armure) {
-		armure = armure;
+		this.armure = armure;
 	}
-
-	public Objet[] getListeObjets() {
+	public ArrayList<Objet> getListeObjets() {
 		return listeObjets;
 	}
-
-	public void setListeObjets(Objet[] listeObjets) {
-		listeObjets = listeObjets;
+	public void setListeObjets(ArrayList<Objet> listeObjets) {
+		this.listeObjets = listeObjets;
 	}
 	public ConstantesDeJeu getCaracPerso() {
 		return caracPerso;
@@ -55,11 +53,11 @@ package codeJeu;
 	//methode pour ouvrir une porte
     public void ouvrirPorte(Porte ouvrir) {
 
-    	for(int i=0;i<listeObjets.length;i++)
+    	for(int i=0;i<listeObjets.size();i++)
     	{
-    		if(listeObjets[i].getClass().equals("Clef"))
+    		if(listeObjets.get(i).getClass().equals("Clef"))
     			{
-    				Clef clef=(Clef) listeObjets[i];
+    				Clef clef=(Clef) listeObjets.get(i);
     				if(clef.getNumeroClef()==ouvrir.getNumeroPorte())
     				{
     					ouvrir.setSerrure(true);
@@ -67,16 +65,39 @@ package codeJeu;
     			}
     	}
     }
-    public void passageSecret(PassageSecret DeplacementPassageSecret) {
+    public void passageSecret(Piece DeplacementPassageSecret) {
     }
-    public void trouverTresor(boolean GagnerPartie) {
+    //ouvrir un tresor et si le tresor est grand il gagne la partie sinon on retourne l'objet trouver dans le tresor
+    public Objet ouvrirTresor(Tresor Tresor) {
+    	Objet objetTrouver=null;
+    	if(Tresor.getType())
+    		gagnerPartie();
+    	else
+    		objetTrouver=Tresor.getContient();
+    	
+    	return objetTrouver; 	
     }
     public void poserObjet(Objet poserObjet) {
     }
+    //fin du jeu suite a gagner partie
     public void gagnerPartie() {
+    	System.out.println("F�licitations ! Vous venez de gagner la partie :)");
+    	System.exit(0);
     }
     public void perdrePartie() {
     }
-
+    //tuer tous les monstres de la partie pour gagner la partie 
+    public void tuerTousLesMonstres(Piece[][] toutesLesPieces)
+    {
+    	for(int i=0;i<toutesLesPieces.length;i++)
+    	{
+    		//if(toutesLesPieces) {}
+    	}
+    }
+    public void seBattre(Monstre monstre)
+    {
+    	
+    }
+    
 
 }

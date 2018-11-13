@@ -8,7 +8,7 @@ public class Cuisinier extends Personnage {
 	}
     //methode pour recuperer tous les points de force du joueur
 	public void recuperation(Joueur Joueur) {
-		Joueur.setForce(ConstantesDeJeu.forceMax);
+		Joueur.setForce(ConstantesDeJeu.FORCEMAX);
     }
 
 }
