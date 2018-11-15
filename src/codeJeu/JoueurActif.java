@@ -1,9 +1,7 @@
 package codeJeu;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public abstract class JoueurActif extends Personnage implements KeyListener {
+public abstract class JoueurActif extends Personnage  {
 	private int pdv;
     private int force;
 	//Constructeur Joueur Actif
@@ -26,24 +24,10 @@ public abstract class JoueurActif extends Personnage implements KeyListener {
 		this.force = force;
 	}
     //fonctions du joueur actif	
-    public void seDeplacer(KeyEvent ke)
+    public void seDeplacer()
     {	
-    	int key = ke.getKeyCode();
-		switch (key) {
-			case KeyEvent.VK_DOWN : 
-			setY(getY()+2);
-				break;
-			case KeyEvent.VK_UP:
-				setY(getY()-2);
-				break;
-			case KeyEvent.VK_RIGHT:
-				setX(getX()+2);
-				break;
-			case KeyEvent.VK_LEFT:
-				setX(getX()-2);
-				break;
- 
-		}
+    	
+		
     	
     }
     public void afterBattlePDV() {

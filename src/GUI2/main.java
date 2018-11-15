@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI2;
 
 /**
  *
@@ -12,8 +12,8 @@ package GUI;
 public class main {
     
     public static void main(String[] args) {
-        Window w = new Window();
-        w.start();
+       Fenetre f = new Fenetre("Jeu POO");
+       
     }
     
 }

@@ -1,10 +1,12 @@
 package codeJeu;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class Joueur extends JoueurActif{
+public class Joueur extends JoueurActif implements KeyListener{
 		
     private int armure;
     private static final int QUANTITEOBJETS = 6;
@@ -145,15 +147,44 @@ public class Joueur extends JoueurActif{
     		gagnerPartie();
     	} 	
     }
-    //
-    public void seBattre(Monstre monstre)
-    {
-    	//if()
-    }
-    public void choisirArme()
-    {
-    	
-    }
-    
-
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void seDeplacer(KeyEvent ke)
+	{
+		int key = ke.getKeyCode();
+		switch (key) {
+			case KeyEvent.VK_DOWN : 
+			setY(getY()+2);
+				break;
+			case KeyEvent.VK_UP:
+				setY(getY()-2);
+				break;
+			case KeyEvent.VK_RIGHT:
+				setX(getX()+2);
+				break;
+			case KeyEvent.VK_LEFT:
+				setX(getX()-2);
+				break;
+ 	
+	}
+}
+	
+	
+	
+	
+	
 }
