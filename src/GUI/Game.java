@@ -25,7 +25,7 @@ public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 800, HEIGHT = 600;
     //private Canvas canvas;
     private static JFrame ventana;
-    private static final String NOM = "NOM DE JEU";
+    private static final String NOM = "Les Aventures de TAHA";
     //thread pour la partie graphique du jeu
     private Thread thread;
     
@@ -49,15 +49,15 @@ public class Game extends Canvas implements Runnable{
         setPreferredSize(new Dimension(WIDTH,HEIGHT));
         setMaximumSize(new Dimension(WIDTH,HEIGHT));
         setMinimumSize(new Dimension(WIDTH,HEIGHT));
+        ecran = new Ecran(WIDTH, HEIGHT);
+
         clavier = new Clavier();
         addKeyListener(clavier);
         
-        ecran = new Ecran(WIDTH, HEIGHT);
         
         ventana = new JFrame(NOM);
         
         
-        ventana.setTitle("title jeu");
         ventana.setSize(WIDTH, HEIGHT);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
@@ -81,16 +81,16 @@ public class Game extends Canvas implements Runnable{
     private void update(){
         clavier.update();
         if(clavier.up){
-            System.out.println("arriba");
+            y++;
         }
         if(clavier.down){
-            System.out.println("abajo");
+            y--;
         }
         if(clavier.left){
-            System.out.println("izquierda");
+            x++;
         }
         if(clavier.right){
-            System.out.println("derecha");
+            x--;
         }
     }
     private void draw(){

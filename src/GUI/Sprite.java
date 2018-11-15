@@ -20,7 +20,7 @@ public class Sprite {
     
     
     //SPREETS SHEETS
-    public static Sprite snow = new Sprite(620, 0, 0, SpritesSheet.snow);
+    public static Sprite snow = new Sprite(1024, 0, 0, SpritesSheet.snow);
     
     //FIN SPREET SHEET
     
