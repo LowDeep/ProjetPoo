@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GUI2;
+package GUI;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -13,11 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-/**
- *
- * @author Alex Molinares
- */
-                                    //Implementer interface pour pouvoir utiliser Thread
+//Implementer interface pour pouvoir utiliser Thread
 public class Window extends JFrame implements Runnable{
     public static final int WIDTH = 800, HEIGHT = 600;
     private Canvas canvas;

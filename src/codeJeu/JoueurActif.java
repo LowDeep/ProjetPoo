@@ -1,7 +1,7 @@
 package codeJeu;
 
+public abstract class JoueurActif extends Personnage{
 
-public abstract class JoueurActif extends Personnage  {
 	private int pdv;
     private int force;
 	//Constructeur Joueur Actif

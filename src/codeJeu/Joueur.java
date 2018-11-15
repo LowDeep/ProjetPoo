@@ -128,7 +128,7 @@ public class Joueur extends JoueurActif implements KeyListener{
     			while(iterateur.hasNext())
     			{	
     				Personnage personnage = iterateur.next();
-    				//verifier si le monstre de la piece a des pdv, si il en a le perso a toujours pas gagné
+    				//verifier si le monstre de la piece a des pdv, si il en a le perso a toujours pas gagnï¿½
     				if(personnage.getClass().equals("Monstre.java"))
     				{	
     					JoueurActif monstre=(Monstre)personnage;
