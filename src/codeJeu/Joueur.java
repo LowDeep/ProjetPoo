@@ -1,5 +1,6 @@
 package codeJeu;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -126,7 +127,7 @@ public class Joueur extends JoueurActif{
     			while(iterateur.hasNext())
     			{	
     				Personnage personnage = iterateur.next();
-    				//verifier si le monstre de la piece a des pdv, si il en a le perso a toujours pas gagné
+    				//verifier si le monstre de la piece a des pdv, si il en a le perso a toujours pas gagnï¿½
     				if(personnage.getClass().equals("Monstre.java"))
     				{	
     					JoueurActif monstre=(Monstre)personnage;

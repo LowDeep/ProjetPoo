@@ -3,7 +3,7 @@ package codeJeu;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public abstract class JoueurActif extends Personnage implements KeyListener {
+public abstract class JoueurActif extends Personnage{
 	private int pdv;
     private int force;
 	//Constructeur Joueur Actif
