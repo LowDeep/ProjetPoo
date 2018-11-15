@@ -1,6 +1,6 @@
 package codeJeu;
 
-public abstract class Porte {
+public class Porte {
     private boolean serrure;
     private final int numeroPorte;
     //constructeur porte
