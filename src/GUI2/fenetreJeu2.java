@@ -21,7 +21,7 @@ public class fenetreJeu2 extends JFrame {
 		setBounds(800,140,796,635);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/BackgroundJFramesimple.png"));
+		label.setIcon(new ImageIcon("C:\\Users\\Low_Deep\\eclipse-workspace\\ProjetPooJeu\\res\\BackgroundJFramesimple.png"));
 		getContentPane().add(label, BorderLayout.CENTER);
 		
 	}

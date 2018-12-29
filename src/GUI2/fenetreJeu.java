@@ -3,6 +3,7 @@
  */
 package GUI2;
 
+import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -65,6 +66,10 @@ public class fenetreJeu extends JFrame{
 		splitPane.setBackground(Color.BLACK);
 		
 		contenuFenetreJeu.add(splitPane);
+		JLabel label = new JLabel("");
+		rightScrollPane_1.add(label);
+		label.setIcon(new ImageIcon("C:\\Users\\Low_Deep\\eclipse-workspace\\ProjetPooJeu\\res\\BackgroundJFramesimple.png"));
+		label.add(label, BorderLayout.NORTH);
 		
 		//ImageIcon icon = createImage("images/Dog.gif");
 		

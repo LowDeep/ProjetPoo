@@ -16,9 +16,12 @@ public class main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
+		panelDepart panel = new panelDepart();
+		//panel.setVisible(true);
+		//fenetreJeu2 fenetreJeu = new fenetreJeu2();
+		//fenetreJeu fenetreJeu = new fenetreJeu();
 
-		fenetreJeu2 fenetreJeu = new fenetreJeu2();
-		fenetreObjets fenetreObjets = new fenetreObjets();
+		//fenetreObjets fenetreObjets = new fenetreObjets();
 		//fenetreObjets.setLocationRelativeTo(fenetreJeu);
 		//fenetreObjets.setBounds(400,140,300,600);
 		
