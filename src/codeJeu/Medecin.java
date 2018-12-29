@@ -2,7 +2,7 @@ package codeJeu;
 
 public class Medecin extends Personnage {
 	//constructeur medecin
-    public Medecin(double x, double y) {
+    public Medecin(int x, int y) {
 		super(x, y);
 	}
 

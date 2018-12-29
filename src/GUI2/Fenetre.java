@@ -5,17 +5,19 @@
  */
 package GUI2;
 
+import GUI.Clavier;
 import javax.swing.JFrame;
 
 /**
  *
  * @author dioxo
  */
-public class Fenetre extends JFrame{
+public class Fenetre extends JFrame {
 
-    private final int WIDTH=790, HEIGHT=600;
+    private final int WIDTH = 790, HEIGHT = 600;
     private TableauJeu tableauJeu;
-    
+    Thread2 thread;
+
     public Fenetre() {
         setTitle("Les aventures de Taha");
         setSize(WIDTH, HEIGHT);
@@ -23,7 +25,9 @@ public class Fenetre extends JFrame{
         setResizable(false);
         tableauJeu = new TableauJeu();
         add(tableauJeu);
+        addKeyListener(new Clavier());
+        thread = new Thread2(tableauJeu);
+        thread.start();
     }
-    
-    
+
 }
