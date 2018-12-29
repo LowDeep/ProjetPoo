@@ -21,6 +21,7 @@ public class Sprite {
     
     //SPREETS SHEETS
     public static Sprite snow = new Sprite(1024, 0, 0, SpritesSheet.snow);
+    public static Sprite terre = new Sprite(64, 0, 1, SpritesSheet.textures);
     
     //FIN SPREET SHEET
     
@@ -43,6 +44,11 @@ public class Sprite {
         }
         
     }
+
+    public int getLado() {
+        return lado;
+    }
+    
     
     
     

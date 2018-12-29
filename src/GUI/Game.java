@@ -7,6 +7,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -109,7 +110,8 @@ public class Game extends Canvas implements Runnable{
         g = bs.getDrawGraphics();   
         //------------DESSINER--------------------
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
-
+            g.setColor(Color.WHITE);
+            g.fillRect(WIDTH/2, HEIGHT/2, 32, 32);
         //------------------------------
         g.dispose();
         bs.show();

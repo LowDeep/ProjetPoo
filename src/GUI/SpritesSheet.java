@@ -22,6 +22,7 @@ public class SpritesSheet {
     
     //SPREETS SHEETS
     public static SpritesSheet snow = new SpritesSheet("/textures/snow.jpg", 1024, 1024);
+    public static SpritesSheet textures = new SpritesSheet("/textures/textures.png", 640, 320);
     
     //FIN SPREET SHEET
     
