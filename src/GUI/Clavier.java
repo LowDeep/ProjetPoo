@@ -11,9 +11,9 @@ public class Clavier  implements KeyListener{
     public boolean up, down, left, right;
     
     public void update(){
-        up = touches[KeyEvent.VK_W];
+        up = touches[KeyEvent.VK_Z];
         down = touches[KeyEvent.VK_S];
-        left = touches[KeyEvent.VK_A];
+        left = touches[KeyEvent.VK_Q];
         right = touches[KeyEvent.VK_D];
     }
     

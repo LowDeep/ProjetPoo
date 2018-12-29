@@ -13,9 +13,12 @@ import javax.swing.JFrame;
 
 import GUI.Clavier;
 
-@SuppressWarnings("serial")
 public class Game extends Canvas implements Runnable{
-    public static final int WIDTH = 800, HEIGHT = 600;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static final int WIDTH = 800, HEIGHT = 600;
     //private Canvas canvas;
     private static JFrame ventana;
     private static final String NOM = "Les Aventures de TAHA";
