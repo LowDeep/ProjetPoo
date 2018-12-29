@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import GUI.Mape.Tile.Tile;
+
 /**
  *
  * @author Alex Molinares
@@ -17,7 +19,7 @@ public final class Ecran {
     
     
     //Temporaire 
-    private final static int LADO_SPRITE = 32;
+    private final static int LADO_SPRITE = 64;
     private final static int MASCARA_SPRITE = LADO_SPRITE - 1;
     
     //FIN Temporaire
@@ -35,6 +37,8 @@ public final class Ecran {
         }
     }
     
+    
+    // -----------------TEMPORAL
     public void montrer(final int deltaX, final int deltaY){
         
         //Parcourir de haut en bas, dessiner left to right and up to down
@@ -55,11 +59,34 @@ public final class Ecran {
                 }
                 
                 //temporaire
-                pixels[positionX + positionY * WIDHT] = Sprite.snow.pixeles[(x & MASCARA_SPRITE) 
+                pixels[positionX + positionY * WIDHT] = Sprite.terre.pixeles[(x & MASCARA_SPRITE) 
                                                         + (y & MASCARA_SPRITE) * LADO_SPRITE];
    
             }
             
+        }
+    }
+    
+    public void montrerTile(int deltaX, int deltaY, Tile tile){
+        
+        for (int y = 0; y < tile.sprite.getLado(); y++) {
+            int positionY = y + deltaY;
+            
+          
+            for (int x = 0; x < tile.sprite.getLado(); x++) {
+                int positionX = x + deltaX;
+                
+                //interdire de dessiner dehors du mape
+                if(positionX< 0 || positionX >= WIDHT || positionY < 0 || positionY >= HEIGHT){
+                    break;
+                }
+                
+                //representation de notre image dans l'ecran
+                pixels[positionX + positionY * WIDHT] = tile.sprite.pixeles[x+
+                                                        y*tile.sprite.getLado()];
+                
+                
+            }
         }
     }
     
