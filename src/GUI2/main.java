@@ -17,7 +17,6 @@ public class main {
         Fenetre fenetre = new Fenetre();
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //panelDepart panel = new panelDepart();
 
         //fenetreJeu fenetreJeu = new fenetreJeu();
         //fenetreObjets fenetreObjets = new fenetreObjets();
