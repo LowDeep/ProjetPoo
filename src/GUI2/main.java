@@ -1,9 +1,10 @@
-/**
- *
- */
 package GUI2;
 
-import java.io.IOException;
+
+/**
+ * 
+ */
+
 import javax.swing.JFrame;
 
 /**
@@ -11,17 +12,19 @@ import javax.swing.JFrame;
  */
 public class main {
 
+	/**
+	 * 
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Fenetre fenetre = new Fenetre();
+	      fenetre.setVisible(true);
+	      fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    public static void main(String[] args) throws IOException {
-
-        Fenetre fenetre = new Fenetre();
-        fenetre.setVisible(true);
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //fenetreJeu fenetreJeu = new fenetreJeu();
-        //fenetreObjets fenetreObjets = new fenetreObjets();
-        //fenetreObjets.setLocationRelativeTo(fenetreJeu);
-        //fenetreObjets.setBounds(400,140,300,600);
-    }
+	        //fenetreJeu fenetreJeu = new fenetreJeu();
+	        //fenetreObjets fenetreObjets = new fenetreObjets();
+	        //fenetreObjets.setLocationRelativeTo(fenetreJeu);
+	        //fenetreObjets.setBounds(400,140,300,600);
+	}
 
 }

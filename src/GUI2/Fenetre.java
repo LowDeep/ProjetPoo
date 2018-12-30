@@ -5,7 +5,12 @@
  */
 package GUI2;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -15,6 +20,7 @@ public class Fenetre extends JFrame{
 
     private final int WIDTH=790, HEIGHT=600;
     private TableauJeu tableauJeu;
+    private fenetreObjets fenetreObjet;
     
     public Fenetre() {
         setTitle("Les aventures de Taha");
@@ -22,6 +28,9 @@ public class Fenetre extends JFrame{
         setLocationRelativeTo(null);
         setResizable(false);
         tableauJeu = new TableauJeu();
+        fenetreObjet = new fenetreObjets();
+        JPanel contenuFenetreJeu = (JPanel) getContentPane();
+
         add(tableauJeu);
     }
     
