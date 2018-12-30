@@ -14,11 +14,11 @@ import java.awt.event.KeyListener;
  */
 public class Clavier  implements KeyListener{
     private final static int numTouches = 120;
-    private final boolean[] touches = new boolean[numTouches];
+    private static final boolean[] touches = new boolean[numTouches];
     
-    public boolean up, down, left, right;
+    public static boolean up, down, left, right;
     
-    public void update(){
+    public static void update(){
         up = touches[KeyEvent.VK_W];
         down = touches[KeyEvent.VK_S];
         left = touches[KeyEvent.VK_A];
@@ -33,6 +33,7 @@ public class Clavier  implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        System.out.println("KEY PRESSED");
         touches[e.getKeyCode()] = true;
     }
 

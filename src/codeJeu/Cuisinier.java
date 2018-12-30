@@ -2,7 +2,7 @@ package codeJeu;
 
 public class Cuisinier extends Personnage {
 	//constrcteur cuisinier
-    public Cuisinier(double x, double y) {
+    public Cuisinier(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}

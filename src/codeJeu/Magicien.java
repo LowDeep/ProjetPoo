@@ -4,7 +4,7 @@ public class Magicien extends Personnage {
     private boolean donnerDoom=true;
     
     //constructeur magicien
-    public Magicien(double x, double y) {
+    public Magicien(int x, int y) {
 		super(x, y);
 	}
 

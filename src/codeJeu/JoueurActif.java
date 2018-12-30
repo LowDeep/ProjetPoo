@@ -7,7 +7,7 @@ public abstract class JoueurActif extends Personnage{
 	private int pdv;
     private int force;
 	//Constructeur Joueur Actif
-    public JoueurActif(double x, double y,int pdv,int force) {
+    public JoueurActif(int x, int y,int pdv,int force) {
 		super(x, y);
 		this.pdv=pdv;
 		this.force=force;
