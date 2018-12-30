@@ -1,6 +1,5 @@
 package codeJeu;
 
-import GUI2.Animation;
 import GUI2.TableauJeu;
 import GUI2.Texture;
 import java.awt.Graphics2D;
@@ -19,7 +18,7 @@ public class Cuisinier extends Personnage {
      */
     static Image cuisinier;
     private final String cuisinierRoute = "/cuisinier.png";
-    private final int HEIGHT = 90, WIDHT = 69;
+    private final int HEIGHT = 45, WIDHT = 39;
     Texture texture = TableauJeu.getInstance();
 
     //constrcteur cuisinier
@@ -38,11 +37,11 @@ public class Cuisinier extends Personnage {
     }
 
     public Rectangle2D getHitBox() {
-        return new Rectangle2D.Double(getX(), getY(), 69, 90);
+        return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
     }
 
     public void dessiner(Graphics2D g) {
-        g.drawImage(cuisinier, 90, 90, null);
+        g.drawImage(texture.cuisinier[0], getX(), getY(), null);
     }
 
 }

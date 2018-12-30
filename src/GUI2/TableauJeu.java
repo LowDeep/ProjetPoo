@@ -6,6 +6,7 @@
 package GUI2;
 
 import GUI.Clavier;
+import codeJeu.Cuisinier;
 import codeJeu.Joueur;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -40,6 +41,7 @@ public class TableauJeu extends JPanel {
     /*
     TEMP
     */
+    Cuisinier cuisinier;
     Enemi enemi;
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
@@ -60,7 +62,7 @@ public class TableauJeu extends JPanel {
         setBackground(Color.WHITE);
         enemi = new Enemi(0 , 0 );
         joueur = new Joueur(790 / 2, 600 / 2);
-
+        cuisinier = new Cuisinier(300, 300);
     }
 
     public void paintComponent(Graphics g) {
@@ -71,7 +73,7 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255, 0));
+        g2.setColor(new Color(255, 255, 255));
         
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
@@ -88,9 +90,11 @@ public class TableauJeu extends JPanel {
     }
  
     public void dessiner(Graphics2D g2) throws IOException {
+        //Creer les hitbox du personnages
         g2.fill(joueur.getHitBox());
+        g2.fill(cuisinier.getHitBox());
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
-        
+        cuisinier.dessiner(g2);
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 

@@ -21,19 +21,26 @@ public class Texture {
     private BufferedImage personnage_sheet = null;
     public BufferedImage[] personnage = new BufferedImage[1];
     
-
+    SpriteSheet cuisinierSpriteSheet;
+    private BufferedImage cuisinier_sheet = null;
+    public BufferedImage[] cuisinier = new BufferedImage[1];
+    
     public Texture() {
         
         BufferedImageLoader loader = new BufferedImageLoader(); 
         
         squelette_sheet = loader.loadImage("/squelette.png");
-        personnage_sheet = loader.loadImage("/personnage.png");
+        personnage_sheet = loader.loadImage("/squelette.png");
+        //personnage_sheet = loader.loadImage("/personnage.png");
+        cuisinier_sheet = loader.loadImage("/cuisinier.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
+        cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
         
         getPersonnage();
         getSquelette();
+        getCuisinier();
     }
 
     private void getSquelette() {
@@ -90,6 +97,10 @@ public class Texture {
     private void getPersonnage() {
 
 
+    }
+
+    private void getCuisinier() {
+        cuisinier[0] = cuisinierSpriteSheet.grabImage(1, 1, 39, 45);
     }
     
     
