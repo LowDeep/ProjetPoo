@@ -1,7 +1,9 @@
 package codeJeu;
 
 import GUI.Clavier;
+import GUI2.Animation;
 import GUI2.TableauJeu;
+import GUI2.Texture;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.imageio.ImageIO;
 
-public class Joueur extends JoueurActif implements KeyListener {
+public class Joueur extends JoueurActif {
 
     /**
      *
@@ -24,6 +26,11 @@ public class Joueur extends JoueurActif implements KeyListener {
     static Image perso;
     private final String persoRoute = "/perso.png";
     private final int HEIGHT = 90, WIDHT = 69;
+    public Animation PlayerAnimationDown;
+    public Animation PlayerAnimationUp;
+    public Animation PlayerAnimationLeft;
+    public Animation PlayerAnimationRight;
+    Texture texture = TableauJeu.getInstance();
 
     /**
      *
@@ -42,6 +49,26 @@ public class Joueur extends JoueurActif implements KeyListener {
         super(x, y, ConstantesDeJeu.PDVMAX, ConstantesDeJeu.FORCEMAX);
         this.armure = 0;
         doom = true;
+
+        PlayerAnimationDown = new Animation(10, texture.squelette[1], texture.squelette[2],
+                texture.squelette[3], texture.squelette[4],
+                texture.squelette[5], texture.squelette[6],
+                texture.squelette[7], texture.squelette[8]);
+
+        PlayerAnimationUp = new Animation(10, texture.squelette[9], texture.squelette[10],
+                texture.squelette[11], texture.squelette[12],
+                texture.squelette[13], texture.squelette[14],
+                texture.squelette[15], texture.squelette[16], texture.squelette[17]);
+
+        PlayerAnimationLeft = new Animation(10, texture.squelette[18], texture.squelette[19],
+                texture.squelette[20], texture.squelette[21],
+                texture.squelette[22], texture.squelette[23],
+                texture.squelette[24], texture.squelette[25], texture.squelette[26]);
+
+        PlayerAnimationRight = new Animation(10, texture.squelette[27], texture.squelette[28],
+                texture.squelette[29], texture.squelette[30],
+                texture.squelette[31], texture.squelette[32],
+                texture.squelette[33], texture.squelette[34], texture.squelette[35]);
     }
 
     //getters setters joueur
@@ -81,9 +108,10 @@ public class Joueur extends JoueurActif implements KeyListener {
         return ImageIO.read(Joueur.class.getResource(persoRoute));
 
     }
-    
-    public Rectangle2D getHitBox(){
-        return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
+
+    public Rectangle2D getHitBox() {
+        //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
+        return new Rectangle2D.Double(getX(), getY(), 36, 58);
     }
 
     public int getHEIGHT() {
@@ -191,40 +219,23 @@ public class Joueur extends JoueurActif implements KeyListener {
         }
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void seDeplacer() {
+    public void seDeplacer(Graphics2D g2) {
 
         if (Clavier.up && getY() > 66) {
             setY(getY() - 2);
-        }
+            PlayerAnimationUp.dessinerAnimation(g2, getX(), getY());
 
-        if (Clavier.down && getY() < 540 - HEIGHT) {
+        }else if (Clavier.down && getY() < 540 - HEIGHT) {
+            PlayerAnimationDown.dessinerAnimation(g2, getX(), getY());
             setY(getY() + 2);
-        }
-
-        if (Clavier.left && getX() > 40) {
+        }else if (Clavier.left && getX() > 40) {
+            PlayerAnimationLeft.dessinerAnimation(g2, getX(), getY());
             setX(getX() - 2);
-        }
-
-        if (Clavier.right && getX() < 715 - WIDHT) {
+        }else if (Clavier.right && getX() < 715 - WIDHT) {
+            PlayerAnimationRight.dessinerAnimation(g2, getX(), getY());
             setX(getX() + 2);
+        }else{
+            g2.drawImage(texture.squelette[0], getX(), getY(),null);
         }
     }
 

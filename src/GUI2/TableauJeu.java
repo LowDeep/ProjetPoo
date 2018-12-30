@@ -36,22 +36,26 @@ public class TableauJeu extends JPanel {
     private final String bgRoute = "/bg.png";
     Image bg;
     Joueur joueur;
-
     
     /*
     TEMP
     */
     Enemi enemi;
+    BufferedImageLoader loader = new BufferedImageLoader();
+    static Texture texture;
+    int tempX=0, tempY=0;
     
     TableauJeu() {
 
-        try {
+        bg = loader.loadImage(bgRoute);
+        texture = new Texture();
+        /*try {
             bg = ImageIO.read(TableauJeu.class.getResource(bgRoute));
             //perso =  ImageIO.read(TableauJeu.class.getResource(persoRoute));
             //bg = ImageIO.read(new File("/home/dioxo/Documentos/Universidad/ProjetPoo/src/res/bg.png"));
         } catch (IOException exc) {
             exc.printStackTrace();
-        }
+        }*/
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
         enemi = new Enemi(0 , 0 );
@@ -68,9 +72,15 @@ public class TableauJeu extends JPanel {
 
         //Set color transparent pour les hit Boxs
         g2.setColor(new Color(255, 255, 255, 0));
+        
+        joueur.PlayerAnimationDown.runAnimation();
+        joueur.PlayerAnimationUp.runAnimation();
+        joueur.PlayerAnimationLeft.runAnimation();
+        joueur.PlayerAnimationRight.runAnimation();
+        
         try {
             dessiner(g2);
-            actualiser();
+            actualiser(g2);
             //g2D.drawImage(perso, getWidth() /2  , getHeight() /2, 90, 69, this);
         } catch (IOException ex) {
             Logger.getLogger(TableauJeu.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,21 +89,25 @@ public class TableauJeu extends JPanel {
  
     public void dessiner(Graphics2D g2) throws IOException {
         g2.fill(joueur.getHitBox());
-        g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
-
+        //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
+        
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 
     }
 
-    public void actualiser() {
+    public void actualiser(Graphics2D g2) {
         Clavier.update();
-        joueur.seDeplacer();
-        enemi.seDeplacer(getBounds(), collision(joueur.getHitBox()));
+        joueur.seDeplacer(g2);
+        //enemi.seDeplacer(getBounds(), collision(joueur.getHitBox()));
     }
     
     public boolean collision(Rectangle2D r){
         return enemi.getEnemi().intersects(r); 
+    }
+    
+    public static Texture getInstance(){
+        return texture;
     }
 
 }
