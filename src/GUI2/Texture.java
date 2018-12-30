@@ -15,8 +15,11 @@ public class Texture {
     
     SpriteSheet squeletteSpriteSheet;
     private BufferedImage squelette_sheet = null;
-    
     public BufferedImage[] squelette = new BufferedImage[36];
+    
+    SpriteSheet personnageSpriteSheet;
+    private BufferedImage personnage_sheet = null;
+    public BufferedImage[] personnage = new BufferedImage[1];
     
 
     public Texture() {
@@ -24,8 +27,12 @@ public class Texture {
         BufferedImageLoader loader = new BufferedImageLoader(); 
         
         squelette_sheet = loader.loadImage("/squelette.png");
+        personnage_sheet = loader.loadImage("/personnage.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
+        personnageSpriteSheet = new SpriteSheet(personnage_sheet);
+        
+        getPersonnage();
         getSquelette();
     }
 
@@ -78,6 +85,11 @@ public class Texture {
         squelette[33] = squeletteSpriteSheet.grabImage(7, 4, 64, 64); 
         squelette[34] = squeletteSpriteSheet.grabImage(8, 4, 64, 64); 
         squelette[35] = squeletteSpriteSheet.grabImage(9, 4, 64, 64);
+    }
+
+    private void getPersonnage() {
+
+
     }
     
     
