@@ -5,32 +5,29 @@
  */
 package GUI2;
 
-<<<<<<< HEAD
-import java.awt.Dimension;
+import java.rmi.server.RemoteObjectInvocationHandler;
 
-=======
-import GUI.Clavier;
->>>>>>> 77850d0e920c3ed6bec9254de00a9b670ca40ee8
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 
+import GUI.Clavier;
+import codeJeu.Joueur;
+import codeJeu.JoueurActif;
+ 
 /**
- *
  * @author dioxo
+ * @author Low_Deep
  */
 public class Fenetre extends JFrame {
 
     private final int WIDTH = 790, HEIGHT = 600;
     private TableauJeu tableauJeu;
-<<<<<<< HEAD
     private fenetreObjets fenetreObjet;
     
-=======
-    Thread2 thread;
 
->>>>>>> 77850d0e920c3ed6bec9254de00a9b670ca40ee8
+   public static Thread2 thread;
+
     public Fenetre() {
         setTitle("Les aventures de Taha");
         setSize(WIDTH, HEIGHT);
@@ -43,7 +40,35 @@ public class Fenetre extends JFrame {
         add(tableauJeu);
         addKeyListener(new Clavier());
         thread = new Thread2(tableauJeu);
+        
+        //tableauJeu.collisionVie(tableauJeu.getJoueur());
+       // fenetreObjets.getProgbarVie().getProgressBar().setValue(JoueurActif.getPdv());
+       // System.out.println(JoueurActif.getPdv());
         thread.start();
     }
+    //getter tableau jeu pour prendre carac joueur 
+	public TableauJeu getTableauJeu() {
+		return tableauJeu;
+	}
+	
+
+	//fonction pour reinitialiser le jeu
+	/*public void reinitialiserJeu()
+	{
+		dispose();
+		FenetreDepar fenetreDep = new FenetreDepar();
+        fenetreDep.setVisible(true);
+	}*/
+	
+	
+	
+
+	
+	
+
+	
+	
+	
+    
 
 }

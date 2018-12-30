@@ -5,27 +5,23 @@
  */
 package GUI2;
 
-import GUI.Clavier;
-import codeJeu.Joueur;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import GUI.Clavier;
+import codeJeu.Joueur;
 
 /**
  *
@@ -36,6 +32,7 @@ public class TableauJeu extends JPanel {
     private final String bgRoute = "/bg.png";
     Image bg;
     Joueur joueur;
+    
 
     
     /*
@@ -89,11 +86,80 @@ public class TableauJeu extends JPanel {
     public void actualiser() {
         Clavier.update();
         joueur.seDeplacer();
-        enemi.seDeplacer(getBounds(), collision(joueur.getHitBox()));
+        enemi.seDeplacer(getBounds(), collisionVie(joueur));
+        if(joueur.getPdv()==0)
+        {
+        	endGame();
+        }
     }
     
-    public boolean collision(Rectangle2D r){
-        return enemi.getEnemi().intersects(r); 
-    }
+    /**
+	 * methode fin jeu
+	 * consiste a afficher un message de fin du jeu avec bouton pour recommencer
+	 */
+	private void endGame() {
+		
+			Fenetre.thread.stop();
+		
+		// TODO Auto-generated method stub
+		/*try {
+			Fenetre.thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		JOptionPane jop1;
+		String choices[]= { "Fermer le jeu"};
+		jop1=new JOptionPane();
+		/*jop1.showConfirmDialog(null, "Vous avez perdu!", "LOOOSER:)", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE);*/
+		int i =0;
+		//System.out.println(i);
 
+		jop1.showOptionDialog(this, "Vous avez perdu! ", "LOOOOOSER !", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+		i = JOptionPane.DEFAULT_OPTION;
+		//actionPerformed(jop1);
+		//System.out.println(i);
+		if(i != 0) {
+			
+			//setVisible(false);
+	        //FenetreDepar fenetreDep = new FenetreDepar();
+	        //fenetreDep.setVisible(true);
+	        //fenetreDep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			System.exit(0);
+	        
+		}
+		
+		
+	}
+
+	public boolean collision(Joueur joueur){
+        return enemi.getEnemi().intersects(joueur.getHitBox()); 
+    }
+    //getter joueur
+	public Joueur getJoueur() {
+		return joueur;
+	}
+	//methode pour si il y a collision 
+	public boolean collisionVie(Joueur joueur)
+	{
+		if(collision(joueur))
+		{
+			if(Joueur.getArmure()>0)
+			{
+				joueur.setArmure(joueur.getArmure()-1);
+			}
+			else
+			{
+				joueur.setPdv(joueur.getPdv()-1);;
+			}
+		}
+		fenetreObjets.getProgbarArmure().getProgressBar().setValue(joueur.getArmure());
+		fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+		
+		//System.out.println(joueur.getPdv());
+		
+		return collision(joueur);
+	}
 }

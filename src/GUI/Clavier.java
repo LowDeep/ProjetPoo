@@ -19,9 +19,9 @@ public class Clavier  implements KeyListener{
     public static boolean up, down, left, right;
     
     public static void update(){
-        up = touches[KeyEvent.VK_W];
+        up = touches[KeyEvent.VK_Z];
         down = touches[KeyEvent.VK_S];
-        left = touches[KeyEvent.VK_A];
+        left = touches[KeyEvent.VK_Q];
         right = touches[KeyEvent.VK_D];
     }
     
@@ -33,7 +33,6 @@ public class Clavier  implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("KEY PRESSED");
         touches[e.getKeyCode()] = true;
     }
 

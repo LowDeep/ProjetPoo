@@ -4,26 +4,26 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public abstract class JoueurActif extends Personnage{
-	private int pdv;
-    private int force;
+	private static int pdv;
+    private static int force;
 	//Constructeur Joueur Actif
     public JoueurActif(int x, int y,int pdv,int force) {
 		super(x, y);
-		this.pdv=pdv;
-		this.force=force;
+		JoueurActif.pdv=pdv;
+		JoueurActif.force=force;
 	}
     //getters + setters Pdv et force
-    public int getPdv() {
+    public static int getPdv() {
 		return pdv;
 	}
-    public void setPdv(int pdv) {
-		this.pdv = pdv;
+    public static void setPdv(int pdv) {
+		JoueurActif.pdv = pdv;
 	}
-    public int getForce() {
+    public static int getForce() {
 		return force;
 	}
-    public void setForce(int force) {
-		this.force = force;
+    public static void setForce(int force) {
+		JoueurActif.force = force;
 	}
     //fonctions du joueur actif	
     public void seDeplacer(KeyEvent ke)
