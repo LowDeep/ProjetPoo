@@ -8,6 +8,7 @@ package GUI2;
 import GUI.Clavier;
 import codeJeu.Cuisinier;
 import codeJeu.Joueur;
+import codeJeu.Magicien;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -37,11 +38,12 @@ public class TableauJeu extends JPanel {
     private final String bgRoute = "/bg.png";
     Image bg;
     Joueur joueur;
+    Cuisinier cuisinier;
     
     /*
     TEMP
     */
-    Cuisinier cuisinier;
+    Magicien magicien;
     Enemi enemi;
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
@@ -63,6 +65,7 @@ public class TableauJeu extends JPanel {
         enemi = new Enemi(0 , 0 );
         joueur = new Joueur(790 / 2, 600 / 2);
         cuisinier = new Cuisinier(300, 300);
+        magicien = new  Magicien(200, 200);
     }
 
     public void paintComponent(Graphics g) {
@@ -93,8 +96,15 @@ public class TableauJeu extends JPanel {
         //Creer les hitbox du personnages
         g2.fill(joueur.getHitBox());
         g2.fill(cuisinier.getHitBox());
+        g2.fill(magicien.getHitBox());
+        
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
+        //Dessinner personnages
         cuisinier.dessiner(g2);
+        magicien.dessiner(g2);
+        
+        
+        
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 

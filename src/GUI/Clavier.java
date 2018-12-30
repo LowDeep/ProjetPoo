@@ -33,7 +33,6 @@ public class Clavier  implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("KEY PRESSED");
         touches[e.getKeyCode()] = true;
     }
 
