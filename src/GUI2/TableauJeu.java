@@ -10,17 +10,16 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionListener;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import GUI.Clavier;
+import codeJeu.Cuisinier;
 import codeJeu.Joueur;
 
 /**
@@ -32,28 +31,32 @@ public class TableauJeu extends JPanel {
     private final String bgRoute = "/bg.png";
     Image bg;
     Joueur joueur;
-    
 
-    
     /*
     TEMP
     */
+    Cuisinier cuisinier;
     Enemi enemi;
+    BufferedImageLoader loader = new BufferedImageLoader();
+    static Texture texture;
+    int tempX=0, tempY=0;
     
     TableauJeu() {
 
-        try {
+        bg = loader.loadImage(bgRoute);
+        texture = new Texture();
+        /*try {
             bg = ImageIO.read(TableauJeu.class.getResource(bgRoute));
             //perso =  ImageIO.read(TableauJeu.class.getResource(persoRoute));
             //bg = ImageIO.read(new File("/home/dioxo/Documentos/Universidad/ProjetPoo/src/res/bg.png"));
         } catch (IOException exc) {
             exc.printStackTrace();
-        }
+        }*/
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
         enemi = new Enemi(0 , 0 );
         joueur = new Joueur(790 / 2, 600 / 2);
-
+        cuisinier = new Cuisinier(300, 300);
     }
 
     public void paintComponent(Graphics g) {
@@ -64,10 +67,16 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255, 0));
+        g2.setColor(new Color(255, 255, 255));
+        
+        joueur.PlayerAnimationDown.runAnimation();
+        joueur.PlayerAnimationUp.runAnimation();
+        joueur.PlayerAnimationLeft.runAnimation();
+        joueur.PlayerAnimationRight.runAnimation();
+        
         try {
             dessiner(g2);
-            actualiser();
+            actualiser(g2);
             //g2D.drawImage(perso, getWidth() /2  , getHeight() /2, 90, 69, this);
         } catch (IOException ex) {
             Logger.getLogger(TableauJeu.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,22 +84,25 @@ public class TableauJeu extends JPanel {
     }
  
     public void dessiner(Graphics2D g2) throws IOException {
+        //Creer les hitbox du personnages
         g2.fill(joueur.getHitBox());
-        g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
-
+        g2.fill(cuisinier.getHitBox());
+        //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
+        cuisinier.dessiner(g2);
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 
     }
 
-    public void actualiser() {
+    public void actualiser(Graphics2D g2) {
         Clavier.update();
-        joueur.seDeplacer();
-        enemi.seDeplacer(getBounds(), collisionVie(joueur));
-        if(joueur.getPdv()==0)
-        {
-        	endGame();
-        }
+joueur.seDeplacer(g2);
+enemi.seDeplacer(getBounds(), collisionVie(joueur)); 
+if(joueur.getPdv()==0)
+{
+	endGame();
+}
+        
     }
     
     /**
@@ -116,7 +128,6 @@ public class TableauJeu extends JPanel {
         JOptionPane.QUESTION_MESSAGE);*/
 		int i =0;
 		//System.out.println(i);
-
 		jop1.showOptionDialog(this, "Vous avez perdu! ", "LOOOOOSER !", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 		i = JOptionPane.DEFAULT_OPTION;
 		//actionPerformed(jop1);
@@ -129,10 +140,20 @@ public class TableauJeu extends JPanel {
 	        //fenetreDep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			System.exit(0);
 	        
+
 		}
+    }
+    
+    public boolean collision(Rectangle2D r){
+        return enemi.getEnemi().intersects(r); 
+    }
+    
+    public static Texture getInstance(){
+        return texture;
+    }
+
 		
 		
-	}
 
 	public boolean collision(Joueur joueur){
         return enemi.getEnemi().intersects(joueur.getHitBox()); 
