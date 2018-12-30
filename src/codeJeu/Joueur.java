@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -79,6 +80,10 @@ public class Joueur extends JoueurActif implements KeyListener {
     public Image getPerso() throws IOException {
         return ImageIO.read(Joueur.class.getResource(persoRoute));
 
+    }
+    
+    public Rectangle2D getHitBox(){
+        return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
     }
 
     public int getHEIGHT() {
@@ -205,65 +210,22 @@ public class Joueur extends JoueurActif implements KeyListener {
     }
 
     public void seDeplacer() {
-        /*int key = ke.getKeyCode();
-        switch (key) {
-            case KeyEvent.VK_W:
-                break;
-            case KeyEvent.VK_S:
-                setY(getY() - 2);
-                break;
-            case KeyEvent.VK_A:
-                setX(getX() + 2);
-                break;
-            case KeyEvent.VK_D:
-                setX(getX() - 2);
-                break;
 
-        }*/
-        System.out.println("Y" + getY());
         if (Clavier.up && getY() > 66) {
             setY(getY() - 2);
         }
-        
-        if(Clavier.down && getY() < 540 - HEIGHT){      
+
+        if (Clavier.down && getY() < 540 - HEIGHT) {
             setY(getY() + 2);
         }
 
-        
-        if(Clavier.left && getX() > 40){      
+        if (Clavier.left && getX() > 40) {
             setX(getX() - 2);
         }
-        
-        if(Clavier.right && getX() < 715 - WIDHT){      
+
+        if (Clavier.right && getX() < 715 - WIDHT) {
             setX(getX() + 2);
         }
     }
-    /*int dx = 1, dy = 1; 
-    public void seDeplacer(Rectangle limites) {
-        //System.out.println(limites.getMaxX());
-        //System.out.println(limites.getMaxY());
-        setX(getX() + dx); 
-        setY(getY() + dx); 
-        
-        if( getX() > limites.getMaxX() - WIDHT ){
-            dx = -dx;
-        }
-        
-        if( getY() > limites.getMaxY() - HEIGHT){
-            dy = -dy;
-        }
-        
-        
-        if(getX() < 0 ){
-            dx = -dx;
-        }
-        
-        if(getY() < 0 ){
-            dy = -dy;
-
-        }
-        
-    
-    }*/
 
 }

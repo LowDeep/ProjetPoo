@@ -37,8 +37,13 @@ public class TableauJeu extends JPanel {
     Image bg;
     Joueur joueur;
 
+    
+    /*
+    TEMP
+    */
+    Enemi enemi;
+    
     TableauJeu() {
-
 
         try {
             bg = ImageIO.read(TableauJeu.class.getResource(bgRoute));
@@ -49,9 +54,8 @@ public class TableauJeu extends JPanel {
         }
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
-
-        joueur = new Joueur(getWidth() / 2, getHeight() / 2);
-        joueur = new Joueur(200, 500);
+        enemi = new Enemi(0 , 0 );
+        joueur = new Joueur(790 / 2, 600 / 2);
 
     }
 
@@ -59,7 +63,11 @@ public class TableauJeu extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        //Dessiner escenaire
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+
+        //Set color transparent pour les hit Boxs
+        g2.setColor(new Color(255, 255, 255, 0));
         try {
             dessiner(g2);
             actualiser();
@@ -68,36 +76,24 @@ public class TableauJeu extends JPanel {
             Logger.getLogger(TableauJeu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+ 
     public void dessiner(Graphics2D g2) throws IOException {
-        /*System.out.println("Person X: " + joueur.getX());       
-        System.out.println("Person Y: " + joueur.getY());*/
+        g2.fill(joueur.getHitBox());
         g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
+
+        g2.setColor(Color.red);
+        g2.fill(enemi.getEnemi());
+
     }
 
     public void actualiser() {
-        //System.out.println("ACTUALISER");
         Clavier.update();
         joueur.seDeplacer();
-        //System.out.println("bounds " + getBounds());
-        //System.out.println("position y : " + joueur.getY());
-        /*
-        clavier.update();
-        if (clavier.up) {
-            System.out.println("UPPPPPPPPPP");
-        }
-        if (clavier.down) {
-            System.out.println("down");
-
-        }
-        if (clavier.left) {
-            System.out.println("left");
-        }
-        if (clavier.right) {
-            System.out.println("UPPPPPPPPPP");
-        }
-            */
+        enemi.seDeplacer(getBounds(), collision(joueur.getHitBox()));
     }
     
+    public boolean collision(Rectangle2D r){
+        return enemi.getEnemi().intersects(r); 
+    }
 
 }
