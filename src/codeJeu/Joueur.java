@@ -38,7 +38,7 @@ public class Joueur extends JoueurActif {
      *
      *
      */
-    private int armure;
+    private static int armure;
     private static final int QUANTITEOBJETS = 6;
     public ArrayList<Objet> listeObjets = new ArrayList<Objet>();
     private ConstantesDeJeu caracPerso;
@@ -47,7 +47,7 @@ public class Joueur extends JoueurActif {
     //constructeur Joueur
     public Joueur(int x, int y) {
         super(x, y, ConstantesDeJeu.PDVMAX, ConstantesDeJeu.FORCEMAX);
-        this.armure = 0;
+        Joueur.armure = 0;
         doom = true;
 
         PlayerAnimationDown = new Animation(10, texture.squelette[1], texture.squelette[2],
@@ -72,7 +72,7 @@ public class Joueur extends JoueurActif {
     }
 
     //getters setters joueur
-    public int getArmure() {
+    public static int getArmure() {
         return armure;
     }
 

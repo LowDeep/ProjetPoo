@@ -5,29 +5,23 @@
  */
 package GUI2;
 
-import GUI.Clavier;
-import codeJeu.Cuisinier;
-import codeJeu.Joueur;
 import codeJeu.Magicien;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import GUI.Clavier;
+import codeJeu.Cuisinier;
+import codeJeu.Joueur;
 
 /**
  *
@@ -39,16 +33,16 @@ public class TableauJeu extends JPanel {
     Image bg;
     Joueur joueur;
     Cuisinier cuisinier;
-    
+
     /*
     TEMP
-    */
+     */
     Magicien magicien;
     Enemi enemi;
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
-    int tempX=0, tempY=0;
-    
+    int tempX = 0, tempY = 0;
+
     TableauJeu() {
 
         bg = loader.loadImage(bgRoute);
@@ -62,10 +56,10 @@ public class TableauJeu extends JPanel {
         }*/
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
-        enemi = new Enemi(0 , 0 );
+        enemi = new Enemi(0, 0);
         joueur = new Joueur(790 / 2, 600 / 2);
         cuisinier = new Cuisinier(300, 300);
-        magicien = new  Magicien(200, 200);
+        magicien = new Magicien(200, 200);
     }
 
     public void paintComponent(Graphics g) {
@@ -77,12 +71,12 @@ public class TableauJeu extends JPanel {
 
         //Set color transparent pour les hit Boxs
         g2.setColor(new Color(255, 255, 255));
-        
+
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
         joueur.PlayerAnimationLeft.runAnimation();
         joueur.PlayerAnimationRight.runAnimation();
-        
+
         try {
             dessiner(g2);
             actualiser(g2);
@@ -91,20 +85,18 @@ public class TableauJeu extends JPanel {
             Logger.getLogger(TableauJeu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- 
+
     public void dessiner(Graphics2D g2) throws IOException {
         //Creer les hitbox du personnages
         g2.fill(joueur.getHitBox());
         g2.fill(cuisinier.getHitBox());
         g2.fill(magicien.getHitBox());
-        
+
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
         //Dessinner personnages
         cuisinier.dessiner(g2);
         magicien.dessiner(g2);
-        
-        
-        
+
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 
@@ -113,15 +105,81 @@ public class TableauJeu extends JPanel {
     public void actualiser(Graphics2D g2) {
         Clavier.update();
         joueur.seDeplacer(g2);
-        //enemi.seDeplacer(getBounds(), collision(joueur.getHitBox()));
+        enemi.seDeplacer(getBounds(), collisionVie(joueur));
+        if (joueur.getPdv() == 0) {
+            endGame();
+        }
+
     }
-    
-    public boolean collision(Rectangle2D r){
-        return enemi.getEnemi().intersects(r); 
+
+    /**
+     * methode fin jeu consiste a afficher un message de fin du jeu avec bouton
+     * pour recommencer
+     */
+    private void endGame() {
+
+        Fenetre.thread.stop();
+
+        // TODO Auto-generated method stub
+        /*try {
+			Fenetre.thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+        JOptionPane jop1;
+        String choices[] = {"Fermer le jeu"};
+        jop1 = new JOptionPane();
+        /*jop1.showConfirmDialog(null, "Vous avez perdu!", "LOOOSER:)", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE);*/
+        int i = 0;
+        //System.out.println(i);
+        jop1.showOptionDialog(this, "Vous avez perdu! ", "LOOOOOSER !", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+        i = JOptionPane.DEFAULT_OPTION;
+        //actionPerformed(jop1);
+        //System.out.println(i);
+        if (i != 0) {
+
+            //setVisible(false);
+            //FenetreDepar fenetreDep = new FenetreDepar();
+            //fenetreDep.setVisible(true);
+            //fenetreDep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            System.exit(0);
+
+        }
     }
-    
-    public static Texture getInstance(){
+
+    public boolean collision(Rectangle2D r) {
+        return enemi.getEnemi().intersects(r);
+    }
+
+    public static Texture getInstance() {
         return texture;
     }
 
+    public boolean collision(Joueur joueur) {
+        return enemi.getEnemi().intersects(joueur.getHitBox());
+    }
+
+    //getter joueur
+    public Joueur getJoueur() {
+        return joueur;
+    }
+    //methode pour si il y a collision 
+
+    public boolean collisionVie(Joueur joueur) {
+        if (collision(joueur)) {
+            if (Joueur.getArmure() > 0) {
+                joueur.setArmure(joueur.getArmure() - 1);
+            } else {
+                joueur.setPdv(joueur.getPdv() - 1);;
+            }
+        }
+        fenetreObjets.getProgbarArmure().getProgressBar().setValue(joueur.getArmure());
+        fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+
+        //System.out.println(joueur.getPdv());
+        return collision(joueur);
+    }
 }

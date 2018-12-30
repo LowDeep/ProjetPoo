@@ -1,10 +1,7 @@
-/**
- *
- */
 package GUI2;
 
+
 import java.io.IOException;
-import javax.swing.JFrame;
 
 /**
  * @author Low_Deep
@@ -22,5 +19,6 @@ public class main {
         //fenetreObjets.setLocationRelativeTo(fenetreJeu);
         //fenetreObjets.setBounds(400,140,300,600);
     }
+
 
 }

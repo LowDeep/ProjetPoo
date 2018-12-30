@@ -13,7 +13,7 @@ import java.awt.geom.Rectangle2D;
  * @author dioxo
  */
 public class Enemi {
-     private int x;
+    private int x;
     private int y;
     private int dx = 1, dy = 1;
     private final int ANCHO = 15, ALTO = 15;
