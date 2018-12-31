@@ -6,6 +6,7 @@
 package GUI2;
 
 import codeJeu.Magicien;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,8 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import GUI.Clavier;
+import codeJeu.ConstantesDeJeu;
 import codeJeu.Cuisinier;
 import codeJeu.Joueur;
+import codeJeu.Medecin;
 
 /**
  *
@@ -32,12 +35,15 @@ public class TableauJeu extends JPanel {
     private final String bgRoute = "/bg.png";
     Image bg;
     Joueur joueur;
+
     Cuisinier cuisinier;
+    Magicien magicien;
+    Medecin medecin;
+
 
     /*
     TEMP
      */
-    Magicien magicien;
     Enemi enemi;
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
@@ -59,7 +65,8 @@ public class TableauJeu extends JPanel {
         enemi = new Enemi(0, 0);
         joueur = new Joueur(790 / 2, 600 / 2);
         cuisinier = new Cuisinier(300, 300);
-        magicien = new Magicien(200, 200);
+        magicien = new Magicien(200, 300);
+        medecin = new Medecin(100, 300);
     }
 
     public void paintComponent(Graphics g) {
@@ -91,11 +98,13 @@ public class TableauJeu extends JPanel {
         g2.fill(joueur.getHitBox());
         g2.fill(cuisinier.getHitBox());
         g2.fill(magicien.getHitBox());
+        g2.fill(medecin.getHitBox());
 
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
         //Dessinner personnages
         cuisinier.dessiner(g2);
         magicien.dessiner(g2);
+        medecin.dessiner(g2);
 
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
@@ -106,9 +115,19 @@ public class TableauJeu extends JPanel {
         Clavier.update();
         joueur.seDeplacer(g2);
         enemi.seDeplacer(getBounds(), collisionVie(joueur));
+        
+        
+        confirmations();
+        
+        
+        
+        
         if (joueur.getPdv() == 0) {
             endGame();
         }
+        
+        
+        
 
     }
 
@@ -181,5 +200,20 @@ public class TableauJeu extends JPanel {
 
         //System.out.println(joueur.getPdv());
         return collision(joueur);
+    }
+    
+     public void collisionMedecin(Joueur joueur) {
+        if (medecin.getMedecin().intersects(joueur.getHitBox())) {
+            joueur.setPdv(ConstantesDeJeu.PDVMAX);
+        }
+        /*fenetreObjets.getProgbarArmure().getProgressBar().setValue(joueur.getArmure());
+        fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+
+        //System.out.println(joueur.getPdv());
+        return collision(joueur);*/
+    }
+
+    private void confirmations() {
+        collisionMedecin(joueur);
     }
 }
