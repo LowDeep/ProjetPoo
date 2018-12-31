@@ -25,6 +25,15 @@ public class Texture {
     private BufferedImage cuisinier_sheet = null;
     public BufferedImage[] cuisinier = new BufferedImage[1];
     
+    SpriteSheet magicienSpriteSheet;
+    private BufferedImage magicien_sheet = null;
+    public BufferedImage[] magicien = new BufferedImage[1];
+     
+    SpriteSheet medecinSpriteSheet;
+    private BufferedImage medecin_sheet = null;
+    public BufferedImage[] medecin = new BufferedImage[1];
+    
+    
     public Texture() {
         
         BufferedImageLoader loader = new BufferedImageLoader(); 
@@ -33,14 +42,20 @@ public class Texture {
         personnage_sheet = loader.loadImage("/squelette.png");
         //personnage_sheet = loader.loadImage("/personnage.png");
         cuisinier_sheet = loader.loadImage("/cuisinier.png");
+        magicien_sheet = loader.loadImage("/magicien.png");
+        medecin_sheet = loader.loadImage("/medecin.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
+        magicienSpriteSheet = new SpriteSheet(magicien_sheet);
+        medecinSpriteSheet = new SpriteSheet(medecin_sheet);
         
         getPersonnage();
         getSquelette();
         getCuisinier();
+        getMagicien();
+        getMedecin();
     }
 
     private void getSquelette() {
@@ -101,6 +116,14 @@ public class Texture {
 
     private void getCuisinier() {
         cuisinier[0] = cuisinierSpriteSheet.grabImage(1, 1, 39, 45);
+    }
+
+    private void getMagicien() {
+        magicien[0] = magicienSpriteSheet.grabImage(1, 1, 43, 60);
+    }
+
+    private void getMedecin() {
+        medecin[0] = medecinSpriteSheet.grabImage(1, 1, 29, 45);
     }
     
     
