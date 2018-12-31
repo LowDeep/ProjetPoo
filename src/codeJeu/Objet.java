@@ -1,10 +1,10 @@
 package codeJeu;
 
 public abstract class Objet {
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
-    public Objet(double x, double y) {
+    public Objet(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -12,19 +12,19 @@ public abstract class Objet {
     public Objet() {
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public double getY() {
+    public int getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(int y) {
         this.y = y;
     }
 

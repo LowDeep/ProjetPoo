@@ -2,7 +2,7 @@ package codeJeu;
 
 public class PotionForce extends Potion {
 
-    public PotionForce(boolean type, double x, double y) {
+    public PotionForce(boolean type, int x, int y) {
         super(type, x, y);
     }
 

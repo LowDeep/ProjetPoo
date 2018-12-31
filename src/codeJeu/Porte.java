@@ -21,6 +21,7 @@ public class Porte extends Objet implements Dessiner{
     private final String porteOuverteDroite = "/porteOuverteDroite.png";
     private final String porteOuverteGauche = "/porteOuverteGauche.png";
     
+    private int frame;
     //constructeur porte
     public Porte(boolean serrure, int numeroPorte){
     	//this.serrure=serrure;
@@ -49,12 +50,12 @@ public class Porte extends Objet implements Dessiner{
    
     @Override
     public void dessiner(Graphics2D g) {
-        g.drawImage(texture.porteOuverte[0],350 ,0 , null);
+        g.drawImage(texture.porteOuverte[0],getX(),getY() , null);
     }
     
     @Override
     public Rectangle2D getHitBox() {
-        return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
+        return new Rectangle2D.Double(getX(), getY()+4, WIDHT, HEIGHT);
     }
     
     public Image getporteOuverteBas() throws IOException {

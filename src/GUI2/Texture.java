@@ -60,6 +60,17 @@ public class Texture {
     public BufferedImage[] porteOuverteGauche = new BufferedImage[1];
     
     
+    SpriteSheet passageSecretFirstSpriteSheet;
+    private BufferedImage passageSecretFirst_sheet = null;
+    public BufferedImage[] passageSecretFirst = new BufferedImage[1];
+    
+    SpriteSheet passageSecretSecondSpriteSheet;
+    private BufferedImage passageSecretSecond_sheet = null;
+    public BufferedImage[] passageSecretSecond = new BufferedImage[1];
+    
+    
+    
+    
     public Texture() {
         
         BufferedImageLoader loader = new BufferedImageLoader(); 
@@ -77,7 +88,8 @@ public class Texture {
         porteOuverteGauche_sheet = loader.loadImage("/porteOuverteGauche.png");
         monstreGhost_sheet = loader.loadImage("/monstre2.png");
         monstreMinotaure_sheet = loader.loadImage("/monstre4.png");
-
+        passageSecretFirst_sheet = loader.loadImage("/passageSecret1.png");
+        passageSecretSecond_sheet = loader.loadImage("/passageSecret1.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
@@ -92,6 +104,9 @@ public class Texture {
 
         monstreGhostSpriteSheet = new SpriteSheet(monstreGhost_sheet);
         monstreMinotaureSpriteSheet = new SpriteSheet(monstreMinotaure_sheet);
+        
+        passageSecretFirstSpriteSheet = new SpriteSheet(passageSecretFirst_sheet);
+        passageSecretSecondSpriteSheet = new SpriteSheet(passageSecretSecond_sheet);
 
         
         getPersonnage();
@@ -107,13 +122,42 @@ public class Texture {
         
         getMonstreGhost();
         getMonstreMinotaure();
+        
+        
+        getPassageSecretFirst();
+        getPassageSecretSecond();
+        
         }
 
         
    
+	/**
+	 * 
+	 */
+	private void getPassageSecretFirst() {
+		// TODO Auto-generated method stub
+		passageSecretFirst[0] = passageSecretFirstSpriteSheet.grabImage(1, 1, 118, 87);
+	}
 
 
-    private void getSquelette() {
+
+
+    /**
+	 * 
+	 */
+	private void getPassageSecretSecond() {
+		// TODO Auto-generated method stub
+		passageSecretSecond[0] = passageSecretSecondSpriteSheet.grabImage(1, 1, 118, 87);
+	}
+
+
+
+
+
+
+
+
+	private void getSquelette() {
         
         
         //ANIMATIONS Enemi Squelette
@@ -253,6 +297,8 @@ public class Texture {
     {
     	porteOuverteGauche[0] = porteOuverteGaucheSpriteSheet.grabImage(1, 1, 66, 66);
     }
+    
+    
     
     
     

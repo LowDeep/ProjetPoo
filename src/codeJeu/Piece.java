@@ -3,10 +3,15 @@ package codeJeu;
 import GUI.Clavier;
 import GUI2.Fenetre;
 import java.awt.Graphics2D;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import GUI2.TableauJeu;
+import GUI2.Texture;
 
 public class Piece {
 
@@ -18,11 +23,20 @@ public class Piece {
 
     private boolean passageSecret;
 
+    private final int xFirst = 30;
+    private final int yFirst = 40;
+
+    private final int xSecond = 630;
+    private final int ySecond = 410;
+
+    private final String passageSecretRoute = "/passageSecret1.png";
+    private final int HEIGHT = 118, WIDHT = 87;
+    Texture texture = TableauJeu.getInstance();
+
     private List<Personnage> personnages;
 
     //Creation de joueur pour pouvoir instances les deplacements des monstres selon le joueur
     private Joueur joueur;
-    
 
     public Piece(boolean nord, boolean sud, boolean est, boolean ouest, boolean passageSecret,
             List<Personnage> personnage) {
@@ -41,10 +55,6 @@ public class Piece {
         return passageSecret;
     }
 
-    //getters de portes
-    /*public void transporterPersonnage() {
-		
-	}*/
     public List<Personnage> getPersonnage() {
         return personnages;
     }
@@ -160,26 +170,38 @@ public class Piece {
             g.fill(personnage.getHitBox());
 
             //Dessiner Personnages immobiles
-            if (!personnage.getClass().getName().equals("codeJeu.Monstre") || !personnage.getClass().getName().equals("codeJeu.Joueur")) {
+            if (!personnage.getClass().getName().equals("codeJeu.Monstre") && !personnage.getClass().getName().equals("codeJeu.Joueur")) {
+                //System.out.println(personnage.getClass().getName());
                 personnage.dessiner(g);
             }
         }
-        
-        
+
         dessinerPortes(g);
 
     }
-    
+
     private void dessinerPortes(Graphics2D g) {
-        if(isNord()){
-           porte[0] = new Porte(350,0);
+        if (isNord()) {
+            porte[0] = new Porte(350, 1);
+            g.fill(porte[0].getHitBox());
+            porte[0].dessiner(g);
         }
-        if(isSud()){
-            porte[1] = new Porte(350,500);
+        if (isSud()) {
+            porte[1] = new Porte(350, 499);
+            g.fill(porte[1].getHitBox());
+            porte[1].dessinerBas(g);
         }
-        if(isEst()){
-            
+        if (isEst()) {
+            porte[2] = new Porte(719, 250);
+            g.fill(porte[2].getHitBox());
+            porte[2].dessinerDroite(g);
         }
+        if (isOuest()) {
+            porte[3] = new Porte(1, 250);
+            g.fill(porte[3].getHitBox());
+            porte[3].dessinerGauche(g);
+        }
+
     }
 
     public void actualiser(Graphics2D g2) {
@@ -195,6 +217,8 @@ public class Piece {
 
             //Bouger les monstres
             if (personnage.getClass().getName().equals("codeJeu.Monstre")) {
+                Monstre monstre = (Monstre) personnage;
+                monstre.chercherJoueur(g2, joueur.getX(), joueur.getY());
             }
         }
 
@@ -206,7 +230,7 @@ public class Piece {
         collisionMedecin(joueur);
         collisionCuisinier(joueur);
         collisionMagicien(joueur);
-        
+        collisionPortes(joueur);
         /*if (joueur.getPdv() == 0) {
             
         }*/
@@ -235,7 +259,7 @@ public class Piece {
             Personnage personnage = iterator.next();
             if (personnage.getClass().getName().equals("codeJeu.Cuisinier")) {
                 Cuisinier cuisinier = (Cuisinier) personnage;
-                //COllition avec le magicien
+                //COllition avec le cuisinier
                 if (cuisinier.getHitBox().intersects(joueur.getHitBox())) {
                     joueur.setForce(ConstantesDeJeu.FORCEMAX);
                 }
@@ -262,6 +286,60 @@ public class Piece {
 
     }
 
- 
+    private void collisionPortes(Joueur joueur) {
+        for (int i = 0; i < porte.length; i++) {
+            if (isNord()) {
+                //System.out.println("collision non");
+                if (porte[0].getHitBox().intersects(joueur.getHitBox())) {
+                    //joueur doit passer en bas 
+                    joueur.setX(345);
+                    joueur.setY(435);
+                    //System.out.println("collision ok");
+                }
+            }
+            if (isSud()) {
+                //System.out.println("collision non");
+                if (porte[1].getHitBox().intersects(joueur.getHitBox())) {
+                    //joueur doit passer en bas 
+                    joueur.setX(350);
+                    joueur.setY(65);
+                    //System.out.println("collision ok");
+                }
+            }
+            if (isEst()) {
+                if (porte[2].getHitBox().intersects(joueur.getHitBox())) {
+                    //joueur doit passer en bas 
+                    joueur.setX(66);
+                    joueur.setY(250);
+                    //System.out.println("collision ok");
+                }
+
+            }
+            if (isOuest()) {
+                if (porte[3].getHitBox().intersects(joueur.getHitBox())) {
+                    //joueur doit passer en bas 
+                    joueur.setX(650);
+                    joueur.setY(250);
+                    //System.out.println("collision ok");
+                }
+            }
+        }
+    }
+
+    public Rectangle2D getHitBoxFirst() {
+        return new Rectangle2D.Double(xFirst + 15, yFirst + 15, WIDHT, HEIGHT - 45);
+    }
+
+    public void dessinerFirst(Graphics2D g) {
+        g.drawImage(texture.passageSecretFirst[0], xFirst, yFirst, null);
+    }
+
+    public Rectangle2D getHitBoxSecond() {
+        return new Rectangle2D.Double(xSecond + 15, ySecond + 15, WIDHT, HEIGHT - 45);
+    }
+
+    public void dessinerSecond(Graphics2D g) {
+        g.drawImage(texture.passageSecretSecond[0], xSecond, ySecond, null);
+    }
 
 }

@@ -29,7 +29,7 @@ public class Fenetre extends JFrame {
    public static Thread2 thread;
 
     public Fenetre() {
-        setTitle("Les aventures de Taha");
+        setTitle("Les aventures de Mr-BONES");
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);

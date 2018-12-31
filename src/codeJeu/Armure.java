@@ -3,7 +3,7 @@ package codeJeu;
 public class Armure extends Objet implements ObjetEndomager {
     private int protection;
 
-    public Armure(int Protection, double x, double y) {
+    public Armure(int Protection, int x, int y) {
         super(x, y);
         this.protection = Protection;
     }

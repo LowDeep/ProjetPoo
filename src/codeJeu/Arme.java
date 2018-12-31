@@ -6,7 +6,7 @@ public abstract class Arme extends Objet implements ObjetEndomager {
     private int vieArme;
     private String typeArme;
 
-    public Arme(int Dommages, int VieArme, String TypeArme, double x, double y) {
+    public Arme(int Dommages, int VieArme, String TypeArme, int x, int y) {
         super(x, y);
         this.dommages = Dommages;
         this.vieArme = VieArme;
