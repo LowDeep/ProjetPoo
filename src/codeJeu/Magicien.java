@@ -34,11 +34,6 @@ public class Magicien extends Personnage {
                 donnerDoom=false;
         }
     }
-    
-    
-    public Image getMagicien() throws IOException {
-        return ImageIO.read(getClass().getResource(magicienRoute));
-    }
 
     public Rectangle2D getHitBox() {
         return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);

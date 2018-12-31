@@ -24,6 +24,7 @@ import codeJeu.Cuisinier;
 import codeJeu.Joueur;
 import codeJeu.Magicien;
 import codeJeu.Medecin;
+import codeJeu.Monstre;
 import codeJeu.Porte;
 
 /**
@@ -39,12 +40,17 @@ public class TableauJeu extends JPanel {
     Cuisinier cuisinier;
     Magicien magicien;
     Medecin medecin;
+
     Porte porteOuverte;
     Porte porteOuverteBas;
     Porte porteOuverteDroite;
     Porte porteOuverteGauche;
     
     //porte porteFermee;
+
+
+    Monstre monstreGhost;
+    Monstre monstreMinotaure;
 
 
     /*
@@ -74,11 +80,15 @@ public class TableauJeu extends JPanel {
         cuisinier = new Cuisinier(300, 300);
         magicien = new Magicien(200, 300);
         medecin = new Medecin(100, 300);
+
         porteOuverte = new Porte(350,0);
         porteOuverteBas = new Porte(350,500);
         porteOuverteDroite = new Porte(720,250);
         porteOuverteGauche= new Porte(0,250);
 
+
+        monstreGhost = new Monstre(100, 100, 50, 20, 1);
+        monstreMinotaure = new Monstre(500, 500, 50, 20, 0);
 
     }
 
@@ -90,13 +100,23 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255,0));
+        g2.setColor(new Color(255, 255, 255));
 
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
         joueur.PlayerAnimationLeft.runAnimation();
         joueur.PlayerAnimationRight.runAnimation();
+        
+        monstreGhost.MonstreAnimationDown.runAnimation();
+        monstreGhost.MonstreAnimationLeft.runAnimation();
+        monstreGhost.MonstreAnimationRight.runAnimation();
+        monstreGhost.MonstreAnimationUp.runAnimation();
 
+        monstreMinotaure.MonstreAnimationDown.runAnimation();
+        monstreMinotaure.MonstreAnimationLeft.runAnimation();
+        monstreMinotaure.MonstreAnimationRight.runAnimation();
+        monstreMinotaure.MonstreAnimationUp.runAnimation();
+        
         try {
             dessiner(g2);
             actualiser(g2);
@@ -116,6 +136,9 @@ public class TableauJeu extends JPanel {
         g2.fill(porteOuverteBas.getHitBox());
         g2.fill(porteOuverteDroite.getHitBox());
         g2.fill(porteOuverteGauche.getHitBox());
+        g2.fill(monstreGhost.getHitBox());
+        g2.fill(monstreMinotaure.getHitBox());
+
 
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
         //Dessinner personnages
@@ -136,19 +159,11 @@ public class TableauJeu extends JPanel {
         Clavier.update();
 
         joueur.seDeplacer(g2);
-        enemi.seDeplacer2(getBounds(), collisionVie(joueur),joueur.getX(),joueur.getY());
-        
-        
+        //enemi.seDeplacer2(getBounds(), collisionVie(joueur), joueur.getX(), joueur.getY());
+        monstreGhost.chercherJoueur(g2,joueur.getX(), joueur.getY());
+        monstreMinotaure.chercherJoueur(g2,joueur.getX(), joueur.getY());
+
         confirmations();
-     
-        
-       
-        if (joueur.getPdv() == 0) {
-            endGame();
-        }
-        
-        
-        
 
     }
 
@@ -222,19 +237,30 @@ public class TableauJeu extends JPanel {
         //System.out.println(joueur.getPdv());
         return collision(joueur);
     }
-    
-     public void collisionMedecin(Joueur joueur) {
-        if (medecin.getMedecin().intersects(joueur.getHitBox())) {
+
+    public void collisionMedecin(Joueur joueur) {
+        if (medecin.getHitBox().intersects(joueur.getHitBox())) {
             joueur.setPdv(ConstantesDeJeu.PDVMAX);
         }
-        /*fenetreObjets.getProgbarArmure().getProgressBar().setValue(joueur.getArmure());
-        fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+    }
 
-        //System.out.println(joueur.getPdv());
-        return collision(joueur);*/
+    public void collisionCuisinier(Joueur joueur) {
+        if (cuisinier.getHitBox().intersects(joueur.getHitBox())) {
+            joueur.setForce(ConstantesDeJeu.FORCEMAX);
+        }
+    }
+    public void collisionMagicien(Joueur joueur) {
+        if (magicien.getHitBox().intersects(joueur.getHitBox())) {
+            magicien.recuperationDoom(joueur);
+        }
     }
 
     private void confirmations() {
         collisionMedecin(joueur);
+        collisionCuisinier(joueur);
+        collisionMagicien(joueur);
+        if (joueur.getPdv() == 0) {
+            endGame();
+        }
     }
 }
