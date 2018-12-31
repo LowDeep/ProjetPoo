@@ -32,10 +32,6 @@ public class Cuisinier extends Personnage {
         Joueur.setForce(ConstantesDeJeu.FORCEMAX);
     }
 
-    public Image getCuisinier() throws IOException {
-        return ImageIO.read(getClass().getResource(cuisinierRoute));
-    }
-
     public Rectangle2D getHitBox() {
         return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
     }

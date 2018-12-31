@@ -24,7 +24,6 @@ public class Joueur extends JoueurActif {
      *
      */
     static Image perso;
-    private final String persoRoute = "/perso.png";
     private final int HEIGHT = 90, WIDHT = 69;
     public Animation PlayerAnimationDown;
     public Animation PlayerAnimationUp;
@@ -48,7 +47,7 @@ public class Joueur extends JoueurActif {
     public Joueur(int x, int y) {
         super(x, y, ConstantesDeJeu.PDVMAX, ConstantesDeJeu.FORCEMAX);
         Joueur.armure = 0;
-        doom = true;
+        doom = false;
 
         PlayerAnimationDown = new Animation(10, texture.squelette[1], texture.squelette[2],
                 texture.squelette[3], texture.squelette[4],
@@ -104,10 +103,10 @@ public class Joueur extends JoueurActif {
         this.doom = doom;
     }
 
-    public Image getPerso() throws IOException {
+    /*public Image getPerso() throws IOException {
         return ImageIO.read(Joueur.class.getResource(persoRoute));
 
-    }
+    }*/
 
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);

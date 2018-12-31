@@ -37,14 +37,6 @@ public class Medecin extends Personnage {
     public void dessiner(Graphics2D g) {
         g.drawImage(texture.medecin[0], getX(), getY(), null);
     }
-    public Rectangle2D getMedecin() {
-        return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
-    }
+ 
     
-    public void confirmer(boolean flag){
-        if(flag){
-            
-        }
-    }
-
 }

@@ -33,6 +33,15 @@ public class Texture {
     private BufferedImage medecin_sheet = null;
     public BufferedImage[] medecin = new BufferedImage[1];
     
+    SpriteSheet monstreGhostSpriteSheet;
+    private BufferedImage monstreGhost_sheet = null;
+    public BufferedImage[] monstreGhost = new BufferedImage[12];
+
+    
+    SpriteSheet monstreMinotaureSpriteSheet;
+    private BufferedImage monstreMinotaure_sheet = null;
+    public BufferedImage[] monstreMinotaure = new BufferedImage[12];
+    
     
     public Texture() {
         
@@ -44,18 +53,24 @@ public class Texture {
         cuisinier_sheet = loader.loadImage("/cuisinier.png");
         magicien_sheet = loader.loadImage("/magicien.png");
         medecin_sheet = loader.loadImage("/medecin.png");
+        monstreGhost_sheet = loader.loadImage("/monstre2.png");
+        monstreMinotaure_sheet = loader.loadImage("/monstre4.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
         magicienSpriteSheet = new SpriteSheet(magicien_sheet);
         medecinSpriteSheet = new SpriteSheet(medecin_sheet);
+        monstreGhostSpriteSheet = new SpriteSheet(monstreGhost_sheet);
+        monstreMinotaureSpriteSheet = new SpriteSheet(monstreMinotaure_sheet);
         
         getPersonnage();
         getSquelette();
         getCuisinier();
         getMagicien();
         getMedecin();
+        getMonstreGhost();
+        getMonstreMinotaure();
     }
 
     private void getSquelette() {
@@ -124,6 +139,58 @@ public class Texture {
 
     private void getMedecin() {
         medecin[0] = medecinSpriteSheet.grabImage(1, 1, 29, 45);
+    }
+
+    private void getMonstreGhost() {
+        //ANIMATIONS Enemi Squelette
+        //Ghost immobile
+        monstreGhost[0] = monstreGhostSpriteSheet.grabImage(1, 1, 47, 48); 
+        
+        //Walk Down
+        monstreGhost[1] = monstreGhostSpriteSheet.grabImage(2, 1, 47, 48); 
+        monstreGhost[2] = monstreGhostSpriteSheet.grabImage(3, 1, 47, 48); 
+       
+        
+        //Walk Left
+        monstreGhost[3] = monstreGhostSpriteSheet.grabImage(1, 2, 47, 48); 
+        monstreGhost[4] = monstreGhostSpriteSheet.grabImage(2, 2, 47, 48);  
+        monstreGhost[5] = monstreGhostSpriteSheet.grabImage(3, 2, 47, 48);
+        
+        //Walk Right
+        monstreGhost[6] = monstreGhostSpriteSheet.grabImage(1, 3, 47, 48); 
+        monstreGhost[7] = monstreGhostSpriteSheet.grabImage(2, 3, 47, 48);  
+        monstreGhost[8] = monstreGhostSpriteSheet.grabImage(3, 3, 47, 48);
+             
+        //Walk Up
+        monstreGhost[9] = monstreGhostSpriteSheet.grabImage(1, 4, 47, 48); 
+        monstreGhost[10] = monstreGhostSpriteSheet.grabImage(2, 4, 47, 48);  
+        monstreGhost[11] = monstreGhostSpriteSheet.grabImage(3, 4, 47, 48);
+    }
+
+    private void getMonstreMinotaure() {
+        //ANIMATIONS Enemi 
+        //Minotaure immobile
+        monstreMinotaure[0] = monstreMinotaureSpriteSheet.grabImage(1, 1, 46, 48); 
+        
+        //Walk Down
+        monstreMinotaure[1] = monstreMinotaureSpriteSheet.grabImage(2, 1, 46, 48); 
+        monstreMinotaure[2] = monstreMinotaureSpriteSheet.grabImage(3, 1, 46, 48); 
+       
+        
+        //Walk Left
+        monstreMinotaure[3] = monstreMinotaureSpriteSheet.grabImage(1, 2, 46, 48); 
+        monstreMinotaure[4] = monstreMinotaureSpriteSheet.grabImage(2, 2, 46, 48);  
+        monstreMinotaure[5] = monstreMinotaureSpriteSheet.grabImage(3, 2, 46, 48);
+        
+        //Walk Right
+        monstreMinotaure[6] = monstreMinotaureSpriteSheet.grabImage(1, 3, 46, 48); 
+        monstreMinotaure[7] = monstreMinotaureSpriteSheet.grabImage(2, 3, 46, 48);  
+        monstreMinotaure[8] = monstreMinotaureSpriteSheet.grabImage(3, 3, 46, 48);
+             
+        //Walk Up
+        monstreMinotaure[9] = monstreMinotaureSpriteSheet.grabImage(1, 4, 46, 48); 
+        monstreMinotaure[10] = monstreMinotaureSpriteSheet.grabImage(2, 4, 46, 48);  
+        monstreMinotaure[11] = monstreMinotaureSpriteSheet.grabImage(3, 4, 46, 48);
     }
     
     
