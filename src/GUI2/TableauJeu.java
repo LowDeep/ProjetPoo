@@ -5,8 +5,6 @@
  */
 package GUI2;
 
-import codeJeu.Magicien;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -24,7 +22,9 @@ import GUI.Clavier;
 import codeJeu.ConstantesDeJeu;
 import codeJeu.Cuisinier;
 import codeJeu.Joueur;
+import codeJeu.Magicien;
 import codeJeu.Medecin;
+import codeJeu.Porte;
 
 /**
  *
@@ -39,6 +39,12 @@ public class TableauJeu extends JPanel {
     Cuisinier cuisinier;
     Magicien magicien;
     Medecin medecin;
+    Porte porteOuverte;
+    Porte porteOuverteBas;
+    Porte porteOuverteDroite;
+    Porte porteOuverteGauche;
+    
+    //porte porteFermee;
 
 
     /*
@@ -68,6 +74,11 @@ public class TableauJeu extends JPanel {
         cuisinier = new Cuisinier(300, 300);
         magicien = new Magicien(200, 300);
         medecin = new Medecin(100, 300);
+        porteOuverte = new Porte(350,0);
+        porteOuverteBas = new Porte(350,500);
+        porteOuverteDroite = new Porte(720,250);
+        porteOuverteGauche= new Porte(0,250);
+
 
     }
 
@@ -101,13 +112,21 @@ public class TableauJeu extends JPanel {
         g2.fill(cuisinier.getHitBox());
         g2.fill(magicien.getHitBox());
         g2.fill(medecin.getHitBox());
+        g2.fill(porteOuverte.getHitBox());
+        g2.fill(porteOuverteBas.getHitBox());
+        g2.fill(porteOuverteDroite.getHitBox());
+        g2.fill(porteOuverteGauche.getHitBox());
 
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
         //Dessinner personnages
         cuisinier.dessiner(g2);
         magicien.dessiner(g2);
         medecin.dessiner(g2);
-
+        porteOuverte.dessiner(g2);
+        porteOuverteBas.dessinerBas(g2);
+        porteOuverteDroite.dessinerDroite(g2);
+        porteOuverteGauche.dessinerGauche(g2);
+        
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 

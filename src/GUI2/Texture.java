@@ -34,6 +34,23 @@ public class Texture {
     public BufferedImage[] medecin = new BufferedImage[1];
     
     
+    SpriteSheet porteOuverteSpriteSheet;
+    private BufferedImage porteOuverte_sheet = null;
+    public BufferedImage[] porteOuverte = new BufferedImage[1];
+    
+    SpriteSheet porteOuverteBasSpriteSheet;
+    private BufferedImage porteOuverteBas_sheet = null;
+    public BufferedImage[] porteOuverteBas = new BufferedImage[1];
+    
+    SpriteSheet porteOuverteDroiteSpriteSheet;
+    private BufferedImage porteOuverteDroite_sheet = null;
+    public BufferedImage[] porteOuverteDroite = new BufferedImage[1];
+    
+    SpriteSheet porteOuverteGaucheSpriteSheet;
+    private BufferedImage porteOuverteGauche_sheet = null;
+    public BufferedImage[] porteOuverteGauche = new BufferedImage[1];
+    
+    
     public Texture() {
         
         BufferedImageLoader loader = new BufferedImageLoader(); 
@@ -44,19 +61,31 @@ public class Texture {
         cuisinier_sheet = loader.loadImage("/cuisinier.png");
         magicien_sheet = loader.loadImage("/magicien.png");
         medecin_sheet = loader.loadImage("/medecin.png");
+        porteOuverte_sheet = loader.loadImage("/porteOuverte.png");
+        porteOuverteBas_sheet = loader.loadImage("/porteOuverteBas.png");
+        porteOuverteDroite_sheet = loader.loadImage("/porteOuverteDroite.png");
+        porteOuverteGauche_sheet = loader.loadImage("/porteOuverteGauche.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
         magicienSpriteSheet = new SpriteSheet(magicien_sheet);
         medecinSpriteSheet = new SpriteSheet(medecin_sheet);
+        porteOuverteSpriteSheet = new SpriteSheet(porteOuverte_sheet);
+        porteOuverteBasSpriteSheet = new SpriteSheet(porteOuverteBas_sheet);
+        porteOuverteDroiteSpriteSheet = new SpriteSheet(porteOuverteDroite_sheet);
+        porteOuverteGaucheSpriteSheet = new SpriteSheet(porteOuverteGauche_sheet);
         
         getPersonnage();
         getSquelette();
         getCuisinier();
         getMagicien();
         getMedecin();
-    }
+        getPorteOuverte();
+        getPorteOuverteBas();
+        getPorteOuverteDroite();
+        getPorteOuverteGauche();
+        }
 
     private void getSquelette() {
         
@@ -126,6 +155,26 @@ public class Texture {
         medecin[0] = medecinSpriteSheet.grabImage(1, 1, 29, 45);
     }
     
+    private void getPorteOuverte()
+    {
+    	porteOuverte[0] = porteOuverteSpriteSheet.grabImage(1, 1, 66, 66);
+    }
+    
+    private void getPorteOuverteBas()
+    {
+    	porteOuverteBas[0] = porteOuverteBasSpriteSheet.grabImage(1, 1, 66, 66);
+    }
+    
+    private void getPorteOuverteDroite()
+    {
+    	porteOuverteDroite[0] = porteOuverteDroiteSpriteSheet.grabImage(1, 1, 66, 66);
+    }
+    
+    
+    private void getPorteOuverteGauche()
+    {
+    	porteOuverteGauche[0] = porteOuverteGaucheSpriteSheet.grabImage(1, 1, 66, 66);
+    }
     
     
     
