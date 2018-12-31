@@ -110,7 +110,7 @@ public class Joueur extends JoueurActif {
 
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
-        return new Rectangle2D.Double(getX(), getY(), 36, 58);
+        return new Rectangle2D.Double(getX()+10, getY()+10, 36, 58);
     }
 
     public int getHEIGHT() {
@@ -220,17 +220,17 @@ public class Joueur extends JoueurActif {
 
     public void seDeplacer(Graphics2D g2) {
 
-        if (Clavier.up && getY() > 66) {
+        if (Clavier.up && getY() > 30) {
             setY(getY() - 2);
             PlayerAnimationUp.dessinerAnimation(g2, getX(), getY());
 
         }else if (Clavier.down && getY() < 540 - HEIGHT) {
             PlayerAnimationDown.dessinerAnimation(g2, getX(), getY());
             setY(getY() + 2);
-        }else if (Clavier.left && getX() > 40) {
+        }else if (Clavier.left && getX() > 30) {
             PlayerAnimationLeft.dessinerAnimation(g2, getX(), getY());
             setX(getX() - 2);
-        }else if (Clavier.right && getX() < 715 - WIDHT) {
+        }else if (Clavier.right && getX() < 755 - WIDHT) {
             PlayerAnimationRight.dessinerAnimation(g2, getX(), getY());
             setX(getX() + 2);
         }else{

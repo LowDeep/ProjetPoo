@@ -52,7 +52,7 @@ public class Porte extends Objet{
     }
     
     public Rectangle2D getHitBox() {
-        return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
+        return new Rectangle2D.Double(getX(), getY()+4, WIDHT, HEIGHT);
     }
     
     public Image getporteOuverteBas() throws IOException {

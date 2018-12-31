@@ -25,6 +25,7 @@ import codeJeu.Joueur;
 import codeJeu.Magicien;
 import codeJeu.Medecin;
 import codeJeu.Monstre;
+import codeJeu.Piece;
 import codeJeu.Porte;
 
 /**
@@ -45,6 +46,9 @@ public class TableauJeu extends JPanel {
     Porte porteOuverteBas;
     Porte porteOuverteDroite;
     Porte porteOuverteGauche;
+    
+    Piece passageSecretFirst;
+    Piece passageSecretSecond;
     
     //porte porteFermee;
 
@@ -81,14 +85,17 @@ public class TableauJeu extends JPanel {
         magicien = new Magicien(200, 300);
         medecin = new Medecin(100, 300);
 
-        porteOuverte = new Porte(350,0);
-        porteOuverteBas = new Porte(350,500);
-        porteOuverteDroite = new Porte(720,250);
-        porteOuverteGauche= new Porte(0,250);
+        porteOuverte = new Porte(350,1);
+        porteOuverteBas = new Porte(350,499);
+        porteOuverteDroite = new Porte(719,250);
+        porteOuverteGauche= new Porte(1,250);
 
 
         monstreGhost = new Monstre(100, 100, 50, 20, 1);
         monstreMinotaure = new Monstre(500, 500, 50, 20, 0);
+        
+        passageSecretFirst = new Piece(true);
+        passageSecretSecond = new Piece(true);
 
     }
 
@@ -100,7 +107,7 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255));
+        g2.setColor(new Color(255,255, 255));
 
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
@@ -138,6 +145,8 @@ public class TableauJeu extends JPanel {
         g2.fill(porteOuverteGauche.getHitBox());
         g2.fill(monstreGhost.getHitBox());
         g2.fill(monstreMinotaure.getHitBox());
+        g2.fill(passageSecretFirst.getHitBoxFirst());
+        g2.fill(passageSecretSecond.getHitBoxSecond());
 
 
         //g2.drawImage(joueur.getPerso(), joueur.getX(), joueur.getY(), joueur.getHEIGHT(), joueur.getWIDHT(), this);
@@ -149,6 +158,9 @@ public class TableauJeu extends JPanel {
         porteOuverteBas.dessinerBas(g2);
         porteOuverteDroite.dessinerDroite(g2);
         porteOuverteGauche.dessinerGauche(g2);
+        passageSecretFirst.dessinerFirst(g2);
+        passageSecretSecond.dessinerSecond(g2);
+        
         
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
@@ -254,11 +266,73 @@ public class TableauJeu extends JPanel {
             magicien.recuperationDoom(joueur);
         }
     }
+    
+    public void collisionPorteOuverteHaut(Joueur joueur) {
+    	//System.out.println("collision non");
+        if (porteOuverte.getHitBox().intersects(joueur.getHitBox())) {
+           //joueur doit passer en bas 
+        	joueur.setX(345);
+        	joueur.setY(435);
+        	//System.out.println("collision ok");
+        }
+    }
+    
+    public void collisionPorteOuverteBas(Joueur joueur) {
+    	//System.out.println("collision non");
+        if (porteOuverteBas.getHitBox().intersects(joueur.getHitBox())) {
+           //joueur doit passer en bas 
+        	joueur.setX(350);
+        	joueur.setY(65);
+        	//System.out.println("collision ok");
+        }
+    }
+    
+    public void collisionPorteOuverteDroite(Joueur joueur) {
+    	//System.out.println("collision non");
+        if (porteOuverteDroite.getHitBox().intersects(joueur.getHitBox())) {
+           //joueur doit passer en bas 
+        	joueur.setX(66);
+        	joueur.setY(250);
+        	//System.out.println("collision ok");
+        }
+    }
+    
+    public void collisionPorteOuverteGauche(Joueur joueur) {
+    	//System.out.println("collision non");
+        if (porteOuverteGauche.getHitBox().intersects(joueur.getHitBox())) {
+           //joueur doit passer en bas 
+        	joueur.setX(650);
+        	joueur.setY(250);
+        	//System.out.println("collision ok");
+        }
+    }
 
+    public void collisionPassageSecretFirst(Joueur joueur)
+    {
+    	if(passageSecretFirst.getHitBoxFirst().intersects(joueur.getHitBox()))
+    	{
+    		joueur.setX(595);
+    		joueur.setY(410);
+    	}
+    }
+    public void collisionPassageSecretSecond(Joueur joueur)
+    {
+    	if(passageSecretFirst.getHitBoxSecond().intersects(joueur.getHitBox()))
+    	{
+    		joueur.setX(60);
+    		joueur.setY(120);
+    	}
+    }
     private void confirmations() {
         collisionMedecin(joueur);
         collisionCuisinier(joueur);
         collisionMagicien(joueur);
+        collisionPorteOuverteHaut(joueur);
+        collisionPorteOuverteBas(joueur);
+        collisionPorteOuverteGauche(joueur);
+        collisionPorteOuverteDroite(joueur);
+        collisionPassageSecretFirst(joueur);
+        collisionPassageSecretSecond(joueur);
         if (joueur.getPdv() == 0) {
             endGame();
         }
