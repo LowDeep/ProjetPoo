@@ -1,8 +1,8 @@
 package codeJeu;
 
 public abstract class Personnage {
-    private int x;
-    private int y;
+    public static int x;
+    public static int y;
     //constructeur personnage
     public Personnage(int x,int y) {
     	this.x=x;

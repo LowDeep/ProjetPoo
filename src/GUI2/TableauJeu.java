@@ -56,7 +56,7 @@ public class TableauJeu extends JPanel {
         setBackground(Color.WHITE);
         enemi = new Enemi(0 , 0 );
         joueur = new Joueur(790 / 2, 600 / 2);
-        cuisinier = new Cuisinier(300, 300);
+        cuisinier = new Cuisinier(0, 0);
     }
 
     public void paintComponent(Graphics g) {
@@ -97,7 +97,7 @@ public class TableauJeu extends JPanel {
     public void actualiser(Graphics2D g2) {
         Clavier.update();
 joueur.seDeplacer(g2);
-enemi.seDeplacer(getBounds(), collisionVie(joueur)); 
+enemi.seDeplacer2(getBounds(), collisionVie(joueur)); 
 if(joueur.getPdv()==0)
 {
 	endGame();
