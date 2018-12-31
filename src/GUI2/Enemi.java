@@ -60,7 +60,7 @@ public class Enemi {
     
     }
         //deplacement pour suivre personnage
-        public void seDeplacer2(Rectangle limites, boolean collision) {
+        public void seDeplacer2(Rectangle limites, boolean collision, int JoueurX , int JoueurY) {
 
            // x += dx; 
            // y += dy; 
@@ -88,21 +88,21 @@ public class Enemi {
 
             }*/
             
-            if(Joueur.x>this.x)
+            if(JoueurX>x)
             {
-            	this.x+=1;
+            	x+=1;
             }
-            if(Joueur.y>this.y)
+            if(JoueurY>y)
             {
-            	this.y+=1;
+            	y+=1;
             }
-            if(Joueur.x<this.x)
+            if(JoueurX<x)
             {
-            	this.x-=1;
+            	x-=1;
             }
-            if(Joueur.y<this.y)
+            if(JoueurY<y)
             {
-            	this.y-=1;
+            	y-=1;
             }
         
            

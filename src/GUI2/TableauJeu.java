@@ -117,7 +117,7 @@ public class TableauJeu extends JPanel {
         Clavier.update();
 
         joueur.seDeplacer(g2);
-        enemi.seDeplacer(getBounds(), collisionVie(joueur));
+        enemi.seDeplacer2(getBounds(), collisionVie(joueur),joueur.getX(),joueur.getY());
         
         
         confirmations();
