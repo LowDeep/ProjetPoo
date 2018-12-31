@@ -42,6 +42,9 @@ public class Joueur extends JoueurActif {
     public ArrayList<Objet> listeObjets = new ArrayList<Objet>();
     private ConstantesDeJeu caracPerso;
     boolean doom = true;
+    
+    //TEMP
+    private int numPositionPiece;
 
     //constructeur Joueur
     public Joueur(int x, int y) {
@@ -68,6 +71,8 @@ public class Joueur extends JoueurActif {
                 texture.squelette[29], texture.squelette[30],
                 texture.squelette[31], texture.squelette[32],
                 texture.squelette[33], texture.squelette[34], texture.squelette[35]);
+        
+        numPositionPiece = 0;
     }
 
     //getters setters joueur
@@ -79,6 +84,15 @@ public class Joueur extends JoueurActif {
         this.armure = armure;
     }
 
+    public int getNumPositionPiece() {
+        return numPositionPiece;
+    }
+
+    public void setNumPositionPiece(int numPositionPiece) {
+        this.numPositionPiece = numPositionPiece;
+    }
+    
+    
     public ArrayList<Objet> getListeObjets() {
         return listeObjets;
     }
@@ -108,6 +122,7 @@ public class Joueur extends JoueurActif {
 
     }*/
 
+    @Override
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
         return new Rectangle2D.Double(getX(), getY(), 36, 58);
@@ -238,4 +253,10 @@ public class Joueur extends JoueurActif {
         }
     }
 
+    //PUEDE GENERAR ERROR
+    @Override
+    public void dessiner(Graphics2D g2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

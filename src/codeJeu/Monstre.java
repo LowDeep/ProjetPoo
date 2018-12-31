@@ -84,4 +84,9 @@ public class Monstre extends JoueurActif {
         return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
     }
 
+    @Override
+    public void dessiner(Graphics2D g2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

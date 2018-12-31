@@ -25,7 +25,11 @@ import codeJeu.Joueur;
 import codeJeu.Magicien;
 import codeJeu.Medecin;
 import codeJeu.Monstre;
+import codeJeu.Personnage;
+import codeJeu.Piece;
 import codeJeu.Porte;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,7 +39,12 @@ public class TableauJeu extends JPanel {
 
     private final String bgRoute = "/bg.png";
     Image bg;
-    Joueur joueur;
+    BufferedImageLoader loader = new BufferedImageLoader();
+    static Texture texture;
+    
+    Piece piece;
+    
+    /*Joueur joueur;
 
     Cuisinier cuisinier;
     Magicien magicien;
@@ -53,14 +62,9 @@ public class TableauJeu extends JPanel {
     Monstre monstreMinotaure;
 
 
-    /*
-    TEMP
-     */
-    Enemi enemi;
-    BufferedImageLoader loader = new BufferedImageLoader();
-    static Texture texture;
-    int tempX = 0, tempY = 0;
 
+    Enemi enemi;*/
+    
     TableauJeu() {
 
         bg = loader.loadImage(bgRoute);
@@ -74,6 +78,19 @@ public class TableauJeu extends JPanel {
         }*/
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
+        
+        
+        //creation de pieces
+        Joueur joueur = new Joueur(0, 0);
+        Monstre monstre = new Monstre(0, 0, 0, 0, 1);
+        Cuisinier cuisinier = new Cuisinier(0, 0);
+        
+        List<Personnage> personnages = new ArrayList<Personnage>();
+        personnages.add(joueur);
+        personnages.add(monstre);
+        personnages.add(cuisinier);
+        piece = new Piece(true, true, true, true, true, personnage);
+        
         enemi = new Enemi(0, 0);
         joueur = new Joueur(790 / 2, 600 / 2);
 
@@ -100,7 +117,7 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255));
+        g2.setColor(new Color(255, 255, 255,0));
 
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
@@ -171,7 +188,7 @@ public class TableauJeu extends JPanel {
      * methode fin jeu consiste a afficher un message de fin du jeu avec bouton
      * pour recommencer
      */
-    private void endGame() {
+    public void endGame() {
 
         Fenetre.thread.stop();
 

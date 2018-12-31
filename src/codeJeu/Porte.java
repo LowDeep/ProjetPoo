@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import GUI2.TableauJeu;
 import GUI2.Texture;
 
-public class Porte extends Objet{
+public class Porte extends Objet implements Dessiner{
     private boolean serrure=false;
     private final int numeroPorte=0;
     private final String porteOuverteHaut = "/porteOuverte.png";
@@ -47,10 +47,12 @@ public class Porte extends Objet{
     }
 
    
+    @Override
     public void dessiner(Graphics2D g) {
         g.drawImage(texture.porteOuverte[0],350 ,0 , null);
     }
     
+    @Override
     public Rectangle2D getHitBox() {
         return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
     }
