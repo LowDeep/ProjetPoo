@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import GUI.Clavier;
 import codeJeu.Joueur;
 import codeJeu.JoueurActif;
- 
+
 /**
  * @author dioxo
  * @author Low_Deep
