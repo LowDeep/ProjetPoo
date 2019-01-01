@@ -39,7 +39,7 @@ public class TableauJeu extends JPanel {
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
     
-    Piece piece;
+    static Piece piece;
     
     /*Joueur joueur;
 
@@ -87,7 +87,7 @@ public class TableauJeu extends JPanel {
         Medecin medecin = new Medecin(200, 300);
         Princesse princesse = new Princesse(400,500);
         
-        joueur.setPdv(joueur.getPdv()+10);
+        //joueur.setPdv(joueur.getPdv()+10);
         
         List<Personnage> personnages = new ArrayList<Personnage>();
         personnages.add(joueur);
@@ -282,6 +282,15 @@ public class TableauJeu extends JPanel {
     public static Texture getInstance() {
         return texture;
     }
+    
+    
+    //getter joueur
+    public Joueur getJoueur() {
+        return piece.getJoueur();
+    }
+    
+    
+    
     /*
     public boolean collision(Rectangle2D r) {
         return enemi.getEnemi().intersects(r);
@@ -295,10 +304,6 @@ public class TableauJeu extends JPanel {
         return enemi.getEnemi().intersects(joueur.getHitBox());
     }
 
-    //getter joueur
-    public Joueur getJoueur() {
-        return joueur;
-    }
     //methode pour si il y a collision 
 
     public boolean collisionVie(Joueur joueur) {
@@ -403,4 +408,8 @@ public class TableauJeu extends JPanel {
             endFailureGame();
         }
     }*/
+
+    public  Piece getPiece() {
+        return piece;
+    }
 }

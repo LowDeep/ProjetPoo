@@ -2,8 +2,8 @@ package codeJeu;
 
 public class ConstantesDeJeu {
    
-    public static int PDVMAX = 20;
-    public static int FORCEMAX = 30;
+    public static int PDVMAX = 100;
+    public static int FORCEMAX = 100;
     public static int ARMUREMAX = 10;    
     
     public static boolean TRESORGAGNER = true;
