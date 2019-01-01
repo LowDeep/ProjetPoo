@@ -89,4 +89,12 @@ public class Monstre extends JoueurActif {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public int getWIDHT() {
+        return WIDHT;
+    }
+
 }

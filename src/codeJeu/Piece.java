@@ -357,10 +357,11 @@ public class Piece {
                     }
 
                     System.out.println("forcemosntre" + monstre.getForce());
-                    System.out.println("viemonstre" + monstre.getPdv());
+                    //System.out.println("viemonstre" + monstre.getPdv());
                     System.out.println("perso vie" + joueur.getPdv());
 
-                    if (joueur.getY() > monstre.getX()) {
+                    //BOUGER LES MONSTRES POUR NE PAS RESTER AVEC LE JOUEUR
+                    if (joueur.getX() > monstre.getX()) {
                         monstre.setX(monstre.getX() - 20);
                     }
 
@@ -368,7 +369,7 @@ public class Piece {
                         monstre.setY(monstre.getY() - 20);
                     }
 
-                    if (joueur.getY() < monstre.getX()) {
+                    if (joueur.getX() < monstre.getX()) {
                         monstre.setX(monstre.getX() + 20);
                     }
 
