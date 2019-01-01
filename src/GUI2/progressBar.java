@@ -27,23 +27,7 @@ public class progressBar extends JPanel{
 		this.progressBar.setBounds(0,0, 146,14);
 		add(progressBar);
 	}
-	//methode pour avoir les informations du joueur et les mettre dans la progressBar
-	public void infosJoueur(String carac)
-	{
-		System.out.println(JoueurActif.getPdv());
-		
-		if(carac.equals("vie")) {
-			progressBar.setValue(JoueurActif.getPdv());
-			progressBar.setMaximum(ConstantesDeJeu.PDVMAX);
-		}
-		else if(carac.equals("armure")) {
-			progressBar.setValue(Joueur.getArmure());
-			progressBar.setMaximum(ConstantesDeJeu.ARMUREMAX);}
-		else if(carac.equals("force")) {
-			progressBar.setValue(JoueurActif.getForce());
-			progressBar.setMaximum(ConstantesDeJeu.FORCEMAX);}
-		
-	}
+
 	public JProgressBar getProgressBar() {
 		return progressBar;
 	}

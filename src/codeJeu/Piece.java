@@ -11,9 +11,9 @@ import GUI2.Texture;
 import GUI2.fenetreObjets;
 
 public class Piece {
-	
-	public static boolean confirmationPerteJeu=false;
-	public static boolean confirmationGagnerJeu=false;
+
+    public static boolean confirmationPerteJeu = false;
+    public static boolean confirmationGagnerJeu = false;
 
     private boolean nord;
     private boolean sud;
@@ -32,7 +32,6 @@ public class Piece {
     private final String passageSecretRoute = "/passageSecret1.png";
     private final int HEIGHT = 118, WIDHT = 87;
     Texture texture = TableauJeu.getInstance();
-    
 
     private List<Personnage> personnages;
 
@@ -54,6 +53,10 @@ public class Piece {
 
     public boolean isPassageSecret() {
         return passageSecret;
+    }
+
+    public Joueur getJoueur() {
+        return joueur;
     }
 
     public List<Personnage> getPersonnage() {
@@ -235,18 +238,14 @@ public class Piece {
         collisionPrincesse(joueur);
         collisionMonstre(joueur);
         if (joueur.getPdv() == 0) {
-        	confirmationPerteJeu=true;
+            confirmationPerteJeu = true;
         }
-        }
-            
-       
-    
-    
-    private void collisionPrincesse(Joueur joueur)
-    {
-    	//GAGNER PARTIE SI COLLISTION
-    	
-    	Iterator<Personnage> iterator = personnages.iterator();
+    }
+
+    private void collisionPrincesse(Joueur joueur) {
+        //GAGNER PARTIE SI COLLISTION
+
+        Iterator<Personnage> iterator = personnages.iterator();
 
         while (iterator.hasNext()) {
             Personnage personnage = iterator.next();
@@ -254,14 +253,14 @@ public class Piece {
                 Princesse princesse = (Princesse) personnage;
                 //COllition avec le cuisinier
                 if (princesse.getHitBox().intersects(joueur.getHitBox())) {
-                    confirmationGagnerJeu=true;
+                    confirmationGagnerJeu = true;
                 }
 
             }
         }
-    	
+
     }
-	
+
     private void collisionMedecin(Joueur joueur) {
         Iterator<Personnage> iterator = personnages.iterator();
 
@@ -311,9 +310,8 @@ public class Piece {
         }
 
     }
-    
-    private void collisionMonstre(Joueur joueur)
-    {
+
+    private void collisionMonstre(Joueur joueur) {
 
         Iterator<Personnage> iterator = personnages.iterator();
 
@@ -323,71 +321,85 @@ public class Piece {
                 Monstre monstre = (Monstre) personnage;
                 //COllition avec le magicien
                 if (monstre.getHitBox().intersects(joueur.getHitBox())) {
-                	//monstre.setX((int) (monstre.getX()-joueur.getHitBox().getWidth()));
-                	//	monstre.setY((int) (monstre.getY()-joueur.getHitBox().getHeight()));
-                	//monstre.setX(monstre.getX()-joueur.getHEIGHT());
-                	//monstre.setY(monstre.getY()-joueur.getWIDHT());
-                	//System.out.println("entre fonction");
-                	if(joueur.getForce()>0) {
-                		//System.out.println("entre force");
-                	joueur.setForce(joueur.getForce()-1);
-                	}
-                	if(joueur.getArmure()>0) {
-                		//System.out.println("entre armure");
-                		joueur.setArmure(joueur.getArmure()-1);
-                	}else joueur.setPdv(joueur.getPdv()-1);
-                	/*if(monstre.getForce()>0 && monstre.getPdv()>0)
-                	{
-                		//monstre.setPdv(monstre.getPdv()-1);
-                		monstre.setForce(monstre.getForce()-1);
-                		if(joueur.getForce()>0) {
-                    		//System.out.println("entre force");
-                    	joueur.setForce(joueur.getForce()-1);
-                    	}
-                    	if(joueur.getArmure()>0) {
-                    		//System.out.println("entre armure");
-                    		joueur.setArmure(joueur.getArmure()-1);
-                    	}else joueur.setPdv(joueur.getPdv()-1);
-                    	
-                    
-                	}
-                	
-                	if(monstre.getPdv()==0)
-                	{
-                		monstreFin(monstre);
-                	}
-                	System.out.println("forcemosntre"+monstre.getForce());
-            		System.out.println("viemonstre"+monstre.getPdv());
-                	System.out.println("perso vie"+joueur.getPdv());*/
-                	
-                	
-                	
+                    //monstre.setX((int) (monstre.getX()-joueur.getHitBox().getWidth()));
+                    //	monstre.setY((int) (monstre.getY()-joueur.getHitBox().getHeight()));
+                    //monstre.setX(monstre.getX()-joueur.getHEIGHT());
+                    //monstre.setY(monstre.getY()-joueur.getWIDHT());
+                    //System.out.println("entre fonction");
+                    /*if (joueur.getForce() > 0) {
+                        //System.out.println("entre force");
+                        joueur.setForce(joueur.getForce() - 1);
+                    }
+                    if (joueur.getArmure() > 0) {
+                        //System.out.println("entre armure");
+                        joueur.setArmure(joueur.getArmure() - 1);
+                    } else {
+                        joueur.setPdv(joueur.getPdv() - 1);
+                    }*/
+                    if (monstre.getForce() > 0 && monstre.getPdv() > 0) {
+                        //monstre.setPdv(monstre.getPdv()-1);
+                        monstre.setForce(monstre.getForce() - 1);
+                        if (joueur.getForce() > 0) {
+                            //System.out.println("entre force");
+                            joueur.setForce(joueur.getForce() - 5);
+                        }
+                        if (joueur.getArmure() > 0) {
+                            //System.out.println("entre armure");
+                            joueur.setArmure(joueur.getArmure() - 2);
+                        } else {
+                            joueur.setPdv(joueur.getPdv() - monstre.getForce());
+                        }
+
+                    }
+
+                    if (monstre.getPdv() == 0) {
+                        //monstreFin(monstre);
+                    }
+
+                    System.out.println("forcemosntre" + monstre.getForce());
+                    System.out.println("viemonstre" + monstre.getPdv());
+                    System.out.println("perso vie" + joueur.getPdv());
+
+                    if (joueur.getY() > monstre.getX()) {
+                        monstre.setX(monstre.getX() - 20);
+                    }
+
+                    if (joueur.getY() > monstre.getY()) {
+                        monstre.setY(monstre.getY() - 20);
+                    }
+
+                    if (joueur.getY() < monstre.getX()) {
+                        monstre.setX(monstre.getX() + 20);
+                    }
+
+                    if (joueur.getY() < monstre.getY()) {
+                        monstre.setY(monstre.getY() + 20);
+                    }
+
                 }
-                
+
                 //System.out.println(joueur.getPdv());
                 //System.out.println(joueur.getArmure());
                 //System.out.println(joueur.getForce());
-                fenetreObjets.getProgbarArmure().getProgressBar().setValue(joueur.getArmure());
+                fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
                 fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
                 fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
 
-        //System.out.println(joueur.getPdv());
-
+                //System.out.println(joueur.getPdv());
             }
         }
-    	
+
     }
 
     /**
-	 * finmonstre joueur a tuer monstre
-	 
-	private void monstreFin(Monstre monstre) {
-		// TODO Auto-generated method stub
-		monstre.setX(1);
-		monstre.setY(1);
-		
-	}*/
-	private void collisionPortes(Joueur joueur) {
+     * finmonstre joueur a tuer monstre
+     *
+     * private void monstreFin(Monstre monstre) { // TODO Auto-generated method
+     * stub monstre.setX(1); monstre.setY(1);
+     *
+     * }
+     */
+    private void collisionPortes(Joueur joueur) {
         for (int i = 0; i < porte.length; i++) {
             if (isNord()) {
                 //System.out.println("collision non");

@@ -14,13 +14,17 @@ import javax.swing.JTextField;
  * @author Low_Deep
  */
 public class fenetreObjets extends JFrame{
-	public static progressBar progbarVie= new progressBar();
-	public static progressBar progbarForce= new progressBar();
-	public static progressBar progbarArmure=new progressBar();
+	public static progressBar progbarVie;
+	public static progressBar progbarForce;
+	public static progressBar progbarArmure;
 	
 	//constructeur fenetreObjet
 	public fenetreObjets()
 	{
+            progbarVie= new progressBar();
+            progbarForce= new progressBar();
+            progbarArmure=new progressBar();
+            
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		setTitle("Objets");
@@ -29,9 +33,9 @@ public class fenetreObjets extends JFrame{
 		setBounds(250,210,300,600);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);//quand on ferme la fenetre ca termine l'application
 		
-		this.progbarVie.infosJoueur("vie");//recup vie puis la mettre dans la progressBar
-		this.progbarForce.infosJoueur("force");//same pour force
-		this.progbarArmure.infosJoueur("armure");//same pour armure
+		//this.progbarVie.infosJoueur("vie");//recup vie puis la mettre dans la progressBar
+		//this.progbarForce.infosJoueur("force");//same pour force
+		//this.progbarArmure.infosJoueur("armure");//same pour armure
 		progbarVie.setBounds(114, 16, 146, 33);
 		progbarForce.setBounds(114, 65, 146, 33);
 		progbarArmure.setBounds(114, 40, 146, 33);
