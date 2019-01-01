@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
  * @author Alex Molinares
  */
 public class Clavier  implements KeyListener{
-    private final static int numTouches = 120;
+    private final static int numTouches =300;
     private static final boolean[] touches = new boolean[numTouches];
     
     public static boolean up, down, left, right;

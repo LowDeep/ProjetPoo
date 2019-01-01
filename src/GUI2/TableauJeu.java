@@ -85,7 +85,7 @@ public class TableauJeu extends JPanel {
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
-        Princesse princesse = new Princesse(400,500);
+        Princesse princesse = new Princesse(200,200);
         
         joueur.setPdv(joueur.getPdv()+10);
         
