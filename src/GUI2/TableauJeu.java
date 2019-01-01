@@ -10,27 +10,23 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import GUI.Clavier;
-import codeJeu.ConstantesDeJeu;
 import codeJeu.Cuisinier;
 import codeJeu.Joueur;
-import codeJeu.Magicien;
 import codeJeu.Medecin;
 import codeJeu.Monstre;
 import codeJeu.Personnage;
-
 import codeJeu.Piece;
-import codeJeu.Porte;
-import java.util.ArrayList;
-import java.util.List;
+import codeJeu.Princesse;
 
 /**
  *
@@ -86,15 +82,20 @@ public class TableauJeu extends JPanel {
         
         //creation de pieces
         Joueur joueur = new Joueur(790 / 2, 600 / 2);
-        Monstre monstreGhost = new Monstre(100, 100, 50, 20, 1);
+        Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
+        Princesse princesse = new Princesse(400,500);
+        
+        joueur.setPdv(joueur.getPdv()+10);
         
         List<Personnage> personnages = new ArrayList<Personnage>();
         personnages.add(joueur);
         personnages.add(monstreGhost);
         personnages.add(cuisinier);
         personnages.add(medecin);
+        personnages.add(princesse);
+       // personnages.add(arg0)
         piece = new Piece(true, true, true, true, true, personnages);
         /*
         enemi = new Enemi(0, 0);
@@ -201,13 +202,18 @@ public class TableauJeu extends JPanel {
 
         confirmations();
         */
+        if(Piece.confirmationGagnerJeu)
+        	endWinGame();
+        if(Piece.confirmationPerteJeu)
+        	endFailureGame();
+        	
     }
 
     /**
      * methode fin jeu consiste a afficher un message de fin du jeu avec bouton
      * pour recommencer
      */
-    public void endGame() {
+    public void endFailureGame() {
 
         Fenetre.thread.stop();
 
@@ -227,6 +233,39 @@ public class TableauJeu extends JPanel {
         int i = 0;
         //System.out.println(i);
         jop1.showOptionDialog(this, "Vous avez perdu! ", "LOOOOOSER !", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+        i = JOptionPane.DEFAULT_OPTION;
+        //actionPerformed(jop1);
+        //System.out.println(i);
+        if (i != 0) {
+
+            //setVisible(false);
+            //FenetreDepar fenetreDep = new FenetreDepar();
+            //fenetreDep.setVisible(true);
+            //fenetreDep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            System.exit(0);
+
+        }
+    }
+    public void endWinGame() {
+
+        Fenetre.thread.stop();
+
+        // TODO Auto-generated method stub
+        /*try {
+			Fenetre.thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+        JOptionPane jop1;
+        String choices[] = {"BRAVO!!"};
+        jop1 = new JOptionPane();
+        /*jop1.showConfirmDialog(null, "Vous avez perdu!", "LOOOSER:)", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE);*/
+        int i = 0;
+        //System.out.println(i);
+        jop1.showOptionDialog(this, "Vous avez gagner! Cliquez sur le bouton pour fermer le jeu :) ", "WIIIIIIINNER !", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
         i = JOptionPane.DEFAULT_OPTION;
         //actionPerformed(jop1);
         //System.out.println(i);
@@ -361,7 +400,7 @@ public class TableauJeu extends JPanel {
         collisionPassageSecretFirst(joueur);
         collisionPassageSecretSecond(joueur);
         if (joueur.getPdv() == 0) {
-            endGame();
+            endFailureGame();
         }
     }*/
 }

@@ -68,6 +68,10 @@ public class Texture {
     private BufferedImage passageSecretSecond_sheet = null;
     public BufferedImage[] passageSecretSecond = new BufferedImage[1];
     
+    SpriteSheet princesseSpriteSheet;
+    private BufferedImage princesse_sheet = null;
+    public BufferedImage[] princesse = new BufferedImage[1];
+    
     
     
     
@@ -90,6 +94,7 @@ public class Texture {
         monstreMinotaure_sheet = loader.loadImage("/monstre4.png");
         passageSecretFirst_sheet = loader.loadImage("/passageSecret1.png");
         passageSecretSecond_sheet = loader.loadImage("/passageSecret1.png");
+        princesse_sheet = loader.loadImage("/princesse.png");
         
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
@@ -107,6 +112,8 @@ public class Texture {
         
         passageSecretFirstSpriteSheet = new SpriteSheet(passageSecretFirst_sheet);
         passageSecretSecondSpriteSheet = new SpriteSheet(passageSecretSecond_sheet);
+        
+        princesseSpriteSheet = new SpriteSheet(princesse_sheet);
 
         
         getPersonnage();
@@ -127,10 +134,22 @@ public class Texture {
         getPassageSecretFirst();
         getPassageSecretSecond();
         
+        getPrincesse();
+        
         }
 
         
    
+	/**
+	 * 
+	 */
+	private void getPrincesse() {
+		// TODO Auto-generated method stub
+		princesse[0] = princesseSpriteSheet.grabImage(1,1,33, 47);
+	}
+
+
+
 	/**
 	 * 
 	 */
