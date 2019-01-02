@@ -71,7 +71,7 @@ public class Map {
 
             for (int j = 0; j < mapa[i].length; j++) {
                 if (!(i == 3 && j == 4)){
-                    System.out.println(i);
+                    //System.out.println(i);
                     g2.setColor(new Color(0, 0, 0, 100));
 
                     g2.fill(mapa[i][j]);

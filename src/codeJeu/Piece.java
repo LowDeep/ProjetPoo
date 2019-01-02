@@ -142,6 +142,8 @@ public class Piece {
         joueur.PlayerAnimationUp.runAnimation();
         joueur.PlayerAnimationLeft.runAnimation();
         joueur.PlayerAnimationRight.runAnimation();*/
+        //Dessinner COmposants
+
         Iterator<Personnage> iterator = personnages.iterator();
 
         while (iterator.hasNext()) {
@@ -182,6 +184,9 @@ public class Piece {
         }
 
         dessinerPortes(g);
+        fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
+        fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+        fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
 
     }
 
@@ -264,13 +269,14 @@ public class Piece {
 
     private void collisionMedecin(Joueur joueur) {
         Iterator<Personnage> iterator = personnages.iterator();
-
         while (iterator.hasNext()) {
             Personnage personnage = iterator.next();
             if (personnage.getClass().getName().equals("codeJeu.Medecin")) {
                 Medecin medecin = (Medecin) personnage;
                 //COllition avec le magicien
                 if (medecin.getHitBox().intersects(joueur.getHitBox())) {
+                    System.out.println("Collition medecin");
+
                     joueur.setPdv(ConstantesDeJeu.PDVMAX);
                 }
 
@@ -339,12 +345,18 @@ public class Piece {
                     }*/
                     if (monstre.getForce() > 0 && monstre.getPdv() > 0) {
                         //monstre.setPdv(monstre.getPdv()-1);
+                        System.out.println("Vies monstres : " + monstre.getPdv());
                         monstre.setForce(monstre.getForce() - 1);
-                        monstre.setPdv(monstre.getPdv() - 1);;
                         if (joueur.getForce() > 0) {
                             //System.out.println("entre force");
                             joueur.setForce(joueur.getForce() - 5);
+                        } else {
+                            monstre.setPdv(monstre.getPdv() - 1);
                         }
+                        
+                        System.out.println("Vies monstres apres collition: " + monstre.getPdv());
+
+                        
                         if (joueur.getArmure() > 0) {
                             //System.out.println("entre armure");
                             joueur.setArmure(joueur.getArmure() - 10);
@@ -354,7 +366,7 @@ public class Piece {
 
                     }
 
-                    if (monstre.getPdv() == 0) {
+                    if (monstre.getPdv() == 0 || monstre.getForce() == 0) {
                         monstreFin(monstre);
                     }
 
