@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 /**
  * @author Low_Deep
@@ -27,10 +28,10 @@ public class fenetreObjets extends JFrame{
             
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
-		setTitle("Objets");
+		setTitle("Stats");
 		setVisible(true);
 		setResizable(false);
-		setBounds(250,210,300,600);
+		setBounds(250,210,316,250);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);//quand on ferme la fenetre ca termine l'application
 		
 		//this.progbarVie.infosJoueur("vie");//recup vie puis la mettre dans la progressBar
@@ -84,6 +85,25 @@ public class fenetreObjets extends JFrame{
 		lblVie.setBackground(Color.WHITE);
 		lblVie.setBounds(10, 10, 54, 29);
 		getContentPane().add(lblVie);
+		
+		JLabel lblTrouvezLaPrincesse = new JLabel("Sauvez la Princesse et vous obtiendrez");
+		lblTrouvezLaPrincesse.setFont(new Font("Tempus Sans ITC", Font.PLAIN, 18));
+		lblTrouvezLaPrincesse.setBackground(Color.WHITE);
+		lblTrouvezLaPrincesse.setBounds(10, 114, 317, 33);
+		getContentPane().add(lblTrouvezLaPrincesse);
+		
+		JLabel label = new JLabel("...");
+		label.setFont(new Font("Snap ITC", Font.PLAIN, 22));
+		label.setBackground(Color.WHITE);
+		label.setBounds(131, 138, 40, 33);
+		getContentPane().add(label);
+		
+		JLabel lblLaGloire = new JLabel("la GLOIRE !");
+		lblLaGloire.setForeground(Color.RED);
+		lblLaGloire.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
+		lblLaGloire.setBackground(Color.WHITE);
+		lblLaGloire.setBounds(94, 174, 124, 20);
+		getContentPane().add(lblLaGloire);
 
 		
 		
@@ -105,8 +125,4 @@ public class fenetreObjets extends JFrame{
 	public static progressBar getProgbarArmure() {
 		return progbarArmure;
 	}
-
-	
-	
-	
 }
