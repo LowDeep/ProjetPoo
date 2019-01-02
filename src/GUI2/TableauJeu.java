@@ -156,7 +156,7 @@ public class TableauJeu extends JPanel {
         //personnages.add(princesse);
         //personnages.add(arg0)
         //piece = new Piece(true, true, true, true, true, personnages);
-        
+
         List<Personnage> JoueurMedecinCuisinierMagicien = new ArrayList<Personnage>();
         JoueurMedecinCuisinierMagicien.add(joueur);
         JoueurMedecinCuisinierMagicien.add(medecin);

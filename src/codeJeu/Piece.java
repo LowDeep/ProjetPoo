@@ -304,7 +304,7 @@ public class Piece {
                 Magicien magicien = (Magicien) personnage;
                 //COllition avec le magicien
                 if (magicien.getHitBox().intersects(joueur.getHitBox())) {
-                    magicien.recuperationDoom(joueur);
+                    magicien.recuperationArmure(joueur);
                 }
 
             }
@@ -347,7 +347,7 @@ public class Piece {
                         }
                         if (joueur.getArmure() > 0) {
                             //System.out.println("entre armure");
-                            joueur.setArmure(joueur.getArmure() - 2);
+                            joueur.setArmure(joueur.getArmure() - 10);
                         } else {
                             joueur.setPdv(joueur.getPdv() - monstre.getForce());
                         }

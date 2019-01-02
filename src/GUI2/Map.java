@@ -70,13 +70,18 @@ public class Map {
         for (int i = 0; i < mapa.length; i++) {
 
             for (int j = 0; j < mapa[i].length; j++) {
-                g2.setColor(new Color(0, 0, 0, 100));
-                g2.fill(mapa[i][j]);
+                if (!(i == 3 && j == 4)){
+                    System.out.println(i);
+                    g2.setColor(new Color(0, 0, 0, 100));
+
+                    g2.fill(mapa[i][j]);
+
+                }
             }
         }
     }
-    
-    public void changerCouleurPiece(Graphics2D g2, int x, int y ){
+
+    public void changerCouleurPiece(Graphics2D g2, int x, int y) {
         g2.setColor(Color.black);
         g2.fill(mapa[x][y]);
     }

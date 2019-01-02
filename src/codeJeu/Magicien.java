@@ -34,6 +34,10 @@ public class Magicien extends Personnage {
                 donnerDoom=false;
         }
     }
+    
+    public void recuperationArmure(Joueur joueur){
+        joueur.setArmure(ConstantesDeJeu.ARMUREMAX);
+    }
 
     public Rectangle2D getHitBox() {
         return new Rectangle2D.Double(getX(), getY(), WIDHT, HEIGHT);
