@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.security.auth.callback.ConfirmationCallback;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -69,6 +68,24 @@ public class TableauJeu extends JPanel {
     //Creation de 2 pieces
     static Piece piece1;
     static Piece piece2;
+    static Piece piece3;
+    static Piece piece4;
+    static Piece piece5;
+    static Piece piece6;
+    static Piece piece7;
+    static Piece piece8;
+    static Piece piece9;
+    static Piece piece10;
+    static Piece piece11;
+    static Piece piece12;
+    static Piece piece13;
+    static Piece piece14;
+    static Piece piece15;
+    static Piece piece16;
+    static Piece piece17;
+    static Piece piece18;
+    static Piece piece19;
+    static Piece piece20Final;
 
     //Creation des pieces pour dessiner la piece selon la piece qui contient le personnage
     static int piecesY = 4, piecesX = 5;
@@ -79,9 +96,10 @@ public class TableauJeu extends JPanel {
 
     static Piece[][] pieces = new Piece[piecesY][piecesX];
     
-    static Piece pieceFinale;
+
     
     static Map map = new Map();
+
 
     TableauJeu() {
 
@@ -99,19 +117,24 @@ public class TableauJeu extends JPanel {
 
         //creation de pieces
         Joueur joueur = new Joueur(790 / 2, 600 / 2);
+
+        Monstre monstreGhost1 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost2 = new Monstre(400, 400, 5, 5, 1);
+
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Monstre monstreMinotaure = new Monstre(100, 100, 5, 5, 2);
+
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
-        Monstre monstreDEUX = new Monstre(300, 300, 10, 10, 0);
+        Monstre monstreMinotor = new Monstre(300, 300, 10, 10, 0);
+        Magicien magicien = new Magicien(300,300);
+        Princesse princesse = new Princesse(200, 200);
         
 
-        Princesse princesse = new Princesse(200, 200);
-
         //joueur.setPdv(joueur.getPdv()+10);
-        List<Personnage> personnagesP1 = new ArrayList<Personnage>();
-        personnagesP1.add(joueur);
-        personnagesP1.add( monstreMinotaure);
+
+       
+
         //personnages.add(monstreGhost);
         //personnages.add(cuisinier);
         //personnages.add(medecin);
@@ -119,17 +142,134 @@ public class TableauJeu extends JPanel {
         //personnages.add(arg0)
         //piece = new Piece(true, true, true, true, true, personnages);
 
-        List<Personnage> personnagesP2 = new ArrayList<Personnage>();
-        personnagesP2.add(joueur);
-        personnagesP2.add(monstreGhost);
-        personnagesP2.add(monstreDEUX);
-        personnagesP2.add(new Magicien(300, 300));
+        List<Personnage> JoueurMedecinCuisinierMagicien = new ArrayList<Personnage>();
+        JoueurMedecinCuisinierMagicien.add(joueur);
+        JoueurMedecinCuisinierMagicien.add(medecin);
+        JoueurMedecinCuisinierMagicien.add(cuisinier);
+        JoueurMedecinCuisinierMagicien.add(magicien);
+        
+        
+        List<Personnage> JoueurMedecinCuisinier = new ArrayList<Personnage>();
+        JoueurMedecinCuisinier.add(joueur);
+        JoueurMedecinCuisinier.add(medecin);
+        JoueurMedecinCuisinier.add(cuisinier);
 
-        piece1 = new Piece(false, false, true, false, false, personnagesP1);
-        piece2 = new Piece(false, false, false, true, false, personnagesP2);
-
+        List<Personnage> JoueurDoubleGhost = new ArrayList<Personnage>();
+        JoueurDoubleGhost.add(joueur);
+        JoueurDoubleGhost.add(monstreGhost1);
+        JoueurDoubleGhost.add(monstreGhost2);
+        
+        List<Personnage> JoueurGhostPos1 = new ArrayList<Personnage>();
+        JoueurGhostPos1.add(joueur);
+        JoueurGhostPos1.add(monstreGhost2);
+        
+        List<Personnage> JoueurGhostPos2 = new ArrayList<Personnage>();
+        JoueurGhostPos2.add(joueur);
+        JoueurGhostPos2.add(monstreGhost1);
+        
+        List<Personnage> JoueurGhostPos2Cuisinier = new ArrayList<Personnage>();
+        JoueurGhostPos2Cuisinier.add(joueur);
+        JoueurGhostPos2Cuisinier.add(monstreGhost2);
+        JoueurGhostPos2Cuisinier.add(cuisinier);
+        
+        List<Personnage> JoueurGhostPos2Medecin = new ArrayList<Personnage>();
+        JoueurGhostPos2Medecin.add(joueur);
+        JoueurGhostPos2Medecin.add(monstreGhost2);
+        JoueurGhostPos2Medecin.add(medecin);
+        
+        List<Personnage> JoueurDoubleGhostMagicien = new ArrayList<Personnage>();
+        JoueurDoubleGhostMagicien.add(joueur);
+        JoueurDoubleGhostMagicien.add(monstreGhost2);
+        JoueurDoubleGhostMagicien.add(monstreGhost1);
+        JoueurDoubleGhostMagicien.add(magicien);
+        
+        List<Personnage> JoueurDoubleGhostPassageSecret = new ArrayList<Personnage>();
+        JoueurDoubleGhostPassageSecret.add(joueur);
+        JoueurDoubleGhostPassageSecret.add(monstreGhost2);
+        JoueurDoubleGhostPassageSecret.add(monstreGhost1);
+        JoueurDoubleGhostPassageSecret.add(magicien);
+        
+        /*
+        List<Personnage> personnagesP6= new ArrayList<Personnage>();
+        personnagesP6.add(joueur);
+        personnagesP6.add(monstreGhost1);
+        personnagesP6.add(monstreGhost2);
+        
+        List<Personnage> personnagesP7 = new ArrayList<Personnage>();
+        personnagesP7.add(joueur);
+        personnagesP7.add(monstreGhost1);
+        personnagesP7.add(monstreGhost2);
+        
+        List<Personnage> personnagesP8 = new ArrayList<Personnage>();
+        personnagesP8.add(joueur);
+        personnagesP8.add(monstreGhost1);
+        personnagesP8.add(monstreGhost2);
+        
+        List<Personnage> personnagesP9 = new ArrayList<Personnage>();
+        personnagesP9.add(joueur);
+        personnagesP9.add(monstreGhost1);
+        personnagesP9.add(monstreGhost2);
+        
+        List<Personnage> personnagesP10 = new ArrayList<Personnage>();
+        personnagesP10.add(joueur);
+        personnagesP10.add(monstreGhost1);
+        personnagesP10.add(monstreGhost2);
+		*/
+        
+        
+        
+        
+        //premiere ligne
+        piece1 = new Piece(false, true, true, false, false, JoueurMedecinCuisinier);
+        piece2 = new Piece(false, true, true, true, false, JoueurDoubleGhost);
+        piece3 = new Piece(false,true,true,true,false,JoueurGhostPos1);
+        piece4 = new Piece(false,true,true,true,false,JoueurGhostPos2);
+        piece5 = new Piece(false,true,false,true,false,JoueurDoubleGhostPassageSecret);
+        //duexieme ligne
+        piece6 = new Piece(true,true,true,false,false,JoueurDoubleGhost);
+        piece7 = new Piece(true,true,true,true,false,JoueurDoubleGhost);
+        piece8 = new Piece(true,true,true,true,false,JoueurDoubleGhost);
+        piece9 = new Piece(true,true,true,true,false,JoueurDoubleGhost);
+        piece10 = new Piece(true,true,false,true,false,JoueurDoubleGhost);
+        //troisieme ligne
+        piece11 = new Piece(true,true,true,false,false,JoueurMedecinCuisinier);
+        piece12= new Piece(true,true,true,true,false,JoueurGhostPos2);
+        piece13 = new Piece(true,true,true,true,false,JoueurGhostPos2Cuisinier);
+        piece14 = new Piece(true,true,true,true,false,JoueurGhostPos1);
+        piece15 = new Piece(true,false,false,true,false,JoueurDoubleGhost);
+        //quatrieme ligne
+        piece16 = new Piece(true,true,true,false,false,JoueurDoubleGhostPassageSecret);
+        piece17= new Piece(true,true,true,true,false,JoueurGhostPos2);
+        piece18 = new Piece(true,true,true,true,false,JoueurGhostPos2Cuisinier);
+        piece19 = new Piece(true,true,false,true,false,JoueurGhostPos1);
+        piece20Final = new Piece(true,true,false,true,false,JoueurDoubleGhost);
+        
+       
+        //premiere ligne	
         pieces[0][0] = piece1;
         pieces[0][1] = piece2;
+        pieces[0][2] = piece3;
+        pieces[0][3] = piece4;
+        pieces[0][4] = piece5;
+        //deuxieme ligne
+        pieces[1][0] = piece6;
+        pieces[1][1] = piece7;
+        pieces[1][2] = piece8;
+        pieces[1][3] = piece9;
+        pieces[1][4] = piece10;
+        //troisieme ligne
+        pieces[2][0] = piece11;
+        pieces[2][1] = piece12;
+        pieces[2][2] = piece13;
+        pieces[2][3] = piece14;
+        pieces[2][4] = piece15;
+        //quatrieme ligne
+        pieces[3][0] = piece16;
+        pieces[3][1] = piece17;
+        pieces[3][2] = piece18;
+        pieces[3][3] = piece19;
+        pieces[3][4] = piece20Final;
+        
 
         //Initialiser le personnage dans la piece en haute et bas
         /*
