@@ -39,6 +39,9 @@ public class Piece {
     //Creation de joueur pour pouvoir instances les deplacements des monstres selon le joueur
     private Joueur joueur;
 
+    //variables pour les passages secrets
+    static int passage = 0;
+
     public Piece(boolean nord, boolean sud, boolean est, boolean ouest, boolean passageSecret,
             List<Personnage> personnage) {
         super();
@@ -143,7 +146,6 @@ public class Piece {
         joueur.PlayerAnimationLeft.runAnimation();
         joueur.PlayerAnimationRight.runAnimation();*/
         //Dessinner COmposants
-
         Iterator<Personnage> iterator = personnages.iterator();
 
         while (iterator.hasNext()) {
@@ -184,6 +186,7 @@ public class Piece {
         }
 
         dessinerPortes(g);
+        dessinerPassagesSecrets(g);
         fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
         fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
         fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
@@ -278,6 +281,8 @@ public class Piece {
                     System.out.println("Collition medecin");
 
                     joueur.setPdv(ConstantesDeJeu.PDVMAX);
+                    fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+
                 }
 
             }
@@ -294,6 +299,8 @@ public class Piece {
                 //COllition avec le cuisinier
                 if (cuisinier.getHitBox().intersects(joueur.getHitBox())) {
                     joueur.setForce(ConstantesDeJeu.FORCEMAX);
+                    fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
+
                 }
 
             }
@@ -311,6 +318,8 @@ public class Piece {
                 //COllition avec le magicien
                 if (magicien.getHitBox().intersects(joueur.getHitBox())) {
                     magicien.recuperationArmure(joueur);
+                    fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
+
                 }
 
             }
@@ -353,10 +362,9 @@ public class Piece {
                         } else {
                             monstre.setPdv(monstre.getPdv() - 1);
                         }
-                        
+
                         System.out.println("Vies monstres apres collition: " + monstre.getPdv());
 
-                        
                         if (joueur.getArmure() > 0) {
                             //System.out.println("entre armure");
                             joueur.setArmure(joueur.getArmure() - 10);
@@ -498,6 +506,18 @@ public class Piece {
                 Monstre monstre = (Monstre) personnage;
                 monstre.setX(monstre.posInitialX);
                 monstre.setY(monstre.posInitialY);
+            }
+        }
+    }
+
+    private void dessinerPassagesSecrets(Graphics2D g) {
+        if (passageSecret) {
+            if (passage == 0) {
+                dessinerFirst(g);
+                g.fill(getHitBoxFirst());
+            }else{
+                dessinerSecond(g);
+                g.fill(getHitBoxSecond());
             }
         }
     }
