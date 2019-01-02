@@ -315,10 +315,10 @@ public class TableauJeu extends JPanel {
         piece15 = new Piece(true,false,false,true,false,JoueurDoubleMinoDoubleGhost);
         //quatrieme ligne
         piece16 = new Piece(true,false,true,false,false,JoueurDoubleGhostPassageSecret);
-        piece17= new Piece(true,false,true,true,false,JoueurCuisinier);
+        piece17= new Piece(true,false,true,true,true,JoueurCuisinier);
         piece18 = new Piece(true,false,true,true,false,JoueurGhostPos2Medecin);
         piece19 = new Piece(true,false,false,true,false,JoueurMagicien);
-        piece20Final = new Piece(false,false,false,false,false,JoueurDoubleGhostMinautore);
+        piece20Final = new Piece(false,false,false,false,true,JoueurDoubleGhostMinautore);
         
        
         //premiere ligne	

@@ -23,13 +23,24 @@ public class Piece {
     private Porte[] porte;
 
     private boolean passageSecret;
+    
+    private int xFirst = -200;
+    private int yFirst = -200;
 
-    private final int xFirst = 30;
-    private final int yFirst = 40;
+    private int xSecond = -200;
+    private int ySecond = -200;
+
+    
+    /*
+    
+    private int xFirst = 30;
+    private int yFirst = 40;
 
     private final int xSecond = 630;
     private final int ySecond = 410;
 
+    */
+    
     private final String passageSecretRoute = "/passageSecret1.png";
     private final int HEIGHT = 118, WIDHT = 87;
     Texture texture = TableauJeu.getInstance();
@@ -41,6 +52,8 @@ public class Piece {
 
     //variables pour les passages secrets
     static int passage = 0;
+    boolean passageHaute = false;
+    boolean passageBas = false;
 
     public Piece(boolean nord, boolean sud, boolean est, boolean ouest, boolean passageSecret,
             List<Personnage> personnage) {
@@ -52,6 +65,16 @@ public class Piece {
         this.porte = new Porte[4];
         this.passageSecret = passageSecret;
         this.personnages = personnage;
+
+        if (passageSecret) {
+            passage++;
+            if (passage == 1) {
+                passageHaute = true;
+            } else if (passage == 2) {
+                passageBas = true;
+            }
+
+        }
     }
     //savoir si il y'a un passage secret 
 
@@ -246,6 +269,9 @@ public class Piece {
         collisionPortes(joueur);
         collisionPrincesse(joueur);
         collisionMonstre(joueur);
+        collisionPassageSecretFirst(joueur);
+        collisionPassageSecretSecond(joueur);
+        
         if (joueur.getPdv() == 0) {
             confirmationPerteJeu = true;
         }
@@ -352,19 +378,22 @@ public class Piece {
                     } else {
                         joueur.setPdv(joueur.getPdv() - 1);
                     }*/
-                    if (monstre.getForce() > 0 && monstre.getPdv() > 0) {
+
+                    if (monstre.getForce() >= 0 && monstre.getPdv() > 0) {
                         //monstre.setPdv(monstre.getPdv()-1);
-                        System.out.println("Vies monstres : " + monstre.getPdv());
+                        //System.out.println("Vies monstres : " + monstre.getPdv());
+                        System.out.println("FORCE MONSTRE : " + monstre.getForce());
                         monstre.setForce(monstre.getForce() - 1);
+                        if (monstre.getForce() == 0) {
+                            monstre.setForce(1);
+                        }
                         if (joueur.getForce() > 0) {
                             //System.out.println("entre force");
                             joueur.setForce(joueur.getForce() - 5);
-                        } else {
                             monstre.setPdv(monstre.getPdv() - 1);
                         }
 
-                        System.out.println("Vies monstres apres collition: " + monstre.getPdv());
-
+                        //System.out.println("Vies monstres apres collition: " + monstre.getPdv());
                         if (joueur.getArmure() > 0) {
                             //System.out.println("entre armure");
                             joueur.setArmure(joueur.getArmure() - 10);
@@ -374,7 +403,7 @@ public class Piece {
 
                     }
 
-                    if (monstre.getPdv() == 0 || monstre.getForce() == 0) {
+                    if (monstre.getPdv() == 0) {
                         monstreFin(monstre);
                     }
 
@@ -438,7 +467,7 @@ public class Piece {
                     joueur.setX(345);
                     joueur.setY(435);
                     //System.out.println("collision ok");
-                    mettrePersonnagesDansPositionInitiale();
+                    mettreMonstresDansPositionInitiale();
 
                 }
             }
@@ -450,7 +479,7 @@ public class Piece {
                     joueur.setX(350);
                     joueur.setY(65);
                     //System.out.println("collision ok");
-                    mettrePersonnagesDansPositionInitiale();
+                    mettreMonstresDansPositionInitiale();
 
                 }
             }
@@ -461,7 +490,7 @@ public class Piece {
                     joueur.setX(66);
                     joueur.setY(250);
                     //System.out.println("collision ok");
-                    mettrePersonnagesDansPositionInitiale();
+                    mettreMonstresDansPositionInitiale();
 
                 }
 
@@ -473,7 +502,7 @@ public class Piece {
                     joueur.setX(650);
                     joueur.setY(250);
                     //System.out.println("collision ok");
-                    mettrePersonnagesDansPositionInitiale();
+                    mettreMonstresDansPositionInitiale();
 
                 }
             }
@@ -497,9 +526,8 @@ public class Piece {
         g.drawImage(texture.passageSecretSecond[0], xSecond, ySecond, null);
     }
 
-    private void mettrePersonnagesDansPositionInitiale() {
+    private void mettreMonstresDansPositionInitiale() {
         Iterator<Personnage> iterator = personnages.iterator();
-
         while (iterator.hasNext()) {
             Personnage personnage = iterator.next();
             if (personnage.getClass().getName().equals("codeJeu.Monstre")) {
@@ -511,15 +539,59 @@ public class Piece {
     }
 
     private void dessinerPassagesSecrets(Graphics2D g) {
-        if (passageSecret) {
-            if (passage == 0) {
-                dessinerFirst(g);
-                g.fill(getHitBoxFirst());
-            }else{
-                dessinerSecond(g);
-                g.fill(getHitBoxSecond());
-            }
+
+        //System.out.println("Passage " + passage);
+         if(!(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 4)
+                || !(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 1)){
+            xFirst = -200;
+            yFirst = -200;         
+            xSecond = -200;
+            ySecond = -200;    
+            
+        }
+         
+        if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 1){
+            
+            xFirst = 30;
+            yFirst = 40;            
+            
+            dessinerFirst(g);
+            g.fill(getHitBoxFirst());
+        } else if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 4) {
+            xSecond = 635;
+            ySecond = 425;            
+            dessinerSecond(g);
+            g.fill(getHitBoxSecond());
+        }
+        
+       
+
+    }
+
+    public void collisionPassageSecretFirst(Joueur joueur) {
+        if (getHitBoxFirst().intersects(joueur.getHitBox())) {
+            TableauJeu.positionPiecePersonnageX = 3;
+            TableauJeu.positionPiecePersonnageY = 4;
+            joueur.setX(345);
+            joueur.setY(435);
+            //System.out.println("collision ok");
+            mettreMonstresDansPositionInitiale();
+
+//    		joueur.setX(595);
+            //  		joueur.setY(410);
         }
     }
 
+    public void collisionPassageSecretSecond(Joueur joueur) {
+        if (getHitBoxSecond().intersects(joueur.getHitBox())) {
+
+            TableauJeu.positionPiecePersonnageX = 3;
+            TableauJeu.positionPiecePersonnageY = 1;
+            mettreMonstresDansPositionInitiale();
+            joueur.setX(60);
+            joueur.setY(120);
+
+
+        }
+    }
 }
