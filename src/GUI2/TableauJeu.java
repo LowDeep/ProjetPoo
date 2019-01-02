@@ -120,6 +120,21 @@ public class TableauJeu extends JPanel {
 
         Monstre monstreGhost1 = new Monstre(100, 100, 5, 5, 1);
         Monstre monstreGhost2 = new Monstre(400, 400, 5, 5, 1);
+        Monstre monstreGhost3 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost4 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost5 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost6 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost7 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost8 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost9 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost10 = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost11= new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost12= new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost13 = new Monstre(400, 400, 5, 5, 1);
+        Monstre monstreGhost14= new Monstre(400, 400, 5, 5, 1);
+        Monstre monstreGhost15 = new Monstre(400, 400, 5, 5, 1);
+        
+        
 
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Monstre monstreMinotaure = new Monstre(100, 100, 5, 5, 2);
@@ -161,32 +176,33 @@ public class TableauJeu extends JPanel {
         
         List<Personnage> JoueurGhostPos1 = new ArrayList<Personnage>();
         JoueurGhostPos1.add(joueur);
-        JoueurGhostPos1.add(monstreGhost2);
+        JoueurGhostPos1.add(monstreGhost3);
         
         List<Personnage> JoueurGhostPos2 = new ArrayList<Personnage>();
         JoueurGhostPos2.add(joueur);
-        JoueurGhostPos2.add(monstreGhost1);
+        JoueurGhostPos2.add(monstreGhost4);
         
         List<Personnage> JoueurGhostPos2Cuisinier = new ArrayList<Personnage>();
         JoueurGhostPos2Cuisinier.add(joueur);
-        JoueurGhostPos2Cuisinier.add(monstreGhost2);
+        JoueurGhostPos2Cuisinier.add(monstreGhost5);
         JoueurGhostPos2Cuisinier.add(cuisinier);
         
         List<Personnage> JoueurGhostPos2Medecin = new ArrayList<Personnage>();
         JoueurGhostPos2Medecin.add(joueur);
-        JoueurGhostPos2Medecin.add(monstreGhost2);
+        JoueurGhostPos2Medecin.add(monstreGhost6);
+        JoueurGhostPos2Medecin.add(monstreGhost14);
         JoueurGhostPos2Medecin.add(medecin);
         
         List<Personnage> JoueurDoubleGhostMagicien = new ArrayList<Personnage>();
         JoueurDoubleGhostMagicien.add(joueur);
-        JoueurDoubleGhostMagicien.add(monstreGhost2);
-        JoueurDoubleGhostMagicien.add(monstreGhost1);
+        JoueurDoubleGhostMagicien.add(monstreGhost8);
+        JoueurDoubleGhostMagicien.add(monstreGhost13);
         JoueurDoubleGhostMagicien.add(magicien);
         
         List<Personnage> JoueurDoubleGhostPassageSecret = new ArrayList<Personnage>();
         JoueurDoubleGhostPassageSecret.add(joueur);
-        JoueurDoubleGhostPassageSecret.add(monstreGhost2);
-        JoueurDoubleGhostPassageSecret.add(monstreGhost1);
+        JoueurDoubleGhostPassageSecret.add(monstreGhost7);
+        JoueurDoubleGhostPassageSecret.add(monstreGhost15);
         JoueurDoubleGhostPassageSecret.add(magicien);
         
         /*
@@ -238,11 +254,11 @@ public class TableauJeu extends JPanel {
         piece14 = new Piece(true,true,true,true,false,JoueurGhostPos1);
         piece15 = new Piece(true,false,false,true,false,JoueurDoubleGhost);
         //quatrieme ligne
-        piece16 = new Piece(true,true,true,false,false,JoueurDoubleGhostPassageSecret);
-        piece17= new Piece(true,true,true,true,false,JoueurGhostPos2);
-        piece18 = new Piece(true,true,true,true,false,JoueurGhostPos2Cuisinier);
-        piece19 = new Piece(true,true,false,true,false,JoueurGhostPos1);
-        piece20Final = new Piece(true,true,false,true,false,JoueurDoubleGhost);
+        piece16 = new Piece(true,false,true,false,false,JoueurDoubleGhostPassageSecret);
+        piece17= new Piece(true,false,true,true,false,JoueurGhostPos2);
+        piece18 = new Piece(true,false,true,true,false,JoueurGhostPos2Medecin);
+        piece19 = new Piece(true,false,false,true,false,JoueurGhostPos1);
+        piece20Final = new Piece(false,false,false,false,false,JoueurDoubleGhost);
         
        
         //premiere ligne	
