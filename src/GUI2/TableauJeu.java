@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 
 import codeJeu.Cuisinier;
 import codeJeu.Joueur;
+import codeJeu.Magicien;
 import codeJeu.Medecin;
 import codeJeu.Monstre;
 import codeJeu.Personnage;
@@ -122,6 +123,7 @@ public class TableauJeu extends JPanel {
         personnagesP2.add(joueur);
         personnagesP2.add(monstreGhost);
         personnagesP2.add(monstreDEUX);
+        personnagesP2.add(new Magicien(300, 300));
 
         piece1 = new Piece(false, false, true, false, false, personnagesP1);
         piece2 = new Piece(false, false, false, true, false, personnagesP2);

@@ -4,7 +4,7 @@ public class ConstantesDeJeu {
    
     public static int PDVMAX = 100;
     public static int FORCEMAX = 100;
-    public static int ARMUREMAX = 10;    
+    public static int ARMUREMAX = 100;    
     
     public static boolean TRESORGAGNER = true;
     public static boolean TRESOROBJET = false;
