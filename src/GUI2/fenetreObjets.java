@@ -39,9 +39,11 @@ public class fenetreObjets extends JFrame{
 		progbarVie.setBounds(114, 16, 146, 33);
 		progbarForce.setBounds(114, 65, 146, 33);
 		progbarArmure.setBounds(114, 40, 146, 33);
+	
 		getContentPane().add(progbarVie);
 		getContentPane().add(progbarForce);
 		getContentPane().add(progbarArmure);
+		
 		
 		
 		

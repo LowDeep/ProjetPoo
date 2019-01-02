@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,13 +70,15 @@ public class TableauJeu extends JPanel {
     static Piece piece2;
 
     //Creation des pieces pour dessiner la piece selon la piece qui contient le personnage
-    static int piecesX = 1, piecesY = 2;
+    static int piecesY = 4, piecesX = 5;
     
     
     public static int positionPiecePersonnageX = 0;
     public static int positionPiecePersonnageY= 0;
 
-    static Piece[][] pieces = new Piece[piecesX][piecesY];
+    static Piece[][] pieces = new Piece[piecesY][piecesX];
+    
+    static Piece pieceFinale;
 
     TableauJeu() {
 
@@ -97,6 +100,9 @@ public class TableauJeu extends JPanel {
         Monstre monstreMinotaure = new Monstre(100, 100, 5, 5, 2);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
+        Monstre monstreDEUX = new Monstre(300, 300, 10, 10, 0);
+        
+
         Princesse princesse = new Princesse(200, 200);
 
         //joueur.setPdv(joueur.getPdv()+10);
@@ -113,6 +119,7 @@ public class TableauJeu extends JPanel {
         List<Personnage> personnagesP2 = new ArrayList<Personnage>();
         personnagesP2.add(joueur);
         personnagesP2.add(monstreGhost);
+        personnagesP2.add(monstreDEUX);
 
         piece1 = new Piece(false, false, true, false, false, personnagesP1);
         piece2 = new Piece(false, false, false, true, false, personnagesP2);
@@ -151,7 +158,10 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
-        g2.setColor(new Color(255, 255, 255));
+  
+
+
+        g2.setColor(new Color(255,255, 255,0));
 
         //temp
         //piece.dessinerComponents(g2);
@@ -211,14 +221,83 @@ public class TableauJeu extends JPanel {
         
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
-         */
+<<<<<<< HEAD
+*/
+    	
+    	
+
 
         //Selon la piece qui est le personnage, on va la dessiner
         pieces[positionPiecePersonnageX][positionPiecePersonnageY].dessinerComponents(g2);
-                
+        
+        dessinerMap(g2);
+ 
     }
 
-    public void actualiser(Graphics2D g2) {
+    /**
+	 * 
+	 */
+	private void dessinerMap(Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.setColor(new Color(255,255,255,100));
+		g2.fillRect(10,10,100 ,80);
+		
+		//premiere rangée
+		Rectangle2D piece1= new Rectangle2D.Double(10,10,20,20);
+		Rectangle2D piece2= new Rectangle2D.Double(30,10,20,20);
+		Rectangle2D piece3= new Rectangle2D.Double(50,10,20,20);
+		Rectangle2D piece4= new Rectangle2D.Double(70,10,20,20);
+		Rectangle2D piece5= new Rectangle2D.Double(90,10,20,20);
+		//deuxieme rangée
+		Rectangle2D piece6= new Rectangle2D.Double(10,30,20,20);
+		Rectangle2D piece7= new Rectangle2D.Double(30,30,20,20);
+		Rectangle2D piece8= new Rectangle2D.Double(50,30,20,20);
+		Rectangle2D piece9= new Rectangle2D.Double(70,30,20,20);
+		Rectangle2D piece10= new Rectangle2D.Double(90,30,20,20);
+		//troisieme rangée
+		Rectangle2D piece11= new Rectangle2D.Double(10,50,20,20);
+		Rectangle2D piece12= new Rectangle2D.Double(30,50,20,20);
+		Rectangle2D piece13= new Rectangle2D.Double(50,50,20,20);
+		Rectangle2D piece14= new Rectangle2D.Double(70,50,20,20);
+		Rectangle2D piece15= new Rectangle2D.Double(90,50,20,20);
+		//quatrieme rangée
+		Rectangle2D piece16= new Rectangle2D.Double(10,70,20,20);
+		Rectangle2D piece17= new Rectangle2D.Double(30,70,20,20);
+		Rectangle2D piece18= new Rectangle2D.Double(50,70,20,20);
+		Rectangle2D piece19= new Rectangle2D.Double(70,70,20,20);
+		Rectangle2D piece20= new Rectangle2D.Double(90,70,20,20);
+		//g2.setColor(Color.black);
+
+		g2.fill(piece1);
+		g2.fill(piece2);
+		g2.fill(piece3);
+		g2.fill(piece4);
+		g2.fill(piece5);
+		g2.fill(piece6);
+		g2.fill(piece7);
+		g2.fill(piece8);
+		g2.fill(piece9);
+		g2.fill(piece10);
+		g2.fill(piece11);
+		g2.fill(piece12);
+		g2.fill(piece13);
+		g2.fill(piece14);
+		g2.fill(piece15);
+		g2.fill(piece16);
+		g2.fill(piece17);
+		g2.fill(piece18);
+		g2.fill(piece19);
+		g2.setColor(Color.RED);
+		g2.fill(piece20);
+		
+		
+		
+		
+		
+		
+	}
+
+	public void actualiser(Graphics2D g2) {
         //Clavier.update();
         //piece.actualiser(g2);
         

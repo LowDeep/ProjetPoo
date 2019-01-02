@@ -5,17 +5,13 @@
  */
 package GUI2;
 
-import java.rmi.server.RemoteObjectInvocationHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import GUI.Clavier;
-import codeJeu.Joueur;
-import codeJeu.JoueurActif;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author dioxo
@@ -36,7 +32,7 @@ public class Fenetre extends JFrame {
         setResizable(false);
         tableauJeu = new TableauJeu();
 
-        JPanel contenuFenetreJeu = (JPanel) getContentPane();
+        //JPanel contenuFenetreJeu = (JPanel) getContentPane();
 
         add(tableauJeu);
         addKeyListener(new Clavier());
