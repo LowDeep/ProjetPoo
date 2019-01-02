@@ -340,7 +340,7 @@ public class Piece {
                     if (monstre.getForce() > 0 && monstre.getPdv() > 0) {
                         //monstre.setPdv(monstre.getPdv()-1);
                         monstre.setForce(monstre.getForce() - 1);
-                        monstre.setPdv(monstre.getPdv()-1);;
+                        monstre.setPdv(monstre.getPdv() - 1);;
                         if (joueur.getForce() > 0) {
                             //System.out.println("entre force");
                             joueur.setForce(joueur.getForce() - 5);
@@ -397,12 +397,17 @@ public class Piece {
     /**
      * finmonstre joueur a tuer monstre
      */
-     private void monstreFin(Monstre monstre) { 
-    	 // TODO Auto-generated method stub
-    	 monstre.setX(-9999999); monstre.setY(-9999999);
-    	// System.out.println(monstre.getX()+"     "+monstre.getY());
-     }
-     
+    private void monstreFin(Monstre monstre) {
+        // TODO Auto-generated method stub
+        monstre.setX(-9999999);
+        monstre.setY(-9999999);
+
+        monstre.posInitialX = -9999999;
+        monstre.posInitialY = -9999999;
+
+        // System.out.println(monstre.getX()+"     "+monstre.getY());
+    }
+
     private void collisionPortes(Joueur joueur) {
         for (int i = 0; i < porte.length; i++) {
             if (isNord()) {
@@ -453,7 +458,7 @@ public class Piece {
                 }
             }
         }
-        
+
     }
 
     public Rectangle2D getHitBoxFirst() {
