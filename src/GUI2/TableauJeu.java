@@ -264,6 +264,11 @@ public class TableauJeu extends JPanel {
         JoueurDoubleMinoUnGhost.add(monstreMinotaure10);
         JoueurDoubleMinoUnGhost.add(monstreGhost11);
       
+        List<Personnage> FinalSalle = new ArrayList<Personnage>();
+        FinalSalle.add(joueur);
+        FinalSalle.add(new Princesse(70, 70));
+        FinalSalle.add(new Monstre(90, 80, 20, 10, 2));
+        FinalSalle.add(new Monstre(500, 70, 20, 10, 1));
         
         /*
         List<Personnage> personnagesP6= new ArrayList<Personnage>();
@@ -318,7 +323,7 @@ public class TableauJeu extends JPanel {
         piece17= new Piece(true,false,true,true,false,JoueurCuisinier);
         piece18 = new Piece(true,false,true,true,false,JoueurGhostPos2Medecin);
         piece19 = new Piece(true,false,false,true,false,JoueurMagicien);
-        piece20Final = new Piece(false,false,false,false,false,JoueurDoubleGhostMinautore);
+        piece20Final = new Piece(false,false,false,false,false,FinalSalle);
         
        
         //premiere ligne	
