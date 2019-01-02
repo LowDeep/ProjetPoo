@@ -22,10 +22,16 @@ public class Monstre extends JoueurActif {
     public Animation MonstreAnimationLeft;
     public Animation MonstreAnimationRight;
     Texture texture = TableauJeu.getInstance();
+    
+    public int posInitialX, posInitialY;
 
     //constructeur monstre
     public Monstre(int x, int y, int pdv, int force, int type) {
         super(x, y, pdv, force);
+        
+        posInitialX = x;
+        posInitialY = y;
+        
         if(type == 1){
 
         MonstreAnimationDown = new Animation(10, texture.monstreGhost[1], texture.monstreGhost[2],

@@ -406,38 +406,51 @@ public class Piece {
                 //System.out.println("collision non");
                 if (porte[0].getHitBox().intersects(joueur.getHitBox())) {
                     //joueur doit passer en bas 
+                    TableauJeu.positionPiecePersonnageX--;
                     joueur.setX(345);
                     joueur.setY(435);
                     //System.out.println("collision ok");
+                    mettrePersonnagesDansPositionInitiale();
+
                 }
             }
             if (isSud()) {
                 //System.out.println("collision non");
                 if (porte[1].getHitBox().intersects(joueur.getHitBox())) {
                     //joueur doit passer en bas 
+                    TableauJeu.positionPiecePersonnageX++;
                     joueur.setX(350);
                     joueur.setY(65);
                     //System.out.println("collision ok");
+                    mettrePersonnagesDansPositionInitiale();
+
                 }
             }
             if (isEst()) {
                 if (porte[2].getHitBox().intersects(joueur.getHitBox())) {
                     //joueur doit passer en bas 
+                    TableauJeu.positionPiecePersonnageY++;
                     joueur.setX(66);
                     joueur.setY(250);
                     //System.out.println("collision ok");
+                    mettrePersonnagesDansPositionInitiale();
+
                 }
 
             }
             if (isOuest()) {
                 if (porte[3].getHitBox().intersects(joueur.getHitBox())) {
-                    //joueur doit passer en bas 
+                    //joueur doit passer en bas
+                    TableauJeu.positionPiecePersonnageY--;
                     joueur.setX(650);
                     joueur.setY(250);
                     //System.out.println("collision ok");
+                    mettrePersonnagesDansPositionInitiale();
+
                 }
             }
         }
+        
     }
 
     public Rectangle2D getHitBoxFirst() {
@@ -454,6 +467,19 @@ public class Piece {
 
     public void dessinerSecond(Graphics2D g) {
         g.drawImage(texture.passageSecretSecond[0], xSecond, ySecond, null);
+    }
+
+    private void mettrePersonnagesDansPositionInitiale() {
+        Iterator<Personnage> iterator = personnages.iterator();
+
+        while (iterator.hasNext()) {
+            Personnage personnage = iterator.next();
+            if (personnage.getClass().getName().equals("codeJeu.Monstre")) {
+                Monstre monstre = (Monstre) personnage;
+                monstre.setX(monstre.posInitialX);
+                monstre.setY(monstre.posInitialY);
+            }
+        }
     }
 
 }
