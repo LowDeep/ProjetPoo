@@ -32,7 +32,7 @@ public class Fenetre extends JFrame {
         setResizable(false);
         tableauJeu = new TableauJeu();
 
-        JPanel contenuFenetreJeu = (JPanel) getContentPane();
+        //JPanel contenuFenetreJeu = (JPanel) getContentPane();
 
         add(tableauJeu);
         addKeyListener(new Clavier());

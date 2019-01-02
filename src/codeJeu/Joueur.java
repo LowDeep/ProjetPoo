@@ -125,7 +125,7 @@ public class Joueur extends JoueurActif {
     @Override
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
-        return new Rectangle2D.Double(getX()+10, getY()+10, 36, 58);
+        return new Rectangle2D.Double(getX()+17, getY()+15, 28, 45);
     }
 
     public int getHEIGHT() {

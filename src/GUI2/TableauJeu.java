@@ -85,7 +85,8 @@ public class TableauJeu extends JPanel {
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
-        Princesse princesse = new Princesse(400,20);
+        Princesse princesse = new Princesse(400,200);
+        Monstre monstreDEUX = new Monstre(300, 300, 10, 10, 0);
         
         //joueur.setPdv(joueur.getPdv()+10);
         
@@ -128,7 +129,7 @@ public class TableauJeu extends JPanel {
 
         //Set color transparent pour les hit Boxs
 
-        g2.setColor(new Color(255,255, 255));
+        g2.setColor(new Color(255,255, 255,0));
         
         //temp
         piece.dessinerComponents(g2);
@@ -189,9 +190,24 @@ public class TableauJeu extends JPanel {
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
 */
+    	dessinerMap(g2);
+    	
     }
 
-    public void actualiser(Graphics2D g2) {
+    /**
+	 * 
+	 */
+	private void dessinerMap(Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.setColor(new Color(255,255,255,100));
+		g2.fillRect(10,10,150 ,100);
+		
+		
+		
+		
+	}
+
+	public void actualiser(Graphics2D g2) {
         //Clavier.update();
         piece.actualiser(g2);
         
