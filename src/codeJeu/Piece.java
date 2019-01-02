@@ -39,6 +39,9 @@ public class Piece {
     //Creation de joueur pour pouvoir instances les deplacements des monstres selon le joueur
     private Joueur joueur;
 
+    //variables pour les passages secrets
+    static int passage = 0;
+
     public Piece(boolean nord, boolean sud, boolean est, boolean ouest, boolean passageSecret,
             List<Personnage> personnage) {
         super();
@@ -142,6 +145,7 @@ public class Piece {
         joueur.PlayerAnimationUp.runAnimation();
         joueur.PlayerAnimationLeft.runAnimation();
         joueur.PlayerAnimationRight.runAnimation();*/
+        //Dessinner COmposants
         Iterator<Personnage> iterator = personnages.iterator();
 
         while (iterator.hasNext()) {
@@ -182,6 +186,10 @@ public class Piece {
         }
 
         dessinerPortes(g);
+        dessinerPassagesSecrets(g);
+        fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
+        fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+        fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
 
     }
 
@@ -264,14 +272,17 @@ public class Piece {
 
     private void collisionMedecin(Joueur joueur) {
         Iterator<Personnage> iterator = personnages.iterator();
-
         while (iterator.hasNext()) {
             Personnage personnage = iterator.next();
             if (personnage.getClass().getName().equals("codeJeu.Medecin")) {
                 Medecin medecin = (Medecin) personnage;
                 //COllition avec le magicien
                 if (medecin.getHitBox().intersects(joueur.getHitBox())) {
+                    System.out.println("Collition medecin");
+
                     joueur.setPdv(ConstantesDeJeu.PDVMAX);
+                    fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
+
                 }
 
             }
@@ -288,6 +299,8 @@ public class Piece {
                 //COllition avec le cuisinier
                 if (cuisinier.getHitBox().intersects(joueur.getHitBox())) {
                     joueur.setForce(ConstantesDeJeu.FORCEMAX);
+                    fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
+
                 }
 
             }
@@ -305,6 +318,8 @@ public class Piece {
                 //COllition avec le magicien
                 if (magicien.getHitBox().intersects(joueur.getHitBox())) {
                     magicien.recuperationArmure(joueur);
+                    fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
+
                 }
 
             }
@@ -339,12 +354,17 @@ public class Piece {
                     }*/
                     if (monstre.getForce() > 0 && monstre.getPdv() > 0) {
                         //monstre.setPdv(monstre.getPdv()-1);
+                        System.out.println("Vies monstres : " + monstre.getPdv());
                         monstre.setForce(monstre.getForce() - 1);
-                        monstre.setPdv(monstre.getPdv() - 1);;
                         if (joueur.getForce() > 0) {
                             //System.out.println("entre force");
                             joueur.setForce(joueur.getForce() - 5);
+                        } else {
+                            monstre.setPdv(monstre.getPdv() - 1);
                         }
+
+                        System.out.println("Vies monstres apres collition: " + monstre.getPdv());
+
                         if (joueur.getArmure() > 0) {
                             //System.out.println("entre armure");
                             joueur.setArmure(joueur.getArmure() - 10);
@@ -354,7 +374,7 @@ public class Piece {
 
                     }
 
-                    if (monstre.getPdv() == 0) {
+                    if (monstre.getPdv() == 0 || monstre.getForce() == 0) {
                         monstreFin(monstre);
                     }
 
@@ -486,6 +506,18 @@ public class Piece {
                 Monstre monstre = (Monstre) personnage;
                 monstre.setX(monstre.posInitialX);
                 monstre.setY(monstre.posInitialY);
+            }
+        }
+    }
+
+    private void dessinerPassagesSecrets(Graphics2D g) {
+        if (passageSecret) {
+            if (passage == 0) {
+                dessinerFirst(g);
+                g.fill(getHitBoxFirst());
+            }else{
+                dessinerSecond(g);
+                g.fill(getHitBoxSecond());
             }
         }
     }
