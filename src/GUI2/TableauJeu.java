@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +39,9 @@ public class TableauJeu extends JPanel {
     Image bg;
     BufferedImageLoader loader = new BufferedImageLoader();
     static Texture texture;
-    
-    static Piece piece;
-    
+
+    //static Piece piece;
+
     /*Joueur joueur;
 
     Cuisinier cuisinier;
@@ -64,7 +65,21 @@ public class TableauJeu extends JPanel {
 
 
     Enemi enemi;*/
+    //Creation de 2 pieces
+    static Piece piece1;
+    static Piece piece2;
+
+    //Creation des pieces pour dessiner la piece selon la piece qui contient le personnage
+    static int piecesY = 4, piecesX = 5;
     
+    
+    public static int positionPiecePersonnageX = 0;
+    public static int positionPiecePersonnageY= 0;
+
+    static Piece[][] pieces = new Piece[piecesY][piecesX];
+    
+    static Piece pieceFinale;
+
     TableauJeu() {
 
         bg = loader.loadImage(bgRoute);
@@ -78,26 +93,39 @@ public class TableauJeu extends JPanel {
         }*/
         setPreferredSize(new Dimension(790, 600));
         setBackground(Color.WHITE);
-        
-        
+
         //creation de pieces
         Joueur joueur = new Joueur(790 / 2, 600 / 2);
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
-        Princesse princesse = new Princesse(400,200);
         Monstre monstreDEUX = new Monstre(300, 300, 10, 10, 0);
         
+
+        Princesse princesse = new Princesse(200, 200);
+
         //joueur.setPdv(joueur.getPdv()+10);
-        
-        List<Personnage> personnages = new ArrayList<Personnage>();
-        personnages.add(joueur);
-        personnages.add(monstreGhost);
-        personnages.add(cuisinier);
-        personnages.add(medecin);
-        personnages.add(princesse);
-       // personnages.add(arg0)
-        piece = new Piece(true, true, true, true, true, personnages);
+        List<Personnage> personnagesP1 = new ArrayList<Personnage>();
+        personnagesP1.add(joueur);
+        //personnages.add(monstreGhost);
+        //personnages.add(cuisinier);
+        //personnages.add(medecin);
+        //personnages.add(princesse);
+        //personnages.add(arg0)
+        //piece = new Piece(true, true, true, true, true, personnages);
+
+        List<Personnage> personnagesP2 = new ArrayList<Personnage>();
+        personnagesP2.add(joueur);
+        personnagesP2.add(monstreGhost);
+        personnagesP2.add(monstreDEUX);
+
+        piece1 = new Piece(false, false, true, false, false, personnagesP1);
+        piece2 = new Piece(false, false, false, true, false, personnagesP2);
+
+        pieces[0][0] = piece1;
+        pieces[0][1] = piece2;
+
+        //Initialiser le personnage dans la piece en haute et bas
         /*
         enemi = new Enemi(0, 0);
         joueur = new Joueur(790 / 2, 600 / 2);
@@ -117,7 +145,7 @@ public class TableauJeu extends JPanel {
         
         passageSecretFirst = new Piece(true);
         passageSecretSecond = new Piece(true);
-        */
+         */
     }
 
     public void paintComponent(Graphics g) {
@@ -128,11 +156,13 @@ public class TableauJeu extends JPanel {
         g2.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
         //Set color transparent pour les hit Boxs
+  
+
 
         g2.setColor(new Color(255,255, 255,0));
-        
+
         //temp
-        piece.dessinerComponents(g2);
+        //piece.dessinerComponents(g2);
         /*
         joueur.PlayerAnimationDown.runAnimation();
         joueur.PlayerAnimationUp.runAnimation();
@@ -148,7 +178,7 @@ public class TableauJeu extends JPanel {
         monstreMinotaure.MonstreAnimationLeft.runAnimation();
         monstreMinotaure.MonstreAnimationRight.runAnimation();
         monstreMinotaure.MonstreAnimationUp.runAnimation();
-        */
+         */
         try {
             dessiner(g2);
             actualiser(g2);
@@ -189,9 +219,17 @@ public class TableauJeu extends JPanel {
         
         g2.setColor(Color.red);
         g2.fill(enemi.getEnemi());
+<<<<<<< HEAD
 */
-    	dessinerMap(g2);
     	
+    	
+
+
+        //Selon la piece qui est le personnage, on va la dessiner
+        pieces[positionPiecePersonnageX][positionPiecePersonnageY].dessinerComponents(g2);
+        
+        dessinerMap(g2);
+ 
     }
 
     /**
@@ -200,7 +238,57 @@ public class TableauJeu extends JPanel {
 	private void dessinerMap(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		g2.setColor(new Color(255,255,255,100));
-		g2.fillRect(10,10,150 ,100);
+		g2.fillRect(10,10,100 ,80);
+		
+		//premiere rangée
+		Rectangle2D piece1= new Rectangle2D.Double(10,10,20,20);
+		Rectangle2D piece2= new Rectangle2D.Double(30,10,20,20);
+		Rectangle2D piece3= new Rectangle2D.Double(50,10,20,20);
+		Rectangle2D piece4= new Rectangle2D.Double(70,10,20,20);
+		Rectangle2D piece5= new Rectangle2D.Double(90,10,20,20);
+		//deuxieme rangée
+		Rectangle2D piece6= new Rectangle2D.Double(10,30,20,20);
+		Rectangle2D piece7= new Rectangle2D.Double(30,30,20,20);
+		Rectangle2D piece8= new Rectangle2D.Double(50,30,20,20);
+		Rectangle2D piece9= new Rectangle2D.Double(70,30,20,20);
+		Rectangle2D piece10= new Rectangle2D.Double(90,30,20,20);
+		//troisieme rangée
+		Rectangle2D piece11= new Rectangle2D.Double(10,50,20,20);
+		Rectangle2D piece12= new Rectangle2D.Double(30,50,20,20);
+		Rectangle2D piece13= new Rectangle2D.Double(50,50,20,20);
+		Rectangle2D piece14= new Rectangle2D.Double(70,50,20,20);
+		Rectangle2D piece15= new Rectangle2D.Double(90,50,20,20);
+		//quatrieme rangée
+		Rectangle2D piece16= new Rectangle2D.Double(10,70,20,20);
+		Rectangle2D piece17= new Rectangle2D.Double(30,70,20,20);
+		Rectangle2D piece18= new Rectangle2D.Double(50,70,20,20);
+		Rectangle2D piece19= new Rectangle2D.Double(70,70,20,20);
+		Rectangle2D piece20= new Rectangle2D.Double(90,70,20,20);
+		//g2.setColor(Color.black);
+
+		g2.fill(piece1);
+		g2.fill(piece2);
+		g2.fill(piece3);
+		g2.fill(piece4);
+		g2.fill(piece5);
+		g2.fill(piece6);
+		g2.fill(piece7);
+		g2.fill(piece8);
+		g2.fill(piece9);
+		g2.fill(piece10);
+		g2.fill(piece11);
+		g2.fill(piece12);
+		g2.fill(piece13);
+		g2.fill(piece14);
+		g2.fill(piece15);
+		g2.fill(piece16);
+		g2.fill(piece17);
+		g2.fill(piece18);
+		g2.fill(piece19);
+		g2.setColor(Color.RED);
+		g2.fill(piece20);
+		
+		
 		
 		
 		
@@ -209,7 +297,11 @@ public class TableauJeu extends JPanel {
 
 	public void actualiser(Graphics2D g2) {
         //Clavier.update();
-        piece.actualiser(g2);
+        //piece.actualiser(g2);
+        
+        //Selon la piece qui est le personnage, on va la dessiner
+        pieces[positionPiecePersonnageX][positionPiecePersonnageY].actualiser(g2);
+
         
         /*joueur.seDeplacer(g2);
         //enemi.seDeplacer2(getBounds(), collisionVie(joueur), joueur.getX(), joueur.getY());
@@ -217,12 +309,14 @@ public class TableauJeu extends JPanel {
         monstreMinotaure.chercherJoueur(g2,joueur.getX(), joueur.getY());
 
         confirmations();
-        */
-        if(Piece.confirmationGagnerJeu)
-        	endWinGame();
-        if(Piece.confirmationPerteJeu)
-        	endFailureGame();
-        	
+         */
+        if (Piece.confirmationGagnerJeu) {
+            endWinGame();
+        }
+        if (Piece.confirmationPerteJeu) {
+            endFailureGame();
+        }
+
     }
 
     /**
@@ -262,6 +356,7 @@ public class TableauJeu extends JPanel {
 
         }
     }
+
     public void endWinGame() {
 
         Fenetre.thread.stop();
@@ -295,18 +390,16 @@ public class TableauJeu extends JPanel {
 
         }
     }
+
     public static Texture getInstance() {
         return texture;
     }
-    
-    
+
     //getter joueur
-    public Joueur getJoueur() {
-        return piece.getJoueur();
-    }
-    
-    
-    
+    /*public Joueur getJoueur() {
+        return pieces[positionPiecePersonnageX][positionPiecePersonnageY].getJoueur();
+    }*/
+
     /*
     public boolean collision(Rectangle2D r) {
         return enemi.getEnemi().intersects(r);
@@ -424,8 +517,7 @@ public class TableauJeu extends JPanel {
             endFailureGame();
         }
     }*/
-
-    public  Piece getPiece() {
-        return piece;
+    public Piece getPiece() {
+        return pieces[positionPiecePersonnageX][positionPiecePersonnageY];
     }
 }
