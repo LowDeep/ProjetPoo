@@ -94,6 +94,7 @@ public class TableauJeu extends JPanel {
         //creation de pieces
         Joueur joueur = new Joueur(790 / 2, 600 / 2);
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreMinotaure = new Monstre(100, 100, 5, 5, 2);
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
         Princesse princesse = new Princesse(200, 200);
@@ -101,6 +102,7 @@ public class TableauJeu extends JPanel {
         //joueur.setPdv(joueur.getPdv()+10);
         List<Personnage> personnagesP1 = new ArrayList<Personnage>();
         personnagesP1.add(joueur);
+        personnagesP1.add( monstreMinotaure);
         //personnages.add(monstreGhost);
         //personnages.add(cuisinier);
         //personnages.add(medecin);
