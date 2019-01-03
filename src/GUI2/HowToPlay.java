@@ -32,21 +32,21 @@ public class HowToPlay extends JFrame {
         panel =  new  HowToPlayPanel();
         
         
-        JLabel lblMedecin = new JLabel("<html>Celui-ci c'est le medecin, si tu n'as pas trop de vie, il va te soigner</html>");
+        JLabel lblMedecin = new JLabel("<html>Le medecin, si tu n'as pas trop de vie, il va te soigner</html>");
         lblMedecin.setBounds(150, 50, 400, 100);
         lblMedecin.setFont(new Font("Arial", 2, 25));
         
         
-        JLabel lblMagicien = new JLabel("<html>Voici le magicien, s'il te manque d'armure, il va te régénerer</html>");
+        JLabel lblMagicien = new JLabel("<html>Le magicien, s'il te manque d'armure, il va te régénerer</html>");
         lblMagicien.setBounds(150, 150, 400, 100);
         lblMagicien.setFont(new Font("Arial", 2, 25));
         
         
-        JLabel lblCuisinier = new JLabel("<html>Celle-ci c'est la cuinière, si tu n'as pas trop de force, trouve-la et tu te sentiras mieu</html>");
+        JLabel lblCuisinier = new JLabel("<html>La cuinière, si tu n'as pas trop de force, trouve-la et tu te sentiras mieu</html>");
         lblCuisinier.setBounds(150, 250, 400, 100);
         lblCuisinier.setFont(new Font("Arial", 2, 25));
         
-        JLabel lblJoueur = new JLabel("<html>Tu peux faire bouger le joueur avec WASD</html>");
+        JLabel lblJoueur = new JLabel("<html>Le joueur avec WASD</html>");
         lblJoueur.setBounds(150, 350, 400, 100);
         lblJoueur.setFont(new Font("Arial", 2, 25));
         

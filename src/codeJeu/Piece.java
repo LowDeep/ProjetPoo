@@ -542,7 +542,7 @@ public class Piece {
 
         //System.out.println("Passage " + passage);
          if(!(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 4)
-                || !(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 1)){
+                || !(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 2)){
             xFirst = -200;
             yFirst = -200;         
             xSecond = -200;
@@ -550,7 +550,7 @@ public class Piece {
             
         }
          
-        if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 1){
+        if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 2){
             
             xFirst = 30;
             yFirst = 40;            
@@ -586,7 +586,7 @@ public class Piece {
         if (getHitBoxSecond().intersects(joueur.getHitBox())) {
 
             TableauJeu.positionPiecePersonnageX = 3;
-            TableauJeu.positionPiecePersonnageY = 1;
+            TableauJeu.positionPiecePersonnageY = 2;
             mettreMonstresDansPositionInitiale();
             joueur.setX(60);
             joueur.setY(120);

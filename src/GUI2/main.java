@@ -20,11 +20,11 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        //FenetreDepar fenetreDepar = new FenetreDepar();
-        //fenetreDepar.setVisible(true);
-        HowToPlay howToPlay = new HowToPlay();
-        howToPlay.setVisible(true);
-        howToPlay.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        FenetreDepar fenetreDepar = new FenetreDepar();
+        fenetreDepar.setVisible(true);
+        //HowToPlay howToPlay = new HowToPlay();
+        //howToPlay.setVisible(true);
+        //howToPlay.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         
         //fenetreJeu fenetreJeu = new fenetreJeu();
