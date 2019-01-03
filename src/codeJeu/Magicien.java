@@ -20,7 +20,7 @@ public class Magicien extends Personnage {
     static Image magicien;
     private final String magicienRoute = "/magicien.png";
     private final int HEIGHT = 60, WIDHT = 43;
-    Texture texture = TableauJeu.getInstance();
+    Texture texture = new Texture();
     
     //constructeur magicien
     public Magicien(int x, int y) {

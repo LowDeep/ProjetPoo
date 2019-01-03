@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  * @author Low_Deep
@@ -19,8 +20,12 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        FenetreDepar fenetreDepar = new FenetreDepar();
-        fenetreDepar.setVisible(true);
+        //FenetreDepar fenetreDepar = new FenetreDepar();
+        //fenetreDepar.setVisible(true);
+        HowToPlay howToPlay = new HowToPlay();
+        howToPlay.setVisible(true);
+        howToPlay.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         
         //fenetreJeu fenetreJeu = new fenetreJeu();
         //fenetreObjets fenetreObjets = new fenetreObjets();
