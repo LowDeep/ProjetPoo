@@ -16,7 +16,7 @@ public class Medecin extends Personnage {
     static Image medecin;
     private final String medecinRoute = "/cuisinier.png";
     private final int HEIGHT = 45, WIDHT = 29;
-    Texture texture = TableauJeu.getInstance();
+    Texture texture = new Texture();
 
     
 	//constructeur medecin

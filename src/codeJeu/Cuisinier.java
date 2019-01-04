@@ -19,7 +19,7 @@ public class Cuisinier extends Personnage {
     static Image cuisinier;
     private final String cuisinierRoute = "/cuisinier.png";
     private final int HEIGHT = 45, WIDHT = 39;
-    Texture texture = TableauJeu.getInstance();
+    Texture texture = new Texture();
 
     //constrcteur cuisinier
     public Cuisinier(int x, int y) {

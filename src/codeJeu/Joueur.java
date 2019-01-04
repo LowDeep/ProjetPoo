@@ -4,6 +4,7 @@ import GUI.Clavier;
 import GUI2.Animation;
 import GUI2.TableauJeu;
 import GUI2.Texture;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -29,7 +30,7 @@ public class Joueur extends JoueurActif {
     public Animation PlayerAnimationUp;
     public Animation PlayerAnimationLeft;
     public Animation PlayerAnimationRight;
-    Texture texture = TableauJeu.getInstance();
+    Texture texture = new Texture();
 
     /**
      *
@@ -256,7 +257,9 @@ public class Joueur extends JoueurActif {
     //PUEDE GENERAR ERROR
     @Override
     public void dessiner(Graphics2D g2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        g2.drawImage(texture.squelette[0], getX(), getY(),null);
+        
     }
     
 }
