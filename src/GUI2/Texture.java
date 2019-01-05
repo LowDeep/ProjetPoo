@@ -72,6 +72,32 @@ public class Texture {
     SpriteSheet levierPorteSpriteSheet;
     public BufferedImage levierPorte_sheet = null;
     public BufferedImage[] levierPorte = new BufferedImage[2];
+    
+    SpriteSheet potionViePetitSpriteSheet;
+    public BufferedImage potionViePetit_sheet = null;
+    public BufferedImage[] potionViePetit = new BufferedImage[1];
+    
+    SpriteSheet potionVieGrandSpriteSheet;
+    public BufferedImage potionVieGrand_sheet = null;
+    public BufferedImage[] potionVieGrand = new BufferedImage[1];
+    
+    SpriteSheet potionForcePetitSpriteSheet;
+    public BufferedImage potionForcePetit_sheet = null;
+    public BufferedImage[] potionForcePetit = new BufferedImage[1];
+    
+    SpriteSheet potionForceGrandSpriteSheet;
+    public BufferedImage potionForceGrand_sheet = null;
+    public BufferedImage[] potionForceGrand = new BufferedImage[1];
+    
+    SpriteSheet potionArmurePetitSpriteSheet;
+    public BufferedImage potionArmurePetit_sheet = null;
+    public BufferedImage[] potionArmurePetit = new BufferedImage[1];
+    
+    SpriteSheet potionArmureGrandSpriteSheet;
+    public BufferedImage potionArmureGrand_sheet = null;
+    public BufferedImage[] potionArmureGrand = new BufferedImage[1];
+    
+    
 
     public Texture() {
 
@@ -95,6 +121,15 @@ public class Texture {
         princesse_sheet = loader.loadImage("/princesse.png");
 
         levierPorte_sheet = loader.loadImage("/liverPorteGauche.png");
+        
+        potionViePetit_sheet = loader.loadImage("/potionViePetit.png");
+        potionVieGrand_sheet = loader.loadImage("/potionVieGrande.png");
+        
+        potionForcePetit_sheet = loader.loadImage("/potionForcePetit.png");
+        potionForceGrand_sheet = loader.loadImage("/potionForceGrand.png");
+        
+        potionArmurePetit_sheet = loader.loadImage("/potionArmurePetit.png");
+        potionArmureGrand_sheet = loader.loadImage("/potionArmureGrand.png");
 
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
@@ -116,6 +151,13 @@ public class Texture {
         princesseSpriteSheet = new SpriteSheet(princesse_sheet);
 
         levierPorteSpriteSheet = new SpriteSheet(levierPorte_sheet);
+        
+        potionViePetitSpriteSheet = new SpriteSheet(potionViePetit_sheet);
+        potionVieGrandSpriteSheet = new SpriteSheet(potionVieGrand_sheet);
+        potionForcePetitSpriteSheet = new SpriteSheet(potionForcePetit_sheet);
+        potionForceGrandSpriteSheet = new SpriteSheet(potionForceGrand_sheet);
+        potionArmurePetitSpriteSheet = new SpriteSheet(potionArmurePetit_sheet);
+        potionArmureGrandSpriteSheet = new SpriteSheet(potionArmureGrand_sheet);
 
         getPersonnage();
         getSquelette();
@@ -137,10 +179,68 @@ public class Texture {
         getPrincesse();
 
         getLevierPorte();
-
+        
+        getPotionViePetit();
+        getPotionVieGrand();
+        
+        getPotionForcePetit();
+        getPotionForceGrand();
+        
+        getPotionArmurePetit();
+        getPotionArmureGrand();
+        
+        
     }
 
-    private void getLevierPorte() {
+    /**
+	 * 
+	 */
+	private void getPotionArmureGrand() {
+		// TODO Auto-generated method stub
+		potionArmureGrand[0] = potionArmureGrandSpriteSheet.grabImage(1, 1, 32, 42);
+	}
+
+	/**
+	 * 
+	 */
+	private void getPotionArmurePetit() {
+		// TODO Auto-generated method stub
+		potionArmurePetit[0] = potionArmurePetitSpriteSheet.grabImage(1, 1, 28, 27);
+	}
+
+	/**
+	 * 
+	 */
+	private void getPotionForceGrand() {
+		// TODO Auto-generated method stub
+		potionForceGrand[0] = potionForceGrandSpriteSheet.grabImage(1, 1, 31, 42);
+	}
+
+	/**
+	 * 
+	 */
+	private void getPotionForcePetit() {
+		// TODO Auto-generated method stub
+		potionForcePetit[0] = potionForcePetitSpriteSheet.grabImage(1, 1, 20, 23);
+	}
+
+	/**
+	 * 
+	 */
+	private void getPotionVieGrand() {
+		// TODO Auto-generated method stub
+		potionVieGrand[0] = potionVieGrandSpriteSheet.grabImage(1, 1, 31, 42);
+	}
+
+	/**
+	 * 
+	 */
+	private void getPotionViePetit() {
+		// TODO Auto-generated method stub
+		potionViePetit[0] = potionViePetitSpriteSheet.grabImage(1, 1, 17, 24);
+	}
+
+	private void getLevierPorte() {
         // TODO Auto-generated method stub
         levierPorte[0] = levierPorteSpriteSheet.grabImage(1, 1, 35, 32);
         levierPorte[1] = levierPorteSpriteSheet.grabImage(2, 1, 35, 32);

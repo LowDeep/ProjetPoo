@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,9 @@ import codeJeu.Medecin;
 import codeJeu.Monstre;
 import codeJeu.Personnage;
 import codeJeu.Piece;
+import codeJeu.PotionArmure;
+import codeJeu.PotionForce;
+import codeJeu.PotionVie;
 import codeJeu.Princesse;
 
 /**
@@ -157,6 +159,7 @@ public class TableauJeu extends JPanel {
         Magicien magicien = new Magicien(300,300);
         Princesse princesse = new Princesse(200, 200);
         
+       
 
         //joueur.setPdv(joueur.getPdv()+10);
 
@@ -385,6 +388,24 @@ public class TableauJeu extends JPanel {
         passageSecretFirst = new Piece(true);
         passageSecretSecond = new Piece(true);
          */
+        
+        
+        
+        PotionVie potionViePetite1 = new PotionVie(false,300,200);
+       PotionVie potionVieGrande1 = new PotionVie(true,400,200);
+        piece1.ajouterPotion(potionViePetite1);
+       piece1.ajouterPotion(potionVieGrande1);
+        
+        PotionForce potionForcePetite1 = new PotionForce(false,200,400);
+        PotionForce potionForceGrande1 = new PotionForce(true,500,200);
+        piece1.ajouterPotion(potionForceGrande1);
+        piece1.ajouterPotion(potionForcePetite1);
+        
+        PotionArmure potionArmurePetite1 = new PotionArmure(false,300,400);
+        PotionArmure potionArmureGrande1 = new PotionArmure(true,500,400);
+        piece1.ajouterPotion(potionArmureGrande1);
+        piece1.ajouterPotion(potionArmurePetite1);
+        
     }
 
     public void paintComponent(Graphics g) {

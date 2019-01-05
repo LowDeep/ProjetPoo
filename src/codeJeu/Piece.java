@@ -2,11 +2,11 @@ package codeJeu;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import GUI.Clavier;
-import GUI2.BufferedImageLoader;
 import GUI2.TableauJeu;
 import GUI2.Texture;
 import GUI2.fenetreObjets;
@@ -54,7 +54,12 @@ public class Piece {
     static int passage = 0;
     boolean passageHaute = false;
     boolean passageBas = false;
-
+    
+    
+    //listePotions
+    private ArrayList<Potion> listePotions = new ArrayList<Potion>();
+    
+    
     public Piece(boolean nord, boolean sud, boolean est, boolean ouest, boolean passageSecret,
             List<Personnage> personnage) {
         super();
@@ -73,7 +78,7 @@ public class Piece {
             } else if (passage == 2) {
                 passageBas = true;
             }
-
+         
         }
 
         if (nord) {
@@ -142,7 +147,7 @@ public class Piece {
         }
         return nombreMonstres;
     }
-
+   
     public void transporterPersonnage(Piece[][] toutesLesPieces) {
         for (int i = 0; i < toutesLesPieces.length; i++) {
 
@@ -179,6 +184,12 @@ public class Piece {
     /*private void changerCoordonneesPersonnage() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
+    
+    //methode pour ajouter potion dans liste potion
+    public void ajouterPotion(Potion p)
+    {
+    	listePotions.add(p);
+    }
     public void dessinerComponents(Graphics2D g) {
 
         /*joueur.PlayerAnimationDown.runAnimation();
@@ -224,16 +235,29 @@ public class Piece {
                 personnage.dessiner(g);
             }
         }
+        
+       
 
         dessinerPortes(g);
         dessinerPassagesSecrets(g);
         dessinerLevierPorte(g);
+        dessinerPotion(g);
         fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
         fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
         fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
 
     }
-
+    
+    private void dessinerPotion(Graphics2D g)
+    {
+    	 Iterator<Potion> iterateurPotion = listePotions.iterator();
+         while (iterateurPotion.hasNext())
+         {
+        	 Potion p = iterateurPotion.next(); 
+         	p.dessinerPotion(g);
+         	g.fill(p.getHitBox());
+         }
+    }
     private void dessinerPortes(Graphics2D g) {
         if (isNord()) {
             g.fill(porte[0].getHitBox());
@@ -292,13 +316,19 @@ public class Piece {
         collisionPassageSecretFirst(joueur);
         collisionPassageSecretSecond(joueur);
         collisionLevierPorte(joueur);
+        collisionPotion(joueur);
         
         if (joueur.getPdv() == 0) {
             confirmationPerteJeu = true;
         }
     }
 
-    /**
+    public ArrayList<Potion> getListePotions() {
+		return listePotions;
+	}
+
+
+	/**
 	 * 
 	 */
 	private void collisionLevierPorte(Joueur joueur2) {
@@ -308,6 +338,73 @@ public class Piece {
                 levierPorte.setActive(true);
             }
 	        
+	}
+	
+	private void collisionPotion(Joueur joueur) {
+		Iterator<Potion> listePotionIter = listePotions.iterator();
+		//System.out.println("entre fct");
+		while (listePotionIter.hasNext())
+		{
+			//System.out.println("entre boucle");
+			Potion potion = listePotionIter.next();
+			System.out.println(potion.isType());
+			System.out.println(potion.getClass());
+			if (potion.getHitBox().intersects(joueur.getHitBox())) {
+			if(potion.getClass().equals("codeJeu.PotionVie") && potion.isType()==false)		
+			{	
+				System.out.println("entre premier boucle");
+				if(joueur.getPdv()<90) {
+				joueur.setPdv(joueur.getPdv()+10);
+				potion.setX(-9000);
+				}
+				else {
+					joueur.setPdv(100);
+					potion.setX(-9000);
+				}
+				
+			}
+			else if(potion.getClass().equals("codeJeu.PotionVie")  && potion.isType()==true)
+			{
+				System.out.println("entre premier boucle2");
+				if(joueur.getPdv()<70)
+				{
+				joueur.setPdv(joueur.getPdv()+30);
+				potion.setX(-9000);
+				}
+				else {
+					joueur.setPdv(100);
+					potion.setX(-9000);
+				}
+			}
+			else if (potion.getClass().equals("codeJeu.PotionForce")  && potion.isType()==true)
+			{
+				System.out.println("entre premier boucle2");
+				if(joueur.getForce()<70)
+				{
+				joueur.setForce(joueur.getForce()+30);
+				potion.setX(-9000);
+				}
+				else {
+					joueur.setForce(100);
+					potion.setX(-9000);
+				}
+		}
+			else if(potion.getClass().equals("codeJeu.PotionForce") && potion.isType()==false)		
+		{	
+			System.out.println("entre premier boucle");
+			if(joueur.getForce()<90) {
+			joueur.setPdv(joueur.getForce()+10);
+			potion.setX(-9000);
+			}
+			else {
+				joueur.setForce(100);
+				potion.setX(-9000);
+			}
+			
+		}
+			}
+		}
+		
 	}
 
 	private void collisionPrincesse(Joueur joueur) {
