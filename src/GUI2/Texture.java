@@ -315,9 +315,36 @@ public class Texture {
 
     private void getRick() {
         //Sans movement
-        Rick[0] = RickSpriteSheet.grabImage(1, 1, 39, 82);
-        Rick[1] = RickSpriteSheet.grabImage(2, 1, 39, 82);
-        Rick[2] = RickSpriteSheet.grabImage(3, 1, 39, 82);
+        Rick[0] = RickSpriteSheet.grabImage(1, 1, 40, 80);
+        Rick[1] = RickSpriteSheet.grabImage(2, 1, 40, 80);
+        Rick[2] = RickSpriteSheet.grabImage(3, 1, 40, 80);
+
+        //marcher en bas
+        Rick[3] = RickSpriteSheet.grabImage(4, 1, 40, 80);
+        Rick[4] = RickSpriteSheet.grabImage(5, 1, 40, 80);
+        Rick[5] = RickSpriteSheet.grabImage(6, 1, 40, 80);
+
+        //marcher en haut
+        Rick[6] = RickSpriteSheet.grabImage(7, 1, 40, 80);
+        Rick[7] = RickSpriteSheet.grabImage(8, 1, 40, 80);
+        Rick[8] = RickSpriteSheet.grabImage(9, 1, 40, 80);
+        
+        //marcher en droit
+        Rick[9] = RickSpriteSheet.grabImage(1, 2, 40, 80);
+        Rick[10] = RickSpriteSheet.grabImage(2, 2, 40, 80);
+        Rick[11] = RickSpriteSheet.grabImage(3, 2, 40, 80);
+        Rick[12] = RickSpriteSheet.grabImage(4, 2, 40, 80);
+                
+        //marcher gauche
+        Rick[13] = RickSpriteSheet.grabImage(8, 2, 40, 80);
+        Rick[14] = RickSpriteSheet.grabImage(7, 2, 40, 80);
+        Rick[15] = RickSpriteSheet.grabImage(6, 2, 40, 80);
+        Rick[16] = RickSpriteSheet.grabImage(5, 2, 40, 80);
+        
+        
+        
+        
+        
 
     }
 

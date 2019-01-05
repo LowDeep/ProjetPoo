@@ -25,11 +25,12 @@ public class Joueur extends JoueurActif {
      *
      */
     static Image perso;
-    private final int HEIGHT = 90, WIDHT = 69;
+    private final int HEIGHT = 80, WIDHT = 40;
     public Animation PlayerAnimationDown;
     public Animation PlayerAnimationUp;
     public Animation PlayerAnimationLeft;
     public Animation PlayerAnimationRight;
+    public Animation PlayerAnimationStand;
     Texture texture = new Texture();
 
     /**
@@ -43,7 +44,7 @@ public class Joueur extends JoueurActif {
     public ArrayList<Objet> listeObjets = new ArrayList<Objet>();
     private ConstantesDeJeu caracPerso;
     boolean doom = true;
-    
+
     //TEMP
     private int numPositionPiece;
 
@@ -53,26 +54,17 @@ public class Joueur extends JoueurActif {
         Joueur.armure = 0;
         doom = false;
 
-        PlayerAnimationDown = new Animation(10, texture.squelette[1], texture.squelette[2],
-                texture.squelette[3], texture.squelette[4],
-                texture.squelette[5], texture.squelette[6],
-                texture.squelette[7], texture.squelette[8]);
+        PlayerAnimationDown = new Animation(20, texture.Rick[3], texture.Rick[4],
+                texture.Rick[5],texture.Rick[4]);
 
-        PlayerAnimationUp = new Animation(10, texture.squelette[9], texture.squelette[10],
-                texture.squelette[11], texture.squelette[12],
-                texture.squelette[13], texture.squelette[14],
-                texture.squelette[15], texture.squelette[16], texture.squelette[17]);
+        PlayerAnimationUp = new Animation( 20, texture.Rick[6], texture.Rick[7],
+                texture.Rick[8] , texture.Rick[7]);
 
-        PlayerAnimationLeft = new Animation(10, texture.squelette[18], texture.squelette[19],
-                texture.squelette[20], texture.squelette[21],
-                texture.squelette[22], texture.squelette[23],
-                texture.squelette[24], texture.squelette[25], texture.squelette[26]);
+        PlayerAnimationLeft = new Animation(15, texture.Rick[13], texture.Rick[14], texture.Rick[15], texture.Rick[16]);
 
-        PlayerAnimationRight = new Animation(10, texture.squelette[27], texture.squelette[28],
-                texture.squelette[29], texture.squelette[30],
-                texture.squelette[31], texture.squelette[32],
-                texture.squelette[33], texture.squelette[34], texture.squelette[35]);
-        
+        PlayerAnimationRight = new  Animation(15, texture.Rick[9], texture.Rick[10], texture.Rick[11], texture.Rick[12]);
+
+        PlayerAnimationStand = new Animation(40, texture.Rick[0], texture.Rick[1], texture.Rick[2]);
         numPositionPiece = 0;
     }
 
@@ -92,8 +84,7 @@ public class Joueur extends JoueurActif {
     public void setNumPositionPiece(int numPositionPiece) {
         this.numPositionPiece = numPositionPiece;
     }
-    
-    
+
     public ArrayList<Objet> getListeObjets() {
         return listeObjets;
     }
@@ -122,11 +113,10 @@ public class Joueur extends JoueurActif {
         return ImageIO.read(Joueur.class.getResource(persoRoute));
 
     }*/
-
     @Override
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
-        return new Rectangle2D.Double(getX()+17, getY()+15, 28, 45);
+        return new Rectangle2D.Double(getX() + 17, getY() + 15, 28, 45);
     }
 
     public int getHEIGHT() {
@@ -174,7 +164,6 @@ public class Joueur extends JoueurActif {
             }
         }
     }*/
-
     public void passageSecret(Piece DeplacementPassageSecret) {
         //cliquer sur methode passage secret de piece !
     }
@@ -237,29 +226,29 @@ public class Joueur extends JoueurActif {
     public void seDeplacer(Graphics2D g2) {
 
         if (Clavier.up && getY() > 30) {
-            setY(getY() - 2);
+            setY(getY() - 1);
             PlayerAnimationUp.dessinerAnimation(g2, getX(), getY());
 
-        }else if (Clavier.down && getY() < 540 - HEIGHT) {
+        } else if (Clavier.down && getY() < 540 - HEIGHT) {
             PlayerAnimationDown.dessinerAnimation(g2, getX(), getY());
-            setY(getY() + 2);
-        }else if (Clavier.left && getX() > 30) {
+            setY(getY() + 1);
+        } else if (Clavier.left && getX() > 30) {
             PlayerAnimationLeft.dessinerAnimation(g2, getX(), getY());
-            setX(getX() - 2);
-        }else if (Clavier.right && getX() < 755 - WIDHT) {
+            setX(getX() - 1);
+        } else if (Clavier.right && getX() < 755 - WIDHT) {
             PlayerAnimationRight.dessinerAnimation(g2, getX(), getY());
-            setX(getX() + 2);
-        }else{
-            g2.drawImage(texture.squelette[0], getX(), getY(),null);
+            setX(getX() + 1);
+        } else {
+            //g2.drawImage(texture.squelette[0], getX(), getY(), null);
+            PlayerAnimationStand.dessinerAnimation(g2, getX(), getY());
+            //g2.drawImage(texture.Rick[2], getX(), getY(), null);    
         }
     }
 
     //PUEDE GENERAR ERROR
     @Override
     public void dessiner(Graphics2D g2) {
-
-        g2.drawImage(texture.squelette[0], getX(), getY(),null);
-        
+        g2.drawImage(texture.Rick[10], getX(), getY(), null);
     }
-    
+
 }

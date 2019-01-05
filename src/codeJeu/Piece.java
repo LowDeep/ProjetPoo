@@ -205,6 +205,7 @@ public class Piece {
                 joueur.PlayerAnimationUp.runAnimation();
                 joueur.PlayerAnimationLeft.runAnimation();
                 joueur.PlayerAnimationRight.runAnimation();
+                joueur.PlayerAnimationStand.runAnimation();
             }
 
             if (personnage.getClass().getName().equals("codeJeu.Monstre")) {
