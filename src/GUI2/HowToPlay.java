@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import java.awt.Rectangle;
 
 /**
  *
@@ -25,39 +26,41 @@ public class HowToPlay extends JFrame {
     
      
     public HowToPlay(){
-        setTitle("Les aventures de MA BITE");
+        setTitle("Les aventures de Mr Bones");
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
         panel =  new  HowToPlayPanel();
         
         
-        JLabel lblMedecin = new JLabel("<html>Le medecin, si tu n'as pas trop de vie, il va te soigner</html>");
+        JLabel lblMedecin = new JLabel("<html>Le medecin, te mets tous tes points de vie au maximum</html>");
         lblMedecin.setBounds(150, 50, 400, 100);
         lblMedecin.setFont(new Font("Arial", 2, 25));
         
         
-        JLabel lblMagicien = new JLabel("<html>Le magicien, s'il te manque d'armure, il va te régénerer</html>");
+        JLabel lblMagicien = new JLabel("<html>Le magicien, te donne une armure contre les ennemis</html>");
         lblMagicien.setBounds(150, 150, 400, 100);
         lblMagicien.setFont(new Font("Arial", 2, 25));
         
         
-        JLabel lblCuisinier = new JLabel("<html>La cuinière, si tu n'as pas trop de force, trouve-la et tu te sentiras mieu</html>");
+        JLabel lblCuisinier = new JLabel("<html>La cuisiniere, te cuisine de bons plats pour regenerer ta force</html>");
         lblCuisinier.setBounds(150, 250, 400, 100);
         lblCuisinier.setFont(new Font("Arial", 2, 25));
         
-        JLabel lblJoueur = new JLabel("<html>Le joueur avec WASD</html>");
+        JLabel lblJoueur = new JLabel("<html>Le joueur se deplace avec les touches ZQSD</html>");
         lblJoueur.setBounds(150, 350, 400, 100);
         lblJoueur.setFont(new Font("Arial", 2, 25));
         
-        JButton continuer = new JButton("Continuer");
-        continuer.setBounds(600, 550, 200, 20);
+        getContentPane().add(lblMedecin);
+        getContentPane().add(lblMagicien);
+        getContentPane().add(lblCuisinier);
+        getContentPane().add(lblJoueur);
         
-        add(lblMedecin);
-        add(lblMagicien);
-        add(lblCuisinier);
-        add(lblJoueur);
-        add(continuer);
+        getContentPane().add(panel);
+        
+        JButton continuer = new JButton("Jouer");
+        panel.add(continuer);
+        continuer.setBounds(600, 550, 200, 20);
         
         continuer.addActionListener(new ActionListener() {
             @Override
@@ -69,8 +72,6 @@ public class HowToPlay extends JFrame {
                 fenetre.setDefaultCloseOperation(EXIT_ON_CLOSE);
             }
         });
-        
-        add(panel);
         
         
         

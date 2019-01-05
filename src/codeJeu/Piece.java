@@ -2,11 +2,11 @@ package codeJeu;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.rmi.UnmarshalException;
 import java.util.Iterator;
 import java.util.List;
 
 import GUI.Clavier;
+import GUI2.BufferedImageLoader;
 import GUI2.TableauJeu;
 import GUI2.Texture;
 import GUI2.fenetreObjets;
@@ -15,6 +15,8 @@ public class Piece {
 
     public static boolean confirmationPerteJeu = false;
     public static boolean confirmationGagnerJeu = false;
+    
+    private LevierPorte levierPorte;
 
     private boolean nord;
     private boolean sud;
@@ -63,7 +65,7 @@ public class Piece {
         this.porte = new Porte[4];
         this.passageSecret = passageSecret;
         this.personnages = personnage;
-
+        this.levierPorte = new LevierPorte(400,50);
         if (passageSecret) {
             passage++;
             if (passage == 1) {
@@ -222,6 +224,7 @@ public class Piece {
 
         dessinerPortes(g);
         dessinerPassagesSecrets(g);
+        dessinerLevierPorte(g);
         fenetreObjets.getProgbarArmure().getProgressBar().setValue((joueur.getArmure()));
         fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
         fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());
@@ -246,6 +249,11 @@ public class Piece {
         }
 
     }
+    private void dessinerLevierPorte(Graphics2D g) {
+    	levierPorte = new LevierPorte(680, 65);
+
+    	levierPorte.dessiner(g);    }
+    
 
     public void actualiser(Graphics2D g2) {
         Clavier.update();
@@ -268,6 +276,8 @@ public class Piece {
         confirmations();
 
     }
+    
+    
 
     private void confirmations() {
         collisionMedecin(joueur);
@@ -278,13 +288,30 @@ public class Piece {
         collisionMonstre(joueur);
         collisionPassageSecretFirst(joueur);
         collisionPassageSecretSecond(joueur);
-
+        collisionLevierPorte(joueur);
+        
         if (joueur.getPdv() == 0) {
             confirmationPerteJeu = true;
         }
     }
 
-    private void collisionPrincesse(Joueur joueur) {
+    /**
+	 * 
+	 */
+	private void collisionLevierPorte(Joueur joueur2) {
+		// TODO Auto-generated method stub
+		BufferedImageLoader loader = new BufferedImageLoader(); 
+            if (levierPorte.getHitBox().intersects(joueur2.getHitBox())) {
+                sud=true;
+                nord=true;
+                est=true;
+                ouest=true;
+            }
+            levierPorte.texture.levierPorte_sheet = loader.loadImage("/liverPorteDroit.png");
+	        
+	}
+
+	private void collisionPrincesse(Joueur joueur) {
         //GAGNER PARTIE SI COLLISTION
 
         Iterator<Personnage> iterator = personnages.iterator();

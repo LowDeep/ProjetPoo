@@ -129,13 +129,13 @@ public class TableauJeu extends JPanel {
         Monstre monstreGhost9 = new Monstre(100, 100, 5, 5, 1);
         Monstre monstreGhost10 = new Monstre(100, 100, 5, 5, 1);
         Monstre monstreGhost11= new Monstre(100, 100, 5, 5, 1);
-        Monstre monstreGhost12= new Monstre(100, 100, 5, 5, 1);
+        Monstre monstreGhost12= new Monstre(400, 300, 5, 5, 1);
         Monstre monstreGhost13 = new Monstre(400, 400, 5, 5, 1);
         Monstre monstreGhost14= new Monstre(400, 400, 5, 5, 1);
         Monstre monstreGhost15 = new Monstre(400, 400, 5, 5, 1);
         
         Monstre monstreMinotaure2 = new Monstre(200, 100, 5, 5, 2);
-        Monstre monstreMinotaur3 = new Monstre(400, 100, 5, 5, 2);
+        Monstre monstreMinotaure3 = new Monstre(400, 100, 5, 5, 2);
         Monstre monstreMinotaure4 = new Monstre(100, 300, 5, 5, 2);
         Monstre monstreMinotaure5 = new Monstre(200, 100, 5, 5, 2);
         Monstre monstreMinotaure6 = new Monstre(400, 100, 5, 5, 2);
@@ -145,10 +145,11 @@ public class TableauJeu extends JPanel {
         Monstre monstreMinotaure10 = new Monstre(100, 100, 5, 5, 2);
         Monstre monstreMinotaure11 = new Monstre(400, 400, 5, 5, 2);
         Monstre monstreMinotaure12 = new Monstre(300, 100, 5, 5, 2);
+        Monstre monstreMinotaure16 = new Monstre(200, 400, 5, 5, 2);
         
 
         Monstre monstreGhost = new Monstre(100, 100, 5, 5, 1);
-        Monstre monstreMinotaure = new Monstre(100, 100, 5, 5, 2);
+        Monstre monstreMinotaure = new Monstre(500, 250, 5, 5, 2);
 
         Cuisinier cuisinier = new Cuisinier(300, 300);
         Medecin medecin = new Medecin(200, 300);
@@ -258,6 +259,14 @@ public class TableauJeu extends JPanel {
         JoueurDoubleMinoDoubleGhost.add(monstreGhost9);
         JoueurDoubleMinoDoubleGhost.add(monstreGhost10);
         
+        
+        List<Personnage> JoueurDoubleMinoDoubleGhost2 = new ArrayList<Personnage>();
+        JoueurDoubleMinoDoubleGhost2.add(joueur);
+        JoueurDoubleMinoDoubleGhost2.add(monstreMinotaure16);
+        JoueurDoubleMinoDoubleGhost2.add(monstreMinotaure);
+        JoueurDoubleMinoDoubleGhost2.add(monstreGhost12);
+        JoueurDoubleMinoDoubleGhost2.add(monstreGhost10);
+        
         List<Personnage> JoueurDoubleMinoUnGhost = new ArrayList<Personnage>();
         JoueurDoubleMinoUnGhost.add(joueur);
         JoueurDoubleMinoUnGhost.add(monstreMinotaure11);
@@ -269,6 +278,8 @@ public class TableauJeu extends JPanel {
         FinalSalle.add(new Princesse(70, 70));
         FinalSalle.add(new Monstre(90, 80, 20, 10, 2));
         FinalSalle.add(new Monstre(500, 70, 20, 10, 1));
+        
+        
         
         /*
         List<Personnage> personnagesP6= new ArrayList<Personnage>();
@@ -314,13 +325,13 @@ public class TableauJeu extends JPanel {
         piece10 = new Piece(true,true,false,true,false,JoueurMagicien);
         //troisieme ligne
         piece11 = new Piece(true,true,true,false,false,JoueurMedecin);
-        piece12= new Piece(true,true,true,true,false,JoueurDoubleMinoDoubleGhost);
+        piece12= new Piece(true,true,true,true,false,JoueurGhostPos2Minautaure);
         piece13 = new Piece(true,true,true,true,false,JoueurGhostPos2Cuisinier);
         piece14 = new Piece(true,true,true,true,false,JoueurGhostPos2);
         piece15 = new Piece(true,false,false,true,false,JoueurDoubleMinoDoubleGhost);
         //quatrieme ligne
         piece16 = new Piece(true,false,true,false,false,JoueurDoubleGhostPassageSecret);
-        piece17= new Piece(true,false,true,true,true,JoueurCuisinier);
+        piece17= new Piece(true,false,true,true,true,JoueurDoubleMinoDoubleGhost2);
         piece18 = new Piece(true,false,true,true,false,JoueurGhostPos2Medecin);
         piece19 = new Piece(true,false,false,true,false,JoueurMagicien);
         piece20Final = new Piece(false,false,false,false,false,FinalSalle);

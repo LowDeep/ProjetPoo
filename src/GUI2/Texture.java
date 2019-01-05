@@ -69,6 +69,10 @@ public class Texture {
     private BufferedImage princesse_sheet = null;
     public BufferedImage[] princesse = new BufferedImage[1];
 
+    SpriteSheet levierPorteSpriteSheet;
+    public BufferedImage levierPorte_sheet = null;
+    public BufferedImage[] levierPorte = new BufferedImage[1];
+
     public Texture() {
 
         BufferedImageLoader loader = new BufferedImageLoader();
@@ -90,6 +94,8 @@ public class Texture {
         passageSecretSecond_sheet = loader.loadImage("/passageSecret1.png");
         princesse_sheet = loader.loadImage("/princesse.png");
 
+        levierPorte_sheet = loader.loadImage("/liverPorteGauche.png");
+
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
@@ -108,6 +114,8 @@ public class Texture {
         passageSecretSecondSpriteSheet = new SpriteSheet(passageSecretSecond_sheet);
 
         princesseSpriteSheet = new SpriteSheet(princesse_sheet);
+
+        levierPorteSpriteSheet = new SpriteSheet(levierPorte_sheet);
 
         getPersonnage();
         getSquelette();
@@ -128,6 +136,13 @@ public class Texture {
 
         getPrincesse();
 
+        getLevierPorte();
+
+    }
+
+    private void getLevierPorte() {
+        // TODO Auto-generated method stub
+        levierPorte[0] = levierPorteSpriteSheet.grabImage(1, 1, 44, 35);
     }
 
     /**
