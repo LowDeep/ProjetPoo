@@ -25,14 +25,13 @@ public class Piece {
     private Porte[] porte;
 
     private boolean passageSecret;
-    
+
     private int xFirst = -200;
     private int yFirst = -200;
 
     private int xSecond = -200;
     private int ySecond = -200;
 
-    
     /*
     
     private int xFirst = 30;
@@ -41,8 +40,7 @@ public class Piece {
     private final int xSecond = 630;
     private final int ySecond = 410;
 
-    */
-    
+     */
     private final String passageSecretRoute = "/passageSecret1.png";
     private final int HEIGHT = 118, WIDHT = 87;
     Texture texture = TableauJeu.getInstance();
@@ -77,6 +75,23 @@ public class Piece {
             }
 
         }
+
+        if (nord) {
+            porte[0] = new Porte(350, 1);
+        }
+        if (sud) {
+            porte[1] = new Porte(350, 499);
+        }
+        if (est) {
+            porte[2] = new Porte(719, 250);
+        }
+        if (ouest) {
+            porte[3] = new Porte(1, 250);
+        }
+        
+        levierPorte = new LevierPorte(680, 65);
+
+
     }
     //savoir si il y'a un passage secret 
 
@@ -221,31 +236,26 @@ public class Piece {
 
     private void dessinerPortes(Graphics2D g) {
         if (isNord()) {
-            porte[0] = new Porte(350, 1);
             g.fill(porte[0].getHitBox());
             porte[0].dessiner(g);
         }
         if (isSud()) {
-            porte[1] = new Porte(350, 499);
-            g.fill(porte[1].getHitBox());
             porte[1].dessinerBas(g);
         }
         if (isEst()) {
-            porte[2] = new Porte(719, 250);
             g.fill(porte[2].getHitBox());
             porte[2].dessinerDroite(g);
         }
         if (isOuest()) {
-            porte[3] = new Porte(1, 250);
             g.fill(porte[3].getHitBox());
             porte[3].dessinerGauche(g);
         }
 
     }
     private void dessinerLevierPorte(Graphics2D g) {
-    	levierPorte = new LevierPorte(680, 65);
 
-    	levierPorte.dessiner(g);    }
+    	levierPorte.dessiner(g);   
+    }
     
 
     public void actualiser(Graphics2D g2) {
@@ -293,14 +303,10 @@ public class Piece {
 	 */
 	private void collisionLevierPorte(Joueur joueur2) {
 		// TODO Auto-generated method stub
-		BufferedImageLoader loader = new BufferedImageLoader(); 
             if (levierPorte.getHitBox().intersects(joueur2.getHitBox())) {
-                sud=true;
-                nord=true;
-                est=true;
-                ouest=true;
+                ouvrirPortes();
+                levierPorte.setActive(true);
             }
-            levierPorte.texture.levierPorte_sheet = loader.loadImage("/liverPorteDroit.png");
 	        
 	}
 
@@ -331,11 +337,10 @@ public class Piece {
                 Medecin medecin = (Medecin) personnage;
                 //COllition avec le magicien
                 if (medecin.getHitBox().intersects(joueur.getHitBox())) {
-                    System.out.println("Collition medecin");
+                    //System.out.println("Collition medecin");
 
                     joueur.setPdv(ConstantesDeJeu.PDVMAX);
                     fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
-
                 }
 
             }
@@ -488,7 +493,8 @@ public class Piece {
         for (int i = 0; i < porte.length; i++) {
             if (isNord()) {
                 //System.out.println("collision non");
-                if (porte[0].getHitBox().intersects(joueur.getHitBox())) {
+                if (porte[0].getHitBox().intersects(joueur.getHitBox()) && porte[0].isOuvert()) {
+                    mettrePortesFermees();
                     //joueur doit passer en bas 
                     TableauJeu.positionPiecePersonnageX--;
                     joueur.setX(345);
@@ -500,7 +506,8 @@ public class Piece {
             }
             if (isSud()) {
                 //System.out.println("collision non");
-                if (porte[1].getHitBox().intersects(joueur.getHitBox())) {
+                if (porte[1].getHitBox().intersects(joueur.getHitBox()) && porte[1].isOuvert()) {
+                    mettrePortesFermees();
                     //joueur doit passer en bas 
                     TableauJeu.positionPiecePersonnageX++;
                     joueur.setX(350);
@@ -511,7 +518,8 @@ public class Piece {
                 }
             }
             if (isEst()) {
-                if (porte[2].getHitBox().intersects(joueur.getHitBox())) {
+                if (porte[2].getHitBox().intersects(joueur.getHitBox()) && porte[2].isOuvert() ) {
+                    mettrePortesFermees();
                     //joueur doit passer en bas 
                     TableauJeu.positionPiecePersonnageY++;
                     joueur.setX(66);
@@ -523,7 +531,8 @@ public class Piece {
 
             }
             if (isOuest()) {
-                if (porte[3].getHitBox().intersects(joueur.getHitBox())) {
+                if (porte[3].getHitBox().intersects(joueur.getHitBox()) && porte[3].isOuvert()) {
+                    mettrePortesFermees();
                     //joueur doit passer en bas
                     TableauJeu.positionPiecePersonnageY--;
                     joueur.setX(650);
@@ -568,30 +577,28 @@ public class Piece {
     private void dessinerPassagesSecrets(Graphics2D g) {
 
         //System.out.println("Passage " + passage);
-         if(!(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 4)
-                || !(TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 2)){
+        if (!(TableauJeu.positionPiecePersonnageX == 3 & TableauJeu.positionPiecePersonnageY == 4)
+                || !(TableauJeu.positionPiecePersonnageX == 3 & TableauJeu.positionPiecePersonnageY == 2)) {
             xFirst = -200;
-            yFirst = -200;         
+            yFirst = -200;
             xSecond = -200;
-            ySecond = -200;    
-            
+            ySecond = -200;
+
         }
-         
-        if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 2){
-            
+
+        if (TableauJeu.positionPiecePersonnageX == 3 & TableauJeu.positionPiecePersonnageY == 2) {
+
             xFirst = 30;
-            yFirst = 40;            
-            
+            yFirst = 40;
+
             dessinerFirst(g);
             g.fill(getHitBoxFirst());
-        } else if (TableauJeu.positionPiecePersonnageX ==3 & TableauJeu.positionPiecePersonnageY == 4) {
+        } else if (TableauJeu.positionPiecePersonnageX == 3 & TableauJeu.positionPiecePersonnageY == 4) {
             xSecond = 635;
-            ySecond = 425;            
+            ySecond = 425;
             dessinerSecond(g);
             g.fill(getHitBoxSecond());
         }
-        
-       
 
     }
 
@@ -611,14 +618,34 @@ public class Piece {
 
     public void collisionPassageSecretSecond(Joueur joueur) {
         if (getHitBoxSecond().intersects(joueur.getHitBox())) {
-
             TableauJeu.positionPiecePersonnageX = 3;
             TableauJeu.positionPiecePersonnageY = 2;
             mettreMonstresDansPositionInitiale();
             joueur.setX(60);
             joueur.setY(120);
+        }
+    }
 
+    private void mettrePortesFermees() {
+        for (int i = 0; i < porte.length; i++) {
+            if (porte[i] != null) {
+                porte[i].setOuvert(false);
+            }
+        }
+    }
 
+    private void ouvrirPortes() {
+        if (isNord()) {
+            porte[0].setOuvert(true);
+        }
+        if (isSud()) {
+            porte[1].setOuvert(true);
+        }
+        if (isEst()) {
+            porte[2].setOuvert(true);
+        }
+        if (isOuest()) {
+            porte[3].setOuvert(true);
         }
     }
 }

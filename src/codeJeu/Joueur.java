@@ -163,7 +163,7 @@ public class Joueur extends JoueurActif {
     }
     //methode pour ouvrir une porte
 
-    public void ouvrirPorte(Porte ouvrir) {
+    /*public void ouvrirPorte(Porte ouvrir) {
 
         for (int i = 0; i < listeObjets.size(); i++) {
             if (listeObjets.get(i).getClass().equals("Clef.java")) {
@@ -173,7 +173,7 @@ public class Joueur extends JoueurActif {
                 }
             }
         }
-    }
+    }*/
 
     public void passageSecret(Piece DeplacementPassageSecret) {
         //cliquer sur methode passage secret de piece !
