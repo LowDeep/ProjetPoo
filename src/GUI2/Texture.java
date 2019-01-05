@@ -72,6 +72,10 @@ public class Texture {
     SpriteSheet levierPorteSpriteSheet;
     public BufferedImage levierPorte_sheet = null;
     public BufferedImage[] levierPorte = new BufferedImage[2];
+    
+    SpriteSheet RickSpriteSheet;
+    private BufferedImage Rick_sheet = null;
+    public BufferedImage[] Rick = new BufferedImage[36];
 
     public Texture() {
 
@@ -95,12 +99,14 @@ public class Texture {
         princesse_sheet = loader.loadImage("/princesse.png");
 
         levierPorte_sheet = loader.loadImage("/liverPorteGauche.png");
+        Rick_sheet = loader.loadImage("/Rick.png");
 
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
         magicienSpriteSheet = new SpriteSheet(magicien_sheet);
         medecinSpriteSheet = new SpriteSheet(medecin_sheet);
+        RickSpriteSheet = new SpriteSheet(Rick_sheet);
 
         porteOuverteSpriteSheet = new SpriteSheet(porteOuverte_sheet);
         porteOuverteBasSpriteSheet = new SpriteSheet(porteOuverteBas_sheet);
@@ -137,7 +143,7 @@ public class Texture {
         getPrincesse();
 
         getLevierPorte();
-
+        getRick();
     }
 
     private void getLevierPorte() {
@@ -155,7 +161,8 @@ public class Texture {
     }
 
     /**
-     *
+     *        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
      */
     private void getPassageSecretFirst() {
         // TODO Auto-generated method stub
@@ -304,6 +311,14 @@ public class Texture {
     private void getPorteOuverteGauche() {
         porteGauche[0] = porteOuverteGaucheSpriteSheet.grabImage(1, 1, 66, 66);
         porteGauche[1] = porteOuverteGaucheSpriteSheet.grabImage(1, 2, 66, 66);
+    }
+
+    private void getRick() {
+        //Sans movement
+        Rick[0] = RickSpriteSheet.grabImage(1, 1, 39, 82);
+        Rick[1] = RickSpriteSheet.grabImage(2, 1, 39, 82);
+        Rick[2] = RickSpriteSheet.grabImage(3, 1, 39, 82);
+
     }
 
 }
