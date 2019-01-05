@@ -24,7 +24,7 @@ public class Thread2 extends Thread {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(10);
+                Thread.sleep(0);
                 tableauJeu.repaint();
 
             } catch (InterruptedException ex) {

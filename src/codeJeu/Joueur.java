@@ -167,7 +167,7 @@ public class Joueur extends JoueurActif {
 
         for (int i = 0; i < listeObjets.size(); i++) {
             if (listeObjets.get(i).getClass().equals("Clef.java")) {
-                Clef clef = (Clef) listeObjets.get(i);
+                LevierPorte clef = (LevierPorte) listeObjets.get(i);
                 if (clef.getNumeroClef() == ouvrir.getNumeroPorte()) {
                     ouvrir.setSerrure(true);
                 }
