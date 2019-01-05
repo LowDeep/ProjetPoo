@@ -71,7 +71,7 @@ public class Texture {
 
     SpriteSheet levierPorteSpriteSheet;
     public BufferedImage levierPorte_sheet = null;
-    public BufferedImage[] levierPorte = new BufferedImage[1];
+    public BufferedImage[] levierPorte = new BufferedImage[2];
 
     public Texture() {
 
@@ -142,7 +142,8 @@ public class Texture {
 
     private void getLevierPorte() {
         // TODO Auto-generated method stub
-        levierPorte[0] = levierPorteSpriteSheet.grabImage(1, 1, 44, 35);
+        levierPorte[0] = levierPorteSpriteSheet.grabImage(1, 1, 35, 32);
+        levierPorte[1] = levierPorteSpriteSheet.grabImage(2, 1, 35, 32);
     }
 
     /**

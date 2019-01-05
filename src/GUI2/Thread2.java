@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class Thread2 extends Thread {
 
-    TableauJeu tableauJeu;
+    TableauJeu tableauJeu;  
 
     public Thread2(TableauJeu tableauJeu) {
         this.tableauJeu = tableauJeu;
@@ -24,7 +24,7 @@ public class Thread2 extends Thread {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(0);
+                Thread.sleep(6);
                 tableauJeu.repaint();
 
             } catch (InterruptedException ex) {

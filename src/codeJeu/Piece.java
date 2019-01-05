@@ -88,6 +88,9 @@ public class Piece {
         if (ouest) {
             porte[3] = new Porte(1, 250);
         }
+        
+        levierPorte = new LevierPorte(680, 65);
+
 
     }
     //savoir si il y'a un passage secret 
@@ -250,9 +253,9 @@ public class Piece {
 
     }
     private void dessinerLevierPorte(Graphics2D g) {
-    	levierPorte = new LevierPorte(680, 65);
 
-    	levierPorte.dessiner(g);    }
+    	levierPorte.dessiner(g);   
+    }
     
 
     public void actualiser(Graphics2D g2) {
@@ -300,14 +303,10 @@ public class Piece {
 	 */
 	private void collisionLevierPorte(Joueur joueur2) {
 		// TODO Auto-generated method stub
-		BufferedImageLoader loader = new BufferedImageLoader(); 
             if (levierPorte.getHitBox().intersects(joueur2.getHitBox())) {
-                sud=true;
-                nord=true;
-                est=true;
-                ouest=true;
+                ouvrirPortes();
+                levierPorte.setActive(true);
             }
-            levierPorte.texture.levierPorte_sheet = loader.loadImage("/liverPorteDroit.png");
 	        
 	}
 
@@ -342,8 +341,6 @@ public class Piece {
 
                     joueur.setPdv(ConstantesDeJeu.PDVMAX);
                     fenetreObjets.getProgbarVie().getProgressBar().setValue(joueur.getPdv());
-
-                    ouvrirPortes();
                 }
 
             }
