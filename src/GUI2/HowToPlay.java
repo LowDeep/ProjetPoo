@@ -26,7 +26,7 @@ public class HowToPlay extends JFrame {
     
      
     public HowToPlay(){
-        setTitle("Les aventures de Mr Bones");
+        setTitle("Les aventures de Mr Rick");
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -47,7 +47,7 @@ public class HowToPlay extends JFrame {
         lblCuisinier.setBounds(150, 250, 400, 100);
         lblCuisinier.setFont(new Font("Arial", 2, 25));
         
-        JLabel lblJoueur = new JLabel("<html>Le joueur se deplace avec les touches ZQSD</html>");
+        JLabel lblJoueur = new JLabel("<html>Le joueur se deplace avec les touches UP,DOWN,LEFT,RIGHT</html>");
         lblJoueur.setBounds(150, 350, 400, 100);
         lblJoueur.setFont(new Font("Arial", 2, 25));
         
