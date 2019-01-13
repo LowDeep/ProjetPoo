@@ -168,7 +168,7 @@ public class Texture {
         potionArmureGrandSpriteSheet = new SpriteSheet(potionArmureGrand_sheet);
 
         getPersonnage();
-        getSquelette();
+        //getSquelette();
         getCuisinier();
         getMagicien();
         getMedecin();
