@@ -116,7 +116,7 @@ public class Joueur extends JoueurActif {
     @Override
     public Rectangle2D getHitBox() {
         //return new Rectangle2D.Double(getX()+38, getY(), 36, 58);
-        return new Rectangle2D.Double(getX() + 17, getY() + 15, 28, 45);
+        return new Rectangle2D.Double(getX() + 5, getY()+10, WIDHT - 10 , HEIGHT - 20);
     }
 
     public int getHEIGHT() {
@@ -225,19 +225,19 @@ public class Joueur extends JoueurActif {
 
     public void seDeplacer(Graphics2D g2) {
 
-        if (Clavier.up && getY() > 30) {
-            setY(getY() - 1);
+        if (Clavier.up && getY() > 55) {
+            setY(getY() - 2);
             PlayerAnimationUp.dessinerAnimation(g2, getX(), getY());
 
-        } else if (Clavier.down && getY() < 540 - HEIGHT) {
+        } else if (Clavier.down && getY() < 530 - HEIGHT) {
             PlayerAnimationDown.dessinerAnimation(g2, getX(), getY());
-            setY(getY() + 1);
-        } else if (Clavier.left && getX() > 30) {
+            setY(getY() + 2);
+        } else if (Clavier.left && getX() > 50) {
             PlayerAnimationLeft.dessinerAnimation(g2, getX(), getY());
-            setX(getX() - 1);
-        } else if (Clavier.right && getX() < 755 - WIDHT) {
+            setX(getX() - 2);
+        } else if (Clavier.right && getX() < 730 - WIDHT) {
             PlayerAnimationRight.dessinerAnimation(g2, getX(), getY());
-            setX(getX() + 1);
+            setX(getX() + 2);
         } else {
             //g2.drawImage(texture.squelette[0], getX(), getY(), null);
             PlayerAnimationStand.dessinerAnimation(g2, getX(), getY());

@@ -44,7 +44,6 @@ public class Porte extends Objet implements Dessiner {
     @Override
     public void dessiner(Graphics2D g) {
         if (ouvert) {
-            System.out.println("OUAIS");
             g.drawImage(texture.porteHaut[0], getX(), getY(), null);
         } else {
             g.drawImage(texture.porteHaut[1], getX(), getY(), null);
