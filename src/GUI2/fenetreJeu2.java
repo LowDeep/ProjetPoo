@@ -15,7 +15,7 @@ import javax.swing.JMenuBar;
 public class fenetreJeu2 extends JFrame {
 	public fenetreJeu2() {
 		setTitle("Jeu alex!!");
-		setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
+		setLocationRelativeTo(null);
 		setResizable(false); 
 		setVisible(true);
 		setBounds(800,140,796,635);
