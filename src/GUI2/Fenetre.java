@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import GUI.Clavier;
 
 /**
  * @author dioxo

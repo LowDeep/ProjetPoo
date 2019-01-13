@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import GUI2.Clavier;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
