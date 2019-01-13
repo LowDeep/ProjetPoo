@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import GUI.Clavier;
 
 /**
  * @author dioxo
@@ -26,7 +25,7 @@ public class Fenetre extends JFrame {
     public static Thread2 thread;
 
     public Fenetre() {
-        setTitle("Les aventures de Mr-BONES");
+        setTitle("Les aventures de Mr Rick");
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import GUI.Clavier;
+import GUI2.Clavier;
 import GUI2.TableauJeu;
 import GUI2.Texture;
 import GUI2.fenetreObjets;

@@ -1,6 +1,6 @@
 package codeJeu;
 
-import GUI.Clavier;
+import GUI2.Clavier;
 import GUI2.Animation;
 import GUI2.TableauJeu;
 import GUI2.Texture;
