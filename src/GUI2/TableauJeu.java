@@ -334,8 +334,8 @@ public class TableauJeu extends JPanel {
         piece15 = new Piece(true,false,false,true,false,JoueurDoubleMinoDoubleGhost);
         //quatrieme ligne
         piece16 = new Piece(true,false,true,false,false,JoueurDoubleGhostPassageSecret);
-        piece17= new Piece(true,false,true,true,true,JoueurDoubleMinoDoubleGhost2);
-        piece18 = new Piece(true,false,true,true,false,JoueurGhostPos2Medecin);
+        piece17= new Piece(true,false,true,true,true,JoueurGhostPos2Medecin);
+        piece18 = new Piece(true,false,true,true,false,JoueurDoubleMinoDoubleGhost2);
         piece19 = new Piece(true,false,false,true,false,JoueurMagicien);
         piece20Final = new Piece(false,false,false,false,false,FinalSalle);
 
@@ -391,20 +391,35 @@ public class TableauJeu extends JPanel {
         
         
         
-        PotionVie potionViePetite1 = new PotionVie(false,300,200);
+        PotionVie potionViePetite1  = new PotionVie(false,300,200);
        PotionVie potionVieGrande1 = new PotionVie(true,400,200);
-        piece1.ajouterPotion(potionViePetite1);
-       piece1.ajouterPotion(potionVieGrande1);
+       piece10.ajouterPotion(potionViePetite1);
+       piece14.ajouterPotion(potionVieGrande1);
         
         PotionForce potionForcePetite1 = new PotionForce(false,200,400);
         PotionForce potionForceGrande1 = new PotionForce(true,500,200);
-        piece1.ajouterPotion(potionForceGrande1);
-        piece1.ajouterPotion(potionForcePetite1);
+        piece5.ajouterPotion(potionForceGrande1);
+        piece8.ajouterPotion(potionForcePetite1);
         
-        PotionArmure potionArmurePetite1 = new PotionArmure(false,300,400);
-        PotionArmure potionArmureGrande1 = new PotionArmure(true,500,400);
-        piece1.ajouterPotion(potionArmureGrande1);
-        piece1.ajouterPotion(potionArmurePetite1);
+        PotionArmure potionArmurePetite1 = new PotionArmure(false,300,100);
+        PotionArmure potionArmureGrande1 = new PotionArmure(true,300,400);
+        piece2.ajouterPotion(potionArmureGrande1);
+        piece9.ajouterPotion(potionArmurePetite1);
+        
+        PotionVie potionViePetite2 = new PotionVie(false,300,200);
+        PotionVie potionVieGrande2 = new PotionVie(true,400,200);
+        PotionArmure potionArmurePetite2 = new PotionArmure(false,300,100);
+        PotionArmure potionArmureGrande2 = new PotionArmure(true,300,400);
+        PotionForce potionForcePetite2 = new PotionForce(false,200,400);
+        PotionForce potionForceGrande2 = new PotionForce(true,500,200);
+        piece20Final.ajouterPotion(potionViePetite2);
+        piece20Final.ajouterPotion(potionForcePetite2);
+        piece20Final.ajouterPotion(potionArmurePetite2);
+        piece17.ajouterPotion(potionVieGrande2);
+        piece10.ajouterPotion(potionArmureGrande2);
+        piece19.ajouterPotion(potionForceGrande2);
+        
+        
         
     }
 

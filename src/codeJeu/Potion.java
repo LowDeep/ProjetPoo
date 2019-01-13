@@ -58,6 +58,14 @@ public abstract class Potion extends Objet {
     	{
     		g.drawImage(texture.potionForceGrand[0], getX(), getY(), null);
     	}
+    	if(getClass().getName().equals("codeJeu.PotionArmure") && type==false)
+    	{
+    		g.drawImage(texture.potionArmurePetit[0], getX(), getY(), null);
+    	}
+    	if(getClass().getName().equals("codeJeu.PotionArmure") && type==true)
+    	{
+    		g.drawImage(texture.potionArmureGrand[0], getX(), getY(), null);
+    	}
     }
   
     public Rectangle2D getHitBox() {

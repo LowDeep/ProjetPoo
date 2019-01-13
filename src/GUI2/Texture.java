@@ -73,6 +73,7 @@ public class Texture {
     public BufferedImage levierPorte_sheet = null;
     public BufferedImage[] levierPorte = new BufferedImage[2];
     
+
     SpriteSheet potionViePetitSpriteSheet;
     public BufferedImage potionViePetit_sheet = null;
     public BufferedImage[] potionViePetit = new BufferedImage[1];
@@ -97,7 +98,10 @@ public class Texture {
     public BufferedImage potionArmureGrand_sheet = null;
     public BufferedImage[] potionArmureGrand = new BufferedImage[1];
     
-    
+
+    SpriteSheet RickSpriteSheet;
+    private BufferedImage Rick_sheet = null;
+    public BufferedImage[] Rick = new BufferedImage[36];
 
     public Texture() {
 
@@ -121,6 +125,7 @@ public class Texture {
         princesse_sheet = loader.loadImage("/princesse.png");
 
         levierPorte_sheet = loader.loadImage("/liverPorteGauche.png");
+
         
         potionViePetit_sheet = loader.loadImage("/potionViePetit.png");
         potionVieGrand_sheet = loader.loadImage("/potionVieGrande.png");
@@ -131,11 +136,14 @@ public class Texture {
         potionArmurePetit_sheet = loader.loadImage("/potionArmurePetit.png");
         potionArmureGrand_sheet = loader.loadImage("/potionArmureGrand.png");
 
+        Rick_sheet = loader.loadImage("/Rick.png");
+
         squeletteSpriteSheet = new SpriteSheet(squelette_sheet);
         personnageSpriteSheet = new SpriteSheet(personnage_sheet);
         cuisinierSpriteSheet = new SpriteSheet(cuisinier_sheet);
         magicienSpriteSheet = new SpriteSheet(magicien_sheet);
         medecinSpriteSheet = new SpriteSheet(medecin_sheet);
+        RickSpriteSheet = new SpriteSheet(Rick_sheet);
 
         porteOuverteSpriteSheet = new SpriteSheet(porteOuverte_sheet);
         porteOuverteBasSpriteSheet = new SpriteSheet(porteOuverteBas_sheet);
@@ -179,6 +187,7 @@ public class Texture {
         getPrincesse();
 
         getLevierPorte();
+
         
         getPotionViePetit();
         getPotionVieGrand();
@@ -190,6 +199,8 @@ public class Texture {
         getPotionArmureGrand();
         
         
+
+        getRick();
     }
 
     /**
@@ -255,7 +266,8 @@ public class Texture {
     }
 
     /**
-     *
+     *        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
      */
     private void getPassageSecretFirst() {
         // TODO Auto-generated method stub
@@ -404,6 +416,41 @@ public class Texture {
     private void getPorteOuverteGauche() {
         porteGauche[0] = porteOuverteGaucheSpriteSheet.grabImage(1, 1, 66, 66);
         porteGauche[1] = porteOuverteGaucheSpriteSheet.grabImage(1, 2, 66, 66);
+    }
+
+    private void getRick() {
+        //Sans movement
+        Rick[0] = RickSpriteSheet.grabImage(1, 1, 40, 80);
+        Rick[1] = RickSpriteSheet.grabImage(2, 1, 40, 80);
+        Rick[2] = RickSpriteSheet.grabImage(3, 1, 40, 80);
+
+        //marcher en bas
+        Rick[3] = RickSpriteSheet.grabImage(4, 1, 40, 80);
+        Rick[4] = RickSpriteSheet.grabImage(5, 1, 40, 80);
+        Rick[5] = RickSpriteSheet.grabImage(6, 1, 40, 80);
+
+        //marcher en haut
+        Rick[6] = RickSpriteSheet.grabImage(7, 1, 40, 80);
+        Rick[7] = RickSpriteSheet.grabImage(8, 1, 40, 80);
+        Rick[8] = RickSpriteSheet.grabImage(9, 1, 40, 80);
+        
+        //marcher en droit
+        Rick[9] = RickSpriteSheet.grabImage(1, 2, 40, 80);
+        Rick[10] = RickSpriteSheet.grabImage(2, 2, 40, 80);
+        Rick[11] = RickSpriteSheet.grabImage(3, 2, 40, 80);
+        Rick[12] = RickSpriteSheet.grabImage(4, 2, 40, 80);
+                
+        //marcher gauche
+        Rick[13] = RickSpriteSheet.grabImage(8, 2, 40, 80);
+        Rick[14] = RickSpriteSheet.grabImage(7, 2, 40, 80);
+        Rick[15] = RickSpriteSheet.grabImage(6, 2, 40, 80);
+        Rick[16] = RickSpriteSheet.grabImage(5, 2, 40, 80);
+        
+        
+        
+        
+        
+
     }
 
 }
