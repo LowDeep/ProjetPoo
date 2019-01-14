@@ -11,6 +11,11 @@ import java.awt.image.BufferedImage;
  *
  * @author dioxo
  */
+
+/*
+Class en charge de toutes les images du program,
+prends tous les sprites et permet d'obtenir une partie specifique
+*/
 public class Texture {
 
     SpriteSheet squeletteSpriteSheet;

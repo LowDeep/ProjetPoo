@@ -17,7 +17,7 @@ public class Porte extends Objet implements Dessiner {
     private final int HEIGHT = 66, WIDHT = 66;
     Texture texture = TableauJeu.getInstance();
 
-    private int frame;
+    //private int frame;
 
     private boolean ouvert;
 

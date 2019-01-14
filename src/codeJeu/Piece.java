@@ -279,7 +279,6 @@ public class Piece {
 	}
 
 	private void dessinerLevierPorte(Graphics2D g) {
-
 		levierPorte.dessiner(g);
 	}
 
@@ -295,7 +294,7 @@ public class Piece {
 		while (iterator.hasNext()) {
 			Personnage personnage = iterator.next();
 
-			// Bouger les monstres
+			// Bouger les monstres vers le joueur
 			if (personnage.getClass().getName().equals("codeJeu.Monstre")) {
 				Monstre monstre = (Monstre) personnage;
 				monstre.chercherJoueur(g2, joueur.getX(), joueur.getY());
@@ -456,7 +455,7 @@ public class Piece {
 			Personnage personnage = iterator.next();
 			if (personnage.getClass().getName().equals("codeJeu.Princesse")) {
 				Princesse princesse = (Princesse) personnage;
-				// COllition avec le cuisinier
+				// COllition avec la princesse
 				if (princesse.getHitBox().intersects(joueur.getHitBox())) {
 					confirmationGagnerJeu = true;
 				}
@@ -491,7 +490,6 @@ public class Piece {
 			Personnage personnage = iterator.next();
 			if (personnage.getClass().getName().equals("codeJeu.Cuisinier")) {
 				Cuisinier cuisinier = (Cuisinier) personnage;
-				// COllition avec le cuisinier
 				if (cuisinier.getHitBox().intersects(joueur.getHitBox())) {
 					joueur.setForce(ConstantesDeJeu.FORCEMAX);
 					fenetreObjets.getProgbarForce().getProgressBar().setValue(joueur.getForce());

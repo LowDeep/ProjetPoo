@@ -245,7 +245,6 @@ public class Joueur extends JoueurActif {
         }
     }
 
-    //PUEDE GENERAR ERROR
     @Override
     public void dessiner(Graphics2D g2) {
         g2.drawImage(texture.Rick[10], getX(), getY(), null);

@@ -14,6 +14,12 @@ import codeJeu.Joueur;
  *
  * @author dioxo
  */
+
+/**
+ * 
+ * Enemi de test pour le jeu, ne pas utiliser dans la version final
+ * 
+ * */
 public class Enemi {
     private int x;
     private int y;

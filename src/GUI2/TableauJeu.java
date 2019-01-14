@@ -37,6 +37,7 @@ import codeJeu.Princesse;
  */
 public class TableauJeu extends JPanel {
 
+    //Image utilisé pour le Background de tout le jeu
     private final String bgRoute = "/bg.png";
     Image bg;
     BufferedImageLoader loader = new BufferedImageLoader();
@@ -518,7 +519,7 @@ public class TableauJeu extends JPanel {
         //Clavier.update();
         //piece.actualiser(g2);
         
-        //Selon la piece qui est le personnage, on va la dessiner
+        //Selon la piece qui est le personnage, on va l'actualiser
         pieces[positionPiecePersonnageX][positionPiecePersonnageY].actualiser(g2);
         map.changerCouleurPiece(g2, positionPiecePersonnageX, positionPiecePersonnageY);
         
