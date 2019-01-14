@@ -45,11 +45,11 @@ public class FenetreDepar extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(225, 225, 225));
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Titre.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Titre.png"))); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Ninja.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ninja.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Group 2.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 2.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +57,7 @@ public class FenetreDepar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Group.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
 
