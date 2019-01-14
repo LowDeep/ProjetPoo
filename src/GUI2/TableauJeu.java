@@ -434,7 +434,7 @@ public class TableauJeu extends JPanel {
   
 
 
-        g2.setColor(new Color(255,255, 255));
+        g2.setColor(new Color(255,255, 255,0));
 
         //temp
         //piece.dessinerComponents(g2);

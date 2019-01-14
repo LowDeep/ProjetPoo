@@ -226,18 +226,18 @@ public class Joueur extends JoueurActif {
     public void seDeplacer(Graphics2D g2) {
 
         if (Clavier.up && getY() > 30) {
-            setY(getY() - 1);
+            setY(getY() - 2);
             PlayerAnimationUp.dessinerAnimation(g2, getX(), getY());
 
         } else if (Clavier.down && getY() < 540 - HEIGHT) {
             PlayerAnimationDown.dessinerAnimation(g2, getX(), getY());
-            setY(getY() + 1);
+            setY(getY() + 2);
         } else if (Clavier.left && getX() > 30) {
             PlayerAnimationLeft.dessinerAnimation(g2, getX(), getY());
-            setX(getX() - 1);
+            setX(getX() - 2);
         } else if (Clavier.right && getX() < 755 - WIDHT) {
             PlayerAnimationRight.dessinerAnimation(g2, getX(), getY());
-            setX(getX() + 1);
+            setX(getX() + 2);
         } else {
             //g2.drawImage(texture.squelette[0], getX(), getY(), null);
             PlayerAnimationStand.dessinerAnimation(g2, getX(), getY());
